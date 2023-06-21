@@ -12,4 +12,5 @@
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet consectetur. Ac parturient nisl nullam nibh tincidunt nulla.</string>
     <string name="sign_up">Sign Up</string>
     <string name="verification">Verification</string>
+    <string name="rating_amp_reviews"><![CDATA[Rating & Reviews]]></string>
 </resources>

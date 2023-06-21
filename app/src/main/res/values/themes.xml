@@ -11,6 +11,7 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="navigationViewStyle">@style/NavigationDrawerMenuItemStyle</item>
         <!-- Customize your theme here. -->
     </style>
     <style name="intro_text">
@@ -48,4 +49,12 @@
         <item name="cornerSize">25dp</item>
         <item name="elevation">5dp</item>
     </style>
+    <style name="NavigationDrawerMenuItemStyle" parent="@style/Widget.MaterialComponents.NavigationView">
+        <item name="android:textAppearance">@style/NavigationDrawerMenuItemTextAppearance</item>
+    </style>
+
+    <style name="NavigationDrawerMenuItemTextAppearance" parent="@style/TextAppearance.MaterialComponents.Body1">
+        <item name="android:fontFamily">@font/poppins_medium</item>
+    </style>
+
 </resources>
