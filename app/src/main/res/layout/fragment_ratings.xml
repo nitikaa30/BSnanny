@@ -25,7 +25,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@drawable/toolbar_bg"
             app:title="Rating and Reviews"
-            app:titleTextAppearance="@style/TitleToolBar"
+            app:titleTextAppearance="@style/heading"
             app:titleCentered="true"/>
     </com.google.android.material.appbar.AppBarLayout>
     <ProgressBar
