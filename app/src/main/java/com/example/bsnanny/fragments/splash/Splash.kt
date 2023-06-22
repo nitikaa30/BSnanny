@@ -30,5 +30,4 @@ class Splash : Fragment() {
             },3000)
         }
     }
-
 }

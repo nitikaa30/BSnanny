@@ -1,14 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.jobCard.JobCard">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <ImageView
+        android:layout_width="@dimen/_15sdp"
+        android:layout_height="@dimen/_15sdp"
+        android:src="@drawable/back_grey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:layout_marginStart="@dimen/_14sdp"/>
 
-</FrameLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Job Card"
+        android:textAppearance="@style/heading"
+        android:layout_marginTop="@dimen/_21sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    
+    <androidx.appcompat.widget.AppCompatEditText
+        android:layout_width="@dimen/_280sdp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mobileno"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/_100sdp"
+        android:hint="Address"
+        android:paddingStart="@dimen/_10sdp"/>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:layout_width="@dimen/_135sdp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mobileno"
+        android:hint="City"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/_156sdp"
+        android:layout_marginEnd="@dimen/_145sdp"
+        android:paddingStart="@dimen/_10sdp"/>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:layout_width="@dimen/_135sdp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mobileno"
+        android:hint="Pin"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/_156sdp"
+        android:layout_marginStart="@dimen/_145sdp"
+        android:paddingStart="@dimen/_10sdp"/>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/countrytext"
+        android:layout_width="@dimen/_280sdp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mobileno"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/_212sdp"
+        android:hint="Country"
+        android:paddingStart="@dimen/_10sdp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Timings"
+        android:textAppearance="@style/timings"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/_11sdp"
+        android:layout_marginStart="@dimen/_19sdp"
+        app:layout_constraintTop_toBottomOf="@id/countrytext" />
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/fromTime"
+        android:layout_width="@dimen/_135sdp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mobileno"
+        android:hint="From"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/_287sdp"
+        android:layout_marginEnd="@dimen/_145sdp"
+        android:paddingStart="@dimen/_10sdp"/>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:layout_width="@dimen/_135sdp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mobileno"
+        android:hint="To"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/_287sdp"
+        android:layout_marginStart="@dimen/_145sdp"
+        android:paddingStart="@dimen/_10sdp"/>
+    <Button
+        android:id="@+id/applybt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/apply"
+        android:layout_marginBottom="@dimen/_20sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+    <SeekBar
+        android:id="@+id/mSlide"
+        android:layout_width="@dimen/_250sdp"
+        android:layout_height="@dimen/_100sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:theme="@style/AppTheme"
+        android:layout_marginBottom="@dimen/_78sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/applybt" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pricing"
+        android:textAppearance="@style/timings"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/_11sdp"
+        android:layout_marginStart="@dimen/_21sdp"
+        app:layout_constraintTop_toBottomOf="@id/fromTime"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
