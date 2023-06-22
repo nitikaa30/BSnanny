@@ -13,4 +13,7 @@
     <string name="sign_up">Sign Up</string>
     <string name="verification">Verification</string>
     <string name="rating_amp_reviews"><![CDATA[Rating & Reviews]]></string>
+    <string name="adam">Adam</string>
+    <string name="_16_minutes_ago">16 minutes ago</string>
+    <string name="you_have_14_pending_requests">You have 14 pending requests</string>
 </resources>
