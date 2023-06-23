@@ -18,4 +18,29 @@
     <string name="you_have_14_pending_requests">You have 14 pending requests</string>
     <string name="intro">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since</string>
     <string name="mapbox_access_token">sk.eyJ1IjoiendpZ2F0bzEiLCJhIjoiY2xqNXAweTQ5MGdibDNsdGV4ZGIxcTBuZyJ9.tQtDtSyAb4zzOq0sxSZcow</string>
+    <string name="weekly">Weekly</string>
+    <string name="by_weekly">By Weekly</string>
+    <string-array name="by_weekly">
+        <item>$500</item>
+        <item>$600</item>
+        <item>$700</item>
+        <item>$800</item>
+        <item>$900</item>
+        <item>$1000</item>
+    </string-array>
+    <string name="by_monthly">By Monthly</string>
+    <string-array name="by_monthly">
+        <item>$1000</item>
+        <item>$1200</item>
+        <item>$1400</item>
+        <item>$1600</item>
+        <item>$1800</item>
+    </string-array>
+    <string-array name="weekly">
+        <item>$300</item>
+        <item>$350</item>
+        <item>$400</item>
+        <item>$450</item>
+        <item>$500</item>
+    </string-array>
 </resources>

@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
+import androidx.navigation.fragment.findNavController
 import com.example.bsnanny.R
 import com.example.bsnanny.databinding.FragmentDashboardBinding
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -37,7 +38,9 @@ class Dashboard : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.manualAddressAdd.setOnClickListener {
+            findNavController().navigate(R.id.action_dashboard_to_jobCard)
+        }
 
     }
     private fun getLocation() {

@@ -82,5 +82,14 @@
         android:id="@+id/dashboard"
         android:name="com.example.bsnanny.fragments.dashboard.Dashboard"
         android:label="fragment_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_dashboard_to_jobCard"
+            app:destination="@id/jobCard" />
+    </fragment>
+    <fragment
+        android:id="@+id/jobCard"
+        android:name="com.example.bsnanny.fragments.jobCard.JobCard"
+        android:label="fragment_job_card"
+        tools:layout="@layout/fragment_job_card" />
 </navigation>

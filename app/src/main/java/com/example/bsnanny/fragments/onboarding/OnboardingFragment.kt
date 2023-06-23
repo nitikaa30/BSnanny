@@ -16,9 +16,6 @@ import com.example.bsnanny.databinding.FragmentOnboardingBinding
 class OnboardingFragment : Fragment() {
     private lateinit var binding: FragmentOnboardingBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

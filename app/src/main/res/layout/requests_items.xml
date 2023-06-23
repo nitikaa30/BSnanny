@@ -9,9 +9,9 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:cardCornerRadius="8dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="3dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,19 +24,19 @@
                 android:text="Lynn Tanner"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toEndOf="@id/requestsImage"
-                android:layout_marginStart="@dimen/_12sdp"
-                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginStart="@dimen/_11sdp"
+                android:layout_marginTop="@dimen/_12sdp"
                 android:textAppearance="@style/name"/>
             <ImageView
                 android:id="@+id/requestsImage"
                 android:layout_width="@dimen/_90sdp"
-                android:layout_height="@dimen/_113sdp"
+                android:layout_height="@dimen/_110sdp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="@dimen/_14sdp"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginStart="@dimen/_14sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginBottom="@dimen/_14sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
                 android:background="@android:color/transparent"
                 android:src="@drawable/your_image"/>
             <ImageView
@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/chat"
                 android:layout_marginTop="@dimen/_14sdp"
-                android:layout_marginEnd="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
             <TextView
@@ -55,7 +55,7 @@
                 app:layout_constraintTop_toBottomOf="@id/name"
                 android:textAppearance="@style/intro_text"
                 app:layout_constraintStart_toEndOf="@id/requestsImage"
-                android:layout_marginStart="@dimen/_14sdp" />
+                android:layout_marginStart="@dimen/_12sdp" />
             <ImageView
                 android:id="@+id/dot"
                 android:layout_width="wrap_content"
@@ -83,7 +83,7 @@
                 android:textAppearance="@style/intro_text"
                 app:layout_constraintStart_toEndOf="@id/requestsImage"
                 android:layout_marginTop="@dimen/_2sdp"
-                android:layout_marginStart="@dimen/_14sdp" />
+                android:layout_marginStart="@dimen/_12sdp" />
             <ImageView
                 android:id="@+id/boy"
                 android:layout_width="wrap_content"
@@ -102,21 +102,21 @@
                 android:background="@drawable/girl"
                 android:layout_marginTop="@dimen/_3sdp"
                 app:layout_constraintTop_toBottomOf="@id/parent"/>
-            <Button
-                android:layout_width="@dimen/_88sdp"
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="@dimen/_85sdp"
                 android:layout_height="@dimen/_32sdp"
                 android:background="@drawable/accept"
-                android:layout_marginBottom="@dimen/_14sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginStart="@dimen/_10sdp"
                 app:layout_constraintStart_toEndOf="@id/requestsImage"/>
-            <Button
-                android:layout_width="@dimen/_88sdp"
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="@dimen/_85sdp"
                 android:layout_height="@dimen/_32sdp"
                 android:background="@drawable/reject"
-                android:layout_marginBottom="@dimen/_14sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginStart="@dimen/_108sdp"
+                android:layout_marginStart="@dimen/_100sdp"
                 app:layout_constraintStart_toEndOf="@id/requestsImage"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
