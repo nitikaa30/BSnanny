@@ -16,4 +16,6 @@
     <string name="adam">Adam</string>
     <string name="_16_minutes_ago">16 minutes ago</string>
     <string name="you_have_14_pending_requests">You have 14 pending requests</string>
+    <string name="intro">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since</string>
+    <string name="mapbox_access_token">sk.eyJ1IjoiendpZ2F0bzEiLCJhIjoiY2xqNXAweTQ5MGdibDNsdGV4ZGIxcTBuZyJ9.tQtDtSyAb4zzOq0sxSZcow</string>
 </resources>
