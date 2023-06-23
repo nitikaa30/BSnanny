@@ -1,16 +1,21 @@
 package com.example.bsnanny.fragments.jobCard
 
+import android.app.TimePickerDialog
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.RelativeLayout
 import android.widget.SeekBar
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.marginLeft
 import com.example.bsnanny.R
 import com.example.bsnanny.databinding.FragmentJobCardBinding
+import java.util.Calendar
 
 class JobCard : Fragment() {
     private lateinit var binding : FragmentJobCardBinding
@@ -30,6 +35,25 @@ class JobCard : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val activity = activity as AppCompatActivity?
+        activity?.setSupportActionBar(binding.jobCardToolbar)
+        if (activity?.supportActionBar != null) {
+            activity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            activity.supportActionBar?.setHomeAsUpIndicator(R.drawable.back)
+        }
+        binding.jobCardToolbar.setNavigationOnClickListener {
+            activity?.onBackPressedDispatcher?.onBackPressed()
+        }
+        binding.FromED.setOnClickListener {
+            pickTime(binding.FromED)
+        }
+        binding.TOED.setOnClickListener {
+            pickTime(binding.TOED)
+        }
+
+
+
         binding.seekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 binding.progressTextView.text = "₹$progress"
@@ -52,7 +76,33 @@ class JobCard : Fragment() {
             }
 
         })
+    }
+    private fun pickTime(text : EditText){
+        val c = Calendar.getInstance()
+        val hour = c.get(Calendar.HOUR_OF_DAY)
+        val minute = c.get(Calendar.MINUTE)
 
+        val timePickerDialog = TimePickerDialog(
+            requireContext(),
+            { view, hourOfDay, minute ->
+                val amPm = if (hourOfDay < 12) "AM" else "PM"
+                val hourFormatted = if (hourOfDay > 12) hourOfDay - 12 else hourOfDay
+                text.setText("$hourOfDay:$minute $amPm")
+
+                if (text.text.toString().isEmpty()){
+                    text.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.clock_white,0)
+                }else{
+                    text.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.enabled_clock, 0)
+                    binding.FromTIL.boxStrokeColor = R.color.purpleU1
+                }
+
+            },
+            hour,
+            minute,
+            false
+        )
+        timePickerDialog.setCanceledOnTouchOutside(false)
+        timePickerDialog.show()
     }
 
 }
