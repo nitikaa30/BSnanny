@@ -189,6 +189,8 @@
                 android:id="@+id/From_ED"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:focusable="false"
+                android:clickable="false"
                 android:fontFamily="@font/poppins_medium"
                 android:drawableEnd="@drawable/clock_white"
                 android:textColor="@color/black"
@@ -216,6 +218,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/poppins_medium"
+                android:focusable="false"
+                android:clickable="false"
                 android:drawableEnd="@drawable/clock_white"
                 android:textColor="@color/black"
                 android:textSize="14sp" />

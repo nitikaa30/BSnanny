@@ -45,5 +45,7 @@
         android:id="@+id/menu_item10"
         android:title="Logout"
         android:icon="@drawable/logout"/>
+
+
     <!-- Add more menu items as needed -->
 </menu>

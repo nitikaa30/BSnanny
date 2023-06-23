@@ -10,4 +10,6 @@
     <color name="purpleU1">#8585C5</color>
     <color name="greyOTP">#D8D6D4</color>
     <color name="def_pin_color">#C6C5C5</color>
+    <color name="mtrl_textinput_default_box_stroke_color">#D8D6D4</color>
+
 </resources>
