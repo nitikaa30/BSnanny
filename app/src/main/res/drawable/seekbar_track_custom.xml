@@ -13,7 +13,7 @@
         <clip>
             <shape>
                 <size android:height="10dp"/>
-                <solid android:color="@color/blue_b1" />
+                <solid android:color="@color/purpleU1" />
             </shape>
         </clip>
     </item>

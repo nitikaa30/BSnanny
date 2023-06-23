@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@drawable/toolbar_bg"
-            app:navigationIcon="@drawable/back_arrow"
+            app:navigationIcon="@drawable/back"
             app:title="Job Card"
             app:titleCentered="true" />
 
@@ -41,7 +41,7 @@
         app:boxCornerRadiusBottomStart="8dp"
         app:boxCornerRadiusTopEnd="8dp"
         app:boxCornerRadiusTopStart="8dp"
-        app:boxStrokeColor="@color/blue_b1"
+        app:boxStrokeColor="@color/purpleU1"
         app:hintTextColor="#5F5F5F"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,7 +81,7 @@
             app:boxCornerRadiusBottomStart="8dp"
             app:boxCornerRadiusTopEnd="8dp"
             app:boxCornerRadiusTopStart="8dp"
-            app:boxStrokeColor="@color/blue_b1"
+            app:boxStrokeColor="@color/purpleU1"
             app:hintTextColor="#5F5F5F">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -106,7 +106,7 @@
             app:boxCornerRadiusBottomStart="8dp"
             app:boxCornerRadiusTopEnd="8dp"
             app:boxCornerRadiusTopStart="8dp"
-            app:boxStrokeColor="@color/blue_b1"
+            app:boxStrokeColor="@color/purpleU1"
             app:hintTextColor="#5F5F5F">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -130,7 +130,7 @@
         app:boxCornerRadiusBottomStart="8dp"
         app:boxCornerRadiusTopEnd="8dp"
         app:boxCornerRadiusTopStart="8dp"
-        app:boxStrokeColor="@color/blue_b1"
+        app:boxStrokeColor="@color/purpleU1"
         app:hintTextColor="#5F5F5F"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -164,7 +164,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="16dp"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/Timing_TEXT">
@@ -182,7 +182,7 @@
             app:boxCornerRadiusBottomStart="8dp"
             app:boxCornerRadiusTopEnd="8dp"
             app:boxCornerRadiusTopStart="8dp"
-            app:boxStrokeColor="@color/blue_b1"
+            app:boxStrokeColor="@color/purpleU1"
             app:hintTextColor="#5F5F5F">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -208,7 +208,7 @@
             app:boxCornerRadiusBottomStart="8dp"
             app:boxCornerRadiusTopEnd="8dp"
             app:boxCornerRadiusTopStart="8dp"
-            app:boxStrokeColor="@color/blue_b1"
+            app:boxStrokeColor="@color/purpleU1"
             app:hintTextColor="#5F5F5F">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -232,28 +232,30 @@
         android:textSize="12sp"
         android:textColor="#5F5F5F"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:fontFamily="@font/poppins_medium"
         />
     <RelativeLayout
+        android:id="@+id/pricing_Layout"
         app:layout_constraintTop_toBottomOf="@id/Pricing_TEXT"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="10dp">
         <TextView
             android:id="@+id/progressTextView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="14sp"
+            android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:fontFamily="@font/poppins_medium"
             android:textColor="@color/black"
             android:layout_alignParentTop="true"
-            android:text="0" />
+            android:text="₹0" />
 
         <SeekBar
             android:id="@+id/seekbar"
-            android:layout_width="match_parent"
+            android:layout_width="500dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/progressTextView"
             android:max="500"
@@ -263,14 +265,43 @@
             android:thumbTint="@color/purpleU1"
             android:tickMark="@color/purpleU1"
             android:tickMarkTint="@color/purpleU1" />
-
-
     </RelativeLayout>
 
-
-
-
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/pricing_Layout"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="10dp"
+        android:textSize="14sp"
+        android:text="₹0"
+        android:layout_marginStart="15dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppins_medium"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/pricing_Layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="14sp"
+        android:layout_marginTop="10dp"
+        android:text="₹500"
+        android:layout_marginEnd="15dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppins_medium"
+        />
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:padding="15dp"
+        app:cornerRadius="8dp"
+        android:textAllCaps="false"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Continue"
+        android:backgroundTint="@color/black"
+        android:layout_margin="16dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
