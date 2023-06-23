@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- seekbar_progress_custom.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background Layer -->
+    <item>
+        <shape>
+            <solid android:color="#D3D3D3" />
+        </shape>
+    </item>
+
+    <!-- Progress Layer -->
+    <item>
+        <clip>
+            <shape>
+                <size android:height="10dp"/>
+                <solid android:color="@color/blue_b1" />
+            </shape>
+        </clip>
+    </item>
+</layer-list>

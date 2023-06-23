@@ -7,128 +7,270 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.jobCard.JobCard">
 
-    <ImageView
-        android:layout_width="@dimen/_15sdp"
-        android:layout_height="@dimen/_15sdp"
-        android:src="@drawable/back_grey"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/jobCardAppbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_margin="16dp"
+        android:background="@drawable/toolbar_bg"
+        app:elevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/_25sdp"
-        android:layout_marginStart="@dimen/_14sdp"/>
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/jobCardToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/toolbar_bg"
+            app:navigationIcon="@drawable/back_arrow"
+            app:title="Job Card"
+            app:titleCentered="true" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Job_card_Address_TIL"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginTop="10dp"
+        android:textColorHint="#5F5F5F"
+        app:boxCornerRadiusBottomEnd="8dp"
+        app:boxCornerRadiusBottomStart="8dp"
+        app:boxCornerRadiusTopEnd="8dp"
+        app:boxCornerRadiusTopStart="8dp"
+        app:boxStrokeColor="@color/blue_b1"
+        app:hintTextColor="#5F5F5F"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/jobCardAppbar">
+
+        <EditText
+            android:id="@+id/Address_ED"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableEnd="@drawable/loc1"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Address"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:id="@+id/Address_LL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/Job_card_Address_TIL">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/City_TIL"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1"
+            android:hint="City"
+            android:textColorHint="#5F5F5F"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
+            app:boxStrokeColor="@color/blue_b1"
+            app:hintTextColor="#5F5F5F">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/City"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/PIN_TIL"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:hint="Pin"
+            android:textColorHint="#5F5F5F"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
+            app:boxStrokeColor="@color/blue_b1"
+            app:hintTextColor="#5F5F5F">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/Pin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/Country_TIL"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginTop="10dp"
+        android:textColorHint="#5F5F5F"
+        app:boxCornerRadiusBottomEnd="8dp"
+        app:boxCornerRadiusBottomStart="8dp"
+        app:boxCornerRadiusTopEnd="8dp"
+        app:boxCornerRadiusTopStart="8dp"
+        app:boxStrokeColor="@color/blue_b1"
+        app:hintTextColor="#5F5F5F"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Address_LL">
+
+        <EditText
+            android:id="@+id/Country_ED"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="Country"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
+        android:id="@+id/Timing_TEXT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Job Card"
-        android:textAppearance="@style/heading"
-        android:layout_marginTop="@dimen/_21sdp"
+        app:layout_constraintTop_toBottomOf="@id/Country_TIL"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-    
-    <androidx.appcompat.widget.AppCompatEditText
-        android:layout_width="@dimen/_280sdp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/mobileno"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/_100sdp"
-        android:hint="Address"
-        android:paddingStart="@dimen/_10sdp"/>
-    <androidx.appcompat.widget.AppCompatEditText
-        android:layout_width="@dimen/_135sdp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/mobileno"
-        android:hint="City"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/_156sdp"
-        android:layout_marginEnd="@dimen/_145sdp"
-        android:paddingStart="@dimen/_10sdp"/>
-    <androidx.appcompat.widget.AppCompatEditText
-        android:layout_width="@dimen/_135sdp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/mobileno"
-        android:hint="Pin"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/_156sdp"
-        android:layout_marginStart="@dimen/_145sdp"
-        android:paddingStart="@dimen/_10sdp"/>
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/countrytext"
-        android:layout_width="@dimen/_280sdp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/mobileno"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/_212sdp"
-        android:hint="Country"
-        android:paddingStart="@dimen/_10sdp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="Timings"
-        android:textAppearance="@style/timings"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="@dimen/_11sdp"
-        android:layout_marginStart="@dimen/_19sdp"
-        app:layout_constraintTop_toBottomOf="@id/countrytext" />
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/fromTime"
-        android:layout_width="@dimen/_135sdp"
+        android:textColor="#5F5F5F"
+        android:textSize="12sp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppins_medium"
+        />
+    <LinearLayout
+        android:id="@+id/Timings_LL"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/mobileno"
-        android:hint="From"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/_287sdp"
-        android:layout_marginEnd="@dimen/_145sdp"
-        android:paddingStart="@dimen/_10sdp"/>
-    <androidx.appcompat.widget.AppCompatEditText
-        android:layout_width="@dimen/_135sdp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/mobileno"
-        android:hint="To"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/_287sdp"
-        android:layout_marginStart="@dimen/_145sdp"
-        android:paddingStart="@dimen/_10sdp"/>
-    <Button
-        android:id="@+id/applybt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/apply"
-        android:layout_marginBottom="@dimen/_20sdp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-    <SeekBar
-        android:id="@+id/mSlide"
-        android:layout_width="@dimen/_250sdp"
-        android:layout_height="@dimen/_100sdp"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:theme="@style/AppTheme"
-        android:layout_marginBottom="@dimen/_78sdp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/applybt" />
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/Timing_TEXT">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/From_TIL"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1"
+            android:hint="From"
+            android:textColorHint="#5F5F5F"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
+            app:boxStrokeColor="@color/blue_b1"
+            app:hintTextColor="#5F5F5F">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/From_ED"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/poppins_medium"
+                android:drawableEnd="@drawable/clock_white"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/TO_TIL"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:hint="To"
+            android:textColorHint="#5F5F5F"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
+            app:boxStrokeColor="@color/blue_b1"
+            app:hintTextColor="#5F5F5F">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/TO_ED"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/poppins_medium"
+                android:drawableEnd="@drawable/clock_white"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
     <TextView
+        android:id="@+id/Pricing_TEXT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pricing"
-        android:textAppearance="@style/timings"
+        app:layout_constraintTop_toBottomOf="@id/Timings_LL"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="@dimen/_11sdp"
-        android:layout_marginStart="@dimen/_21sdp"
-        app:layout_constraintTop_toBottomOf="@id/fromTime"/>
+        android:text="Pricing"
+        android:textSize="12sp"
+        android:textColor="#5F5F5F"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppins_medium"
+        />
+    <RelativeLayout
+        app:layout_constraintTop_toBottomOf="@id/Pricing_TEXT"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+        <TextView
+            android:id="@+id/progressTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/black"
+            android:layout_alignParentTop="true"
+            android:text="0" />
+
+        <SeekBar
+            android:id="@+id/seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/progressTextView"
+            android:max="500"
+            android:outlineSpotShadowColor="@color/purpleU1"
+            android:progressDrawable="@drawable/seekbar_track_custom"
+            android:thumb="@color/purpleU1"
+            android:thumbTint="@color/purpleU1"
+            android:tickMark="@color/purpleU1"
+            android:tickMarkTint="@color/purpleU1" />
+
+
+    </RelativeLayout>
+
+
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
