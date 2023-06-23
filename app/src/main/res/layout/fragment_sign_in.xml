@@ -6,112 +6,198 @@
     android:background="#fafafa"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.signin.SignIn">
-
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/ellipse_1"
-        app:layout_constraintStart_toStartOf="parent"
+        android:translationZ="90dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ellipse_2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/_25sdp"
-        android:layout_marginStart="@dimen/_14sdp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/register"
-        android:textAppearance="@style/sub_text"
-        android:layout_marginTop="@dimen/_22sdp"
-        android:layout_marginEnd="@dimen/_14sdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/signup"
-        android:textAppearance="@style/noAcc"
-        android:layout_marginBottom="@dimen/_15sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-    <TextView
-        android:id="@+id/titleTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sign_in"
-        android:layout_marginTop="@dimen/_70sdp"
-        android:layout_marginEnd="@dimen/_195sdp"
-        android:textAppearance="@style/verfication"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-    <TextView
-        android:id="@+id/description"
-        android:layout_width="@dimen/_280sdp"
-        android:layout_height="wrap_content"
-        android:text="@string/lorem_ipsum"
-        android:layout_marginTop="@dimen/_105sdp"
-        android:layout_marginStart="@dimen/_7sdp"
-        android:textAppearance="@style/lorem_ipsum2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/phonelayout"
-        android:layout_width="0dp"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/signIn_appbar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_190sdp"
-        android:layout_marginStart="@dimen/_20sdp"
-        android:layout_marginEnd="@dimen/_20sdp"
-        android:background="@drawable/mobileno"
-        android:gravity="center"
-        android:minHeight="@dimen/_46sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:elevation="-10dp"
+        app:elevation="-10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-        <com.hbb20.CountryCodePicker
-            android:id="@+id/countyCodePicker"
-            android:layout_width="@dimen/_100sdp"
-            android:layout_height="wrap_content" />
 
-        <androidx.appcompat.widget.AppCompatEditText
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/signIn_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/_5sdp"
-            android:background="@android:color/transparent"
-            android:inputType="phone"
-            android:hint="Phone Number"
-            android:paddingStart="10dp"
-            android:id="@+id/phoneNumber"
-            android:maxLength="10"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_12sdp" />
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            android:elevation="-10dp"
+            app:navigationIcon="@drawable/back">
 
-    </androidx.appcompat.widget.LinearLayoutCompat>
-    <Button
-        android:id="@+id/sendVerificationCodeButton"
+            <TextView
+                android:id="@+id/signUp_Intent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Register"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+        </com.google.android.material.appbar.MaterialToolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <TextView
+        android:id="@+id/signIn_text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/signinbt"
-        android:layout_marginTop="@dimen/_290sdp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/poppins_semi_bold"
+        android:text="Sign in"
+        android:textColor="@color/black"
+        android:textSize="28sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/signIn_appbar" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/signIn_Text2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="start"
+        android:lineHeight="17sp"
+        android:text="Lorem ipsum dolor sit amet consectetur. Ac parturient nisl nullam nibh tincidunt nulla."
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:fontFamily="@font/poppins_regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signIn_text1" />
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="16dp"
+        android:minHeight="30dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signIn_Text2">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/border_auth_bg">
+
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/countryCode"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:ccp_showFullName="false"
+                app:ccp_showNameCode="false"
+                app:ccp_showPhoneCode="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/auth_signIn_divider"
+                android:layout_width="1dp"
+                android:layout_height="28dp"
+                android:background="#4D4D4D"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/countryCode"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <EditText
+                android:id="@+id/phoneNum"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="start|center"
+                android:hint="Phone"
+                android:inputType="number"
+                android:maxLength="10"
+                android:paddingStart="5dp"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/auth_signIn_divider"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+
+    <TextView
+        android:id="@+id/hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="22dp"
+        android:background="@color/white"
+        android:fontFamily="@font/poppins_medium"
+        android:text=" Phone "
+        android:textColor="#5F5F5F"
+        android:textSize="12sp"
+        android:translationZ="1000dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/signIn_Text2" />
+
+
+    <TextView
+        android:id="@+id/hintError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="3dp"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="#FF0000"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card1"
+        tools:text="Enter the Number" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/AuthSignInBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/card1"
+        app:cornerRadius="8dp"
+        android:backgroundTint="@color/black"
+        android:layout_marginTop="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:padding="15dp"
+        android:gravity="center"
+        android:text="Sign in"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:fontFamily="@font/poppins_regular"
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ellipse_2"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

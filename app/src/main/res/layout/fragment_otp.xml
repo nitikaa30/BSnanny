@@ -7,89 +7,109 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.otp.Otp">
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:src="@drawable/ellipse_1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-    <ImageView
-        android:layout_width="wrap_content"
+        android:translationZ="90dp"/>
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/verification_appBarLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/ellipse_2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/back"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/_25sdp"
-        android:layout_marginStart="@dimen/_14sdp"/>
-    <TextView
-        android:id="@+id/titleTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/verification"
-        android:layout_marginTop="@dimen/_70sdp"
-        android:layout_marginEnd="@dimen/_130sdp"
-        android:textAppearance="@style/verfication"
-        app:layout_constraintTop_toTopOf="parent"
+        android:backgroundTint="@color/white"
+        android:elevation="-10dp"
+        app:elevation="-10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent">
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/Verification_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
 
     <TextView
-        android:id="@+id/description"
-        android:layout_width="@dimen/_280sdp"
-        android:layout_height="wrap_content"
-        android:text="@string/lorem_ipsum"
-        android:layout_marginTop="@dimen/_105sdp"
-        android:layout_marginStart="@dimen/_7sdp"
-        android:textAppearance="@style/lorem_ipsum2"
+        android:id="@+id/verification"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:layout_width="wrap_content"
+        android:text="Verification"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="100dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:fontFamily="@font/poppins_semi_bold"
+        android:textSize="28sp"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/verifyText"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:gravity="start"
+        android:lineHeight="17sp"
+        app:fontFamily="@font/poppins_regular"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/verification"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="14sp"
+        android:text="Lorem ipsum dolor sit amet consectetur. Ac parturient nisl nullam nibh tincidunt nulla."
+        android:textColor="@color/black" />
+
     <com.chaos.view.PinView
-        android:id="@+id/otp_view"
-        style="@style/PinWidget.PinView"
+        android:id="@+id/pinView"
+        app:layout_constraintTop_toBottomOf="@id/verifyText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:autofillHints="smsOTPCode"
+        android:importantForAutofill="yes"
+        android:layout_marginTop="52dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:cursorVisible="true"
-        android:hint="Hint"
-        android:inputType="number"
-        android:layout_marginBottom="@dimen/_190sdp"
-        android:itemBackground="@drawable/otp_select"
-        android:padding="@dimen/_2sdp"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:cursorColor="@color/purpleU1"
-        app:cursorWidth="2dp"
-        app:hideLineWhenFilled="true"
-        app:itemCount="6"
-        app:itemHeight="48dp"
-        app:itemRadius="4dp"
-        app:itemSpacing="@dimen/_5sdp"
-        app:itemWidth="48dp"
-        app:lineColor="@color/greyOTP"
-        app:lineWidth="3dp"
+        android:layout_gravity="center"
         app:viewType="rectangle"
+        style="@style/PinWidget.PinView"
+        android:inputType="number"
+        android:cursorVisible="true"
+        app:lineColor="@drawable/pin_view_bg"
+        android:state_selected="true"
+        android:itemBackground="@color/white"
+        android:textColor="@color/black"
+        app:itemRadius="8dp"
+        app:itemCount="6"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/verificationBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/black"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="Continue"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        app:cornerRadius="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-    <Button
-        android:id="@+id/sendVerificationCodeButton"
-        android:layout_width="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/pinView" />
+
+    <ImageView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/contbt"
-        android:layout_marginTop="@dimen/_290sdp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:src="@drawable/ellipse_2"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
 
 
 
