@@ -27,6 +27,71 @@
             app:titleTextAppearance="@style/heading"
             app:titleCentered="true"/>
     </com.google.android.material.appbar.AppBarLayout>
+    <TextView
+        android:id="@+id/paymentTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$2000"
+        android:textAppearance="@style/earnings"
+        android:layout_marginTop="@dimen/_15sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/paymentsAppBar"/>
+    <TextView
+        android:id="@+id/earning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Earning"
+        android:layout_marginTop="@dimen/_65sdp"
+        android:textAppearance="@style/heading"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/paymentsAppBar" />
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Till 26 April"
+        android:textAppearance="@style/timings"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/earning"/>
+    <ProgressBar
+        android:id="@+id/requestsProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:indeterminateTint="#8585C5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:translationZ="90dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/requests_RecyclerView"
+        android:layout_width="412dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/date"
+        tools:listitem="@layout/payments_items" />
+
+    <TextView
+        android:id="@+id/requestsStatus"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:text="No Requests Yet"
+        android:gravity="center"
+        android:translationZ="90dp"
+        android:textStyle="bold"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="@color/black"/>
+
 
 
 

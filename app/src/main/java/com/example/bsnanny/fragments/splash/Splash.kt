@@ -9,11 +9,12 @@ import android.view.ViewGroup
 import android.webkit.WebView.FindListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.babysitting.sharedPreferences.GetPrefs
+
 import com.example.bsnanny.R
 import com.example.bsnanny.databinding.FragmentSplashBinding
 import com.example.bsnanny.fragments.onboarding.OnboardingFragment.Companion.ONBOARDING_SAVE_KEY
 import com.example.bsnanny.fragments.onboarding.OnboardingFragment.Companion.ONBOARDING_SAVE_NAME
+import com.example.bsnanny.sharedPreferences.GetPrefs
 
 
 class Splash : Fragment() {
