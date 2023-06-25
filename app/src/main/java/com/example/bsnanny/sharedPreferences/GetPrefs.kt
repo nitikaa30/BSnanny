@@ -1,4 +1,4 @@
-package com.example.babysitting.sharedPreferences
+package com.example.bsnanny.sharedPreferences
 
 import android.content.Context
 

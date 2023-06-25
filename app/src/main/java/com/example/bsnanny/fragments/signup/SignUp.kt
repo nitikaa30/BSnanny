@@ -73,7 +73,7 @@ class SignUp : Fragment() {
                 else -> {
                     binding.SignUpHintError.text = ""
                     binding.signupCard.strokeColor = R.color.purpleU1
-                      findNavController().navigate(R.id.action_signIn_to_otp)
+                      findNavController().navigate(R.id.action_signUp_to_otp)
                 }
             }
             binding.SignUpPhoneNum.addTextChangedListener(object : TextWatcher {

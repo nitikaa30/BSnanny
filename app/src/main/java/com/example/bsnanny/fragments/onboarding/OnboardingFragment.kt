@@ -7,10 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager.widget.ViewPager
-import com.example.babysitting.sharedPreferences.SavePrefs
 import com.example.bsnanny.R
 import com.example.bsnanny.adapter.ViewPagerAdapter
 import com.example.bsnanny.databinding.FragmentOnboardingBinding
+import com.example.bsnanny.sharedPreferences.SavePrefs
 
 
 class OnboardingFragment : Fragment() {
