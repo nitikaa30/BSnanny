@@ -91,5 +91,14 @@
         android:id="@+id/jobCard"
         android:name="com.example.bsnanny.fragments.jobCard.JobCard"
         android:label="fragment_job_card"
-        tools:layout="@layout/fragment_job_card" />
+        tools:layout="@layout/fragment_job_card" >
+        <action
+            android:id="@+id/action_jobCard_to_hireNannyFragment"
+            app:destination="@id/hireNannyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/hireNannyFragment"
+        android:name="com.example.bsnanny.fragments.nanny.HireNannyFragment"
+        android:label="fragment_hire_nanny"
+        tools:layout="@layout/fragment_hire_nanny" />
 </navigation>

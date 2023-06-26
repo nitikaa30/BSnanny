@@ -31,6 +31,7 @@
         <item>$1000</item>
     </string-array>
     <string name="by_monthly">By Monthly</string>
+    <string name="lorem_ipsum1">Lorem ipsum dolor sit amet consectetur. Vitae ut ut sagittis malesuada. Sed enim pretium accumsan et magnis cras a non. Leo vel a nisl pellentesque ut accumsan convallis suspendisse nulla.</string>
     <string-array name="by_monthly">
         <item>$1000</item>
         <item>$1200</item>
@@ -44,5 +45,10 @@
         <item>$400</item>
         <item>$450</item>
         <item>$500</item>
+    </string-array>
+    <string-array name="Duration">
+        <item>Weekly</item>
+        <item>By Weekly</item>
+        <item>Monthly</item>
     </string-array>
 </resources>

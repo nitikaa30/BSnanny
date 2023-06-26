@@ -24,6 +24,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@drawable/toolbar_bg"
             app:title="Invitations"
+
             app:titleCentered="true">
             <ImageButton
                 android:layout_width="wrap_content"

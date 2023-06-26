@@ -14,6 +14,7 @@ import android.widget.SeekBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.marginLeft
+import androidx.navigation.fragment.findNavController
 import com.example.bsnanny.R
 import com.example.bsnanny.databinding.FragmentJobCardBinding
 import java.util.Calendar
@@ -53,6 +54,9 @@ class JobCard : Fragment() {
             pickTime(binding.TOED)
         }
 
+        binding.SearchNannyBtn.setOnClickListener{
+            findNavController().navigate(R.id.action_jobCard_to_hireNannyFragment)
+        }
 
 
         binding.seekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {

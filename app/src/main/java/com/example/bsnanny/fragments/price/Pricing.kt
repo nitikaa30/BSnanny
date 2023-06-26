@@ -14,8 +14,8 @@ class Pricing : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding= FragmentPricingBinding.inflate(layoutInflater)
+    ): View {
+        binding= FragmentPricingBinding.inflate(inflater, container, false)
         return binding.root
     }
 
