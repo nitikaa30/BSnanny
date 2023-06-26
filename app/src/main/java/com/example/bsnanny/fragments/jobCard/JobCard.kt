@@ -1,5 +1,6 @@
 package com.example.bsnanny.fragments.jobCard
 
+import android.annotation.SuppressLint
 import android.app.TimePickerDialog
 import android.os.Bundle
 import android.util.Log
@@ -77,6 +78,7 @@ class JobCard : Fragment() {
 
         })
     }
+    @SuppressLint("ResourceAsColor")
     private fun pickTime(text : EditText){
         val c = Calendar.getInstance()
         val hour = c.get(Calendar.HOUR_OF_DAY)
