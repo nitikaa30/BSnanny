@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Account"
+            android:textAppearance="@style/heading"
+            android:layout_marginStart="@dimen/_45sdp"
+            android:layout_marginEnd="@dimen/_45sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintTop_toTopOf="parent"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/accNo"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="@dimen/_125sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:hint="Account Number"
+            app:boxStrokeColor="@color/purpleU1"
+            app:errorTextAppearance="@style/ErrorTextAppearance"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:paddingTop="20dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/accName"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="@dimen/_125sdp"
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/purpleU1"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:hint="Account Holder Name"
+            app:errorTextAppearance="@style/ErrorTextAppearance"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/accNo">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:paddingTop="20dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ifsc"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="@dimen/_125sdp"
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/purpleU1"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:hint="IFSC"
+            app:errorTextAppearance="@style/ErrorTextAppearance"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/accName">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:paddingTop="20dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Address"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="@dimen/_125sdp"
+            android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/purpleU1"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:hint="Address"
+            app:errorTextAppearance="@style/ErrorTextAppearance"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ifsc">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/outlined_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:paddingTop="20dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/submit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Address"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginBottom="@dimen/_12sdp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

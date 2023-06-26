@@ -46,7 +46,14 @@
         android:id="@+id/menu_item10"
         android:title="Logout"
         android:icon="@drawable/logout"/>
+    <item
+        android:id="@+id/invitation"
+        android:title="Invitations"
+        android:icon="@drawable/invitations"
+        />
+    <item
+        android:id="@+id/jobRequests"
+        android:title="Job Requests"
+        android:icon="@drawable/job_requests"/>
 
-
-    <!-- Add more menu items as needed -->
 </menu>
