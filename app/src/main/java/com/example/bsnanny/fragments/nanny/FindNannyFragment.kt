@@ -16,7 +16,7 @@ class FindNannyFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentFindNannyBinding.inflate(inflater, container, false)
         //return inflater.inflate(R.layout.fragment_find_nanny, container, false)
