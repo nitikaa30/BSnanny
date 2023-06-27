@@ -104,7 +104,16 @@
         android:id="@+id/hireNannyFragment"
         android:name="com.example.bsnanny.fragments.nanny.HireNannyFragment"
         android:label="fragment_hire_nanny"
-        tools:layout="@layout/fragment_hire_nanny" />
+        tools:layout="@layout/fragment_hire_nanny" >
+        <action
+            android:id="@+id/action_hireNannyFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.bsnanny.fragments.profile.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile"/>
     <fragment
         android:id="@+id/requests"
         android:name="com.example.bsnanny.fragments.requests.Requests"

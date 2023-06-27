@@ -53,6 +53,7 @@ class Dashboard : Fragment() {
         val notificationMenuItem: MenuItem = menu.findItem(R.id.menu_item3)
         val actionView: View = LayoutInflater.from(requireContext()).inflate(R.layout.custom_navigation_item, null)
         notificationMenuItem.actionView = actionView
+        actionView.layoutDirection
         val layoutParams = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.WRAP_CONTENT

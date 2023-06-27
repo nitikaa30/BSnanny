@@ -14,7 +14,8 @@
     <item
         android:id="@+id/menu_item3"
         android:title="Notification"
-        android:icon="@drawable/notification"/>
+        android:icon="@drawable/notification"
+        />
 
     <item
         android:id="@+id/menu_item4"

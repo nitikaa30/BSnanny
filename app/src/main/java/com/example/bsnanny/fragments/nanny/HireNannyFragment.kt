@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bsnanny.R
 import com.example.bsnanny.adapter.HireNannyAdapter
@@ -48,6 +49,9 @@ class HireNannyFragment : Fragment() {
         val adapter = HireNannyAdapter(mList)
         binding.nannyCommentsRecyclerView.adapter = adapter
 
+        binding.nannyHireBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_hireNannyFragment_to_profileFragment)
+        }
 
         val duration = resources.getStringArray(R.array.Duration)
         val durationArrayAdapter = context?.let {

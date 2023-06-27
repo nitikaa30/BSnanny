@@ -200,13 +200,14 @@
                 android:id="@+id/seeAllBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:layout_marginEnd="30dp"
                 android:backgroundTint="@color/white"
                 android:text="See all"
                 android:textAllCaps="false"
                 android:textColor="@color/purpleU1"
                 android:textSize="10sp"
                 app:cornerRadius="8dp"
+                android:layout_marginStart="@dimen/_4sdp"
+                app:layout_constraintStart_toEndOf="@id/commentsTEXT"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/hireNannyAddress"
                 app:strokeColor="@color/purpleU1"
@@ -308,6 +309,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
+                android:layout_marginBottom="@dimen/_8sdp"
                 android:orientation="horizontal">
                 <com.google.android.material.button.MaterialButton
                     android:layout_width="0dp"
@@ -322,6 +324,7 @@
                     android:backgroundTint="@color/purpleU1"
                     android:layout_weight="1"/>
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/nannyHireBtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
