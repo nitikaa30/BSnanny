@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.families.FamilyDetails">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/hireNannyAppbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_margin="16dp"
+        android:background="@drawable/toolbar_bg"
+        app:elevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/hireNannyToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/toolbar_bg"
+            app:navigationIcon="@drawable/back"
+            app:title="Family Details"
+            app:titleCentered="true" />
+    </com.google.android.material.appbar.AppBarLayout>
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lynn Tanner"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/requestsImage"
+        android:layout_marginStart="@dimen/_11sdp"
+        android:layout_marginTop="@dimen/_90sdp"
+        android:textAppearance="@style/name"/>
+    <ImageView
+        android:id="@+id/requestsImage"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_90sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/_80sdp"
+        android:layout_marginStart="@dimen/_14sdp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/your_image"/>
+
+    <TextView
+        android:id="@+id/place"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New York"
+        app:layout_constraintTop_toBottomOf="@id/name"
+        android:textAppearance="@style/intro_text"
+        app:layout_constraintStart_toEndOf="@id/requestsImage"
+        android:layout_marginStart="@dimen/_12sdp" />
+    <ImageView
+        android:id="@+id/dot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bullet"
+        app:layout_constraintTop_toBottomOf="@id/name"
+        app:layout_constraintStart_toEndOf="@id/place"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:layout_marginStart="@dimen/_12sdp" />
+    <TextView
+        android:id="@+id/parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Child's Mother"
+        app:layout_constraintTop_toBottomOf="@id/name"
+        android:textAppearance="@style/intro_text"
+        app:layout_constraintStart_toEndOf="@id/dot"
+        android:layout_marginStart="@dimen/_10sdp" />
+    <TextView
+        android:id="@+id/age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Child's age: 5 year"
+        app:layout_constraintTop_toBottomOf="@id/place"
+        android:textAppearance="@style/intro_text"
+        app:layout_constraintStart_toEndOf="@id/requestsImage"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:layout_marginStart="@dimen/_12sdp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$500"
+        android:textAppearance="@style/intro_text"
+        app:layout_constraintTop_toBottomOf="@id/age"
+        app:layout_constraintStart_toEndOf="@id/requestsImage"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:layout_marginStart="@dimen/_12sdp" />
+    <ImageView
+        android:id="@+id/boy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/age"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:background="@drawable/boy"
+        android:layout_marginTop="@dimen/_3sdp"
+        app:layout_constraintTop_toBottomOf="@id/parent"/>
+    <ImageView
+        android:id="@+id/girl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/age"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:background="@drawable/girl"
+        android:layout_marginTop="@dimen/_3sdp"
+        app:layout_constraintTop_toBottomOf="@id/parent"/>
+    <TextView
+        android:id="@+id/familiesdescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/requestsImage"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:fontFamily="@font/poppins_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/lorem_ipsum1"/>
+    <TextView
+        android:id="@+id/addressTEXT"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Address"
+        app:layout_constraintTop_toBottomOf="@id/familiesdescription"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:textSize="16sp"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="@color/black"
+        android:layout_marginTop="15dp"
+        />
+    <TextView
+        android:id="@+id/familiesAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/addressTEXT"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:fontFamily="@font/poppins_regular"
+        android:text="248 Broome St, New York, United States"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/location"
+        app:layout_constraintTop_toBottomOf="@id/familiesdescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_26sdp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/jobstart"
+        android:layout_marginBottom="@dimen/_20sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
