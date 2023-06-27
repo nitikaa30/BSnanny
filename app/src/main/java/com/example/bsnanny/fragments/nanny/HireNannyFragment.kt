@@ -9,8 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bsnanny.R
+import com.example.bsnanny.adapter.HireNannyAdapter
 import com.example.bsnanny.databinding.FragmentHireNannyBinding
+import com.example.bsnanny.models.HireNannyModel
+import java.util.ArrayList
 import java.util.Calendar
 
 class HireNannyFragment : Fragment() {
@@ -31,6 +35,20 @@ class HireNannyFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.nannyCommentsRecyclerView.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL, false)
+        val mList = ArrayList<HireNannyModel>()
+        mList.add(HireNannyModel(R.drawable.avatar, "Alice", getString(R.string.lorem_ipsum_dolor_sit_amet_consectetur)))
+        mList.add(HireNannyModel(R.drawable.avatar, "Bob", getString(R.string.lorem_ipsum_dolor_sit_amet_consectetur)))
+        mList.add(HireNannyModel(R.drawable.avatar, "Edward", getString(R.string.lorem_ipsum_dolor_sit_amet_consectetur)))
+        mList.add(HireNannyModel(R.drawable.avatar, "Rose", getString(R.string.lorem_ipsum_dolor_sit_amet_consectetur)))
+        mList.add(HireNannyModel(R.drawable.avatar, "Ele", getString(R.string.lorem_ipsum_dolor_sit_amet_consectetur)))
+        mList.add(HireNannyModel(R.drawable.avatar, "kate", getString(R.string.lorem_ipsum_dolor_sit_amet_consectetur)))
+        mList.add(HireNannyModel(R.drawable.avatar, "Rick", getString(R.string.lorem_ipsum_dolor_sit_amet_consectetur)))
+
+        val adapter = HireNannyAdapter(mList)
+        binding.nannyCommentsRecyclerView.adapter = adapter
+
+
         val duration = resources.getStringArray(R.array.Duration)
         val durationArrayAdapter = context?.let {
             ArrayAdapter(it, R.layout.dropdown_item_pricing, duration)
