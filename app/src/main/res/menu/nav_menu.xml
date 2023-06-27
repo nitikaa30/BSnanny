@@ -49,7 +49,7 @@
     <item
         android:id="@+id/invitation"
         android:title="Invitations"
-        android:icon="@drawable/invitations"
+        android:icon="@drawable/invitation"
         />
     <item
         android:id="@+id/jobRequests"
