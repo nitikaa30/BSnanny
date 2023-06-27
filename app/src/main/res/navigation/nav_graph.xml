@@ -105,9 +105,4 @@
         android:name="com.example.bsnanny.fragments.nanny.HireNannyFragment"
         android:label="fragment_hire_nanny"
         tools:layout="@layout/fragment_hire_nanny" />
-    <fragment
-        android:id="@+id/requests"
-        android:name="com.example.bsnanny.fragments.requests.Requests"
-        android:label="fragment_find_families"
-        tools:layout="@layout/fragment_find_families" />
 </navigation>

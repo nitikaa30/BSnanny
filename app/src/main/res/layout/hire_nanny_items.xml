@@ -17,12 +17,12 @@
         android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="128dp"
-            android:layout_height="128dp">
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp">
             <ImageView
                 android:id="@+id/hireNannyRCVImage"
                 android:layout_width="match_parent"
-                android:layout_height="76dp"
+                android:layout_height="@dimen/_60sdp"
                 android:src="@drawable/ic_launcher_background"
                 android:scaleType="fitXY"
                 app:layout_constraintTop_toTopOf="parent"
@@ -30,13 +30,11 @@
                 />
             <TextView
                 android:id="@+id/hireNannyRCVName"
-                android:layout_width="124dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/hireNannyRCVImage"
                 tools:text="Alice"
-                android:textSize="12sp"
-                android:textColor="@color/purpleU1"
-                android:fontFamily="@font/poppins_medium"
+                android:textAppearance="@style/payment"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="10dp"/>
             <TextView
@@ -45,9 +43,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/hireNannyRCVName"
                 android:text="@string/lorem_ipsum_dolor_sit_amet_consectetur"
-                android:textSize="10sp"
-                android:textColor="@color/black"
-                android:fontFamily="@font/poppins_medium"
+                android:textAppearance="@style/nanny_items"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="10dp"/>
 
