@@ -32,6 +32,7 @@
     </string-array>
     <string name="by_monthly">By Monthly</string>
     <string name="lorem_ipsum1">Lorem ipsum dolor sit amet consectetur. Vitae ut ut sagittis malesuada. Sed enim pretium accumsan et magnis cras a non. Leo vel a nisl pellentesque ut accumsan convallis suspendisse nulla.</string>
+    <string name="lorem_ipsum_dolor_sit_amet_consectetur">Lorem ipsum dolor sit amet consectetur.</string>
     <string-array name="by_monthly">
         <item>$1000</item>
         <item>$1200</item>

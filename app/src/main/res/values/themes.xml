@@ -108,4 +108,9 @@
         <item name="android:textColor">@color/purpleU1</item>
         <item name="fontFamily">@font/poppins_medium</item>
     </style>
+    <style name="rate">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#989898</item>
+        <item name="fontFamily">@font/poppins_regular</item>
+    </style>
 </resources>
