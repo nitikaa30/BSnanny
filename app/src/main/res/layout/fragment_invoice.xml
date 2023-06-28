@@ -30,7 +30,7 @@
     </com.google.android.material.appbar.AppBarLayout>
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/client"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/_300sdp"
         android:layout_height="wrap_content"
         app:cardCornerRadius="8dp"
         android:layout_marginTop="15dp"
@@ -218,21 +218,27 @@
             android:layout_height="wrap_content"
             android:text="$1000"
             android:textAppearance="@style/payment"
-            android:layout_marginStart="@dimen/_270sdp"/>
+            android:layout_marginStart="@dimen/_260sdp"/>
     </com.google.android.material.card.MaterialCardView>
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/submit_small"
         android:layout_marginBottom="@dimen/_20sdp"
         android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        app:layout_constraintEnd_toStartOf="@id/reset"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/reset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/_20sdp"
         android:background="@drawable/reset"
+        android:layout_marginStart="@dimen/_5sdp"
+        app:layout_constraintStart_toEndOf="@id/submit"
         android:layout_marginBottom="@dimen/_20sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>

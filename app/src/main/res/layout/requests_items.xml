@@ -103,18 +103,24 @@
                 android:layout_marginTop="@dimen/_3sdp"
                 app:layout_constraintTop_toBottomOf="@id/parent"/>
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/accept"
                 android:layout_width="@dimen/_85sdp"
                 android:layout_height="@dimen/_32sdp"
+                app:layout_constraintEnd_toStartOf="@id/reject"
                 android:background="@drawable/accept"
+                android:layout_marginEnd="@dimen/_5sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginStart="@dimen/_10sdp"
                 app:layout_constraintStart_toEndOf="@id/requestsImage"/>
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/reject"
                 android:layout_width="@dimen/_85sdp"
                 android:layout_height="@dimen/_32sdp"
+                app:layout_constraintEnd_toEndOf="parent"
                 android:background="@drawable/reject"
                 android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginStart="@dimen/_100sdp"
                 app:layout_constraintStart_toEndOf="@id/requestsImage"/>

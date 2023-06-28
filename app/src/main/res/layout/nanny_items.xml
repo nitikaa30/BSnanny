@@ -79,19 +79,25 @@
                 android:layout_marginStart="@dimen/_12sdp" />
             
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/hire"
                 android:layout_width="@dimen/_80sdp"
                 android:layout_height="@dimen/_30sdp"
                 android:background="@drawable/hire"
                 android:layout_marginEnd="@dimen/_15sdp"
+                app:layout_constraintStart_toEndOf="@id/invite"
+                android:layout_marginStart="@dimen/_5sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/invite"
                 android:layout_width="@dimen/_80sdp"
                 android:layout_height="@dimen/_30sdp"
                 android:layout_marginStart="@dimen/_15sdp"
                 android:background="@drawable/invite"
                 android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                app:layout_constraintEnd_toStartOf="@id/hire"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/nannyImage"/>
             <RatingBar
