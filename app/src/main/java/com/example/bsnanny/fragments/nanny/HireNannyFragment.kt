@@ -49,7 +49,7 @@ class HireNannyFragment : Fragment() {
         val adapter = HireNannyAdapter(mList)
         binding.nannyCommentsRecyclerView.adapter = adapter
 
-        binding.nannyHireBtn.setOnClickListener {
+        binding.hireNannyBtn.setOnClickListener {
             findNavController().navigate(R.id.action_hireNannyFragment_to_profileFragment)
         }
 

@@ -6,7 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.profile.ProfileFragment">
 
-
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/ProfileAppBar"
         android:layout_width="match_parent"
@@ -14,8 +13,8 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
         app:elevation="-10dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/toolbar_bg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -26,6 +25,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@drawable/toolbar_bg"
             app:title="Profile"
+            app:titleTextAppearance="@style/heading"
             app:titleCentered="true"/>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -83,7 +83,7 @@
                 android:id="@+id/ProfileNameTil"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_45sdp"
                 android:layout_marginStart="18dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="18dp"
@@ -97,9 +97,7 @@
                 app:hintTextColor="#5F5F5F"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-
                 app:layout_constraintTop_toBottomOf="@id/ProfileMainName">
-
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/ProfileName"
                     android:layout_width="match_parent"
@@ -116,9 +114,9 @@
                 android:id="@+id/ProfileEmailTil"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_45sdp"
                 android:layout_marginStart="18dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="18dp"
                 android:hint="Email"
                 android:textColorHint="@color/black"
@@ -130,7 +128,6 @@
                 app:hintTextColor="#5F5F5F"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-
                 app:layout_constraintTop_toBottomOf="@id/ProfileNameTil">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -150,9 +147,9 @@
                 android:id="@+id/ProfilePhoneNumberTil"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_45sdp"
                 android:layout_marginStart="18dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="18dp"
                 android:hint="Number"
                 android:textColorHint="@color/black"
@@ -164,7 +161,6 @@
                 app:hintTextColor="#5F5F5F"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-
                 app:layout_constraintTop_toBottomOf="@id/ProfileEmailTil">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -196,9 +192,9 @@
                 android:id="@+id/ProfileAddressTil"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_45sdp"
                 android:layout_marginStart="18dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="18dp"
                 android:hint="Address"
                 android:textColorHint="@color/black"
@@ -231,11 +227,11 @@
                 android:id="@+id/editProfileBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginEnd="18dp"
                 android:backgroundTint="@color/black"
                 android:fitsSystemWindows="true"
-                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_14sdp"
                 android:fontFamily="@font/poppins_medium"
                 android:padding="15dp"
                 android:text="Edit profile"
@@ -287,7 +283,7 @@
                 android:id="@+id/profileChildTIL"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_45sdp"
                 android:layout_marginStart="18dp"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_marginEnd="18dp"
@@ -378,61 +374,70 @@
                 app:layout_constraintTop_toBottomOf="@id/profileGenderTEXT"
                 android:src="@drawable/boy"
                 app:layout_constraintStart_toStartOf="parent"
-                android:visibility="invisible"
+                android:visibility="visible"
                 android:layout_marginStart="@dimen/_16sdp"/>
 
-            <TextView
-                android:id="@+id/profile_gender_boy_TEXT"
-                android:layout_width="wrap_content"
+<!--            <TextView-->
+<!--                android:id="@+id/profile_gender_boy_TEXT"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/profileGenderTEXT"-->
+<!--                android:fontFamily="@font/poppins_regular"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="16sp"-->
+<!--                android:visibility="invisible"-->
+<!--                android:text="Boy"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                android:layout_marginStart="@dimen/_16sdp"/>-->
+            <RadioGroup
+                android:visibility="gone"
+                android:id="@+id/genderSelector"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/profileGenderTEXT"
-                android:fontFamily="@font/poppins_regular"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:visibility="gone"
-                android:text="Boy"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="@dimen/_16sdp"/>
+                android:orientation="horizontal">
             <RadioButton
                 android:id="@+id/profileGender_selector_boy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@id/profile_gender_boy_TEXT"
+
                 app:layout_constraintTop_toBottomOf="@id/profileGenderTEXT"
                 android:layout_marginStart="@dimen/_10sdp"
+                android:text="Boy"
                 android:buttonTint="@color/purpleU1"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_marginTop="-11dp"/>
-            <TextView
-                android:id="@+id/profile_gender_girl_TEXT"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/profileGenderTEXT"
-                app:layout_constraintStart_toEndOf="@id/profileGender_selector_boy"
-                android:layout_marginStart="@dimen/_14sdp"
-                android:fontFamily="@font/poppins_regular"
-                android:textColor="@color/black"
-                android:visibility="gone"
-                android:textSize="16sp"
-                android:text="Girl"
-                />
+<!--            <TextView-->
+<!--                android:id="@+id/profile_gender_girl_TEXT"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/profileGenderTEXT"-->
+<!--                app:layout_constraintStart_toEndOf="@id/profileGender_selector_boy"-->
+<!--                android:layout_marginStart="@dimen/_14sdp"-->
+<!--                android:fontFamily="@font/poppins_regular"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:visibility="invisible"-->
+<!--                android:textSize="16sp"-->
+<!--                android:text="Girl"-->
+<!--                />-->
             <RadioButton
                 android:id="@+id/profile_Gender_selector_girl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/profileGenderTEXT"
-                app:layout_constraintStart_toEndOf="@id/profile_gender_girl_TEXT"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:buttonTint="@color/purpleU1"
-                android:visibility="gone"
+                android:visibility="visible"
+                android:text="Girl"
                 android:layout_marginTop="-11dp"/>
+            </RadioGroup>
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/profileDescriptionTIL"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="18dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="18dp"
                 android:hint="Description"
                 android:textColorHint="@color/black"
