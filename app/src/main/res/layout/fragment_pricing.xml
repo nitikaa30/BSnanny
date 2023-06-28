@@ -46,7 +46,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:clickable="true"
-            android:theme="@style/name"
+            android:theme="@style/nanny_hire"
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:inputType="none"/>
@@ -68,7 +68,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:clickable="true"
-            android:theme="@style/name"
+            android:theme="@style/nanny_hire"
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:inputType="none"/>
@@ -91,7 +91,7 @@
             android:layout_weight="1"
             android:clickable="true"
             android:focusable="true"
-            android:theme="@style/name"
+            android:theme="@style/nanny_hire"
             android:focusableInTouchMode="true"
             android:inputType="none"/>
     </com.google.android.material.textfield.TextInputLayout>
