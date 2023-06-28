@@ -33,6 +33,7 @@
     <string name="by_monthly">By Monthly</string>
     <string name="lorem_ipsum1">Lorem ipsum dolor sit amet consectetur. Vitae ut ut sagittis malesuada. Sed enim pretium accumsan et magnis cras a non. Leo vel a nisl pellentesque ut accumsan convallis suspendisse nulla.</string>
     <string name="lorem_ipsum_dolor_sit_amet_consectetur">Lorem ipsum dolor sit amet consectetur.</string>
+    <string name="adam_smith_xxxx_5652">Adam Smith XXXX 5652</string>
     <string-array name="by_monthly">
         <item>$1000</item>
         <item>$1200</item>
@@ -65,4 +66,10 @@
         <item>08–09 years</item>
         <item>09–10 years</item>
     </string-array>
+    <string name="add_new_card">Add new card</string>
+    <string name="card_number">Card Number</string>
+    <string name="card_holder_name">Card Holder Name</string>
+    <string name="cvv">CVV</string>
+    <string name="expiry">Expiry</string>
+    <string name="add_card_btn">Add</string>
 </resources>
