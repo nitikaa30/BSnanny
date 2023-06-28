@@ -378,54 +378,63 @@
                 app:layout_constraintTop_toBottomOf="@id/profileGenderTEXT"
                 android:src="@drawable/boy"
                 app:layout_constraintStart_toStartOf="parent"
-                android:visibility="invisible"
+                android:visibility="visible"
                 android:layout_marginStart="@dimen/_16sdp"/>
 
-            <TextView
-                android:id="@+id/profile_gender_boy_TEXT"
-                android:layout_width="wrap_content"
+<!--            <TextView-->
+<!--                android:id="@+id/profile_gender_boy_TEXT"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/profileGenderTEXT"-->
+<!--                android:fontFamily="@font/poppins_regular"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="16sp"-->
+<!--                android:visibility="invisible"-->
+<!--                android:text="Boy"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                android:layout_marginStart="@dimen/_16sdp"/>-->
+            <RadioGroup
+                android:visibility="gone"
+                android:id="@+id/genderSelector"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/profileGenderTEXT"
-                android:fontFamily="@font/poppins_regular"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:visibility="gone"
-                android:text="Boy"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="@dimen/_16sdp"/>
+                android:orientation="horizontal">
             <RadioButton
                 android:id="@+id/profileGender_selector_boy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@id/profile_gender_boy_TEXT"
+
                 app:layout_constraintTop_toBottomOf="@id/profileGenderTEXT"
                 android:layout_marginStart="@dimen/_10sdp"
+                android:text="Boy"
                 android:buttonTint="@color/purpleU1"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_marginTop="-11dp"/>
-            <TextView
-                android:id="@+id/profile_gender_girl_TEXT"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/profileGenderTEXT"
-                app:layout_constraintStart_toEndOf="@id/profileGender_selector_boy"
-                android:layout_marginStart="@dimen/_14sdp"
-                android:fontFamily="@font/poppins_regular"
-                android:textColor="@color/black"
-                android:visibility="gone"
-                android:textSize="16sp"
-                android:text="Girl"
-                />
+<!--            <TextView-->
+<!--                android:id="@+id/profile_gender_girl_TEXT"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/profileGenderTEXT"-->
+<!--                app:layout_constraintStart_toEndOf="@id/profileGender_selector_boy"-->
+<!--                android:layout_marginStart="@dimen/_14sdp"-->
+<!--                android:fontFamily="@font/poppins_regular"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:visibility="invisible"-->
+<!--                android:textSize="16sp"-->
+<!--                android:text="Girl"-->
+<!--                />-->
             <RadioButton
                 android:id="@+id/profile_Gender_selector_girl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/profileGenderTEXT"
-                app:layout_constraintStart_toEndOf="@id/profile_gender_girl_TEXT"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:buttonTint="@color/purpleU1"
-                android:visibility="gone"
+                android:visibility="visible"
+                android:text="Girl"
                 android:layout_marginTop="-11dp"/>
+            </RadioGroup>
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/profileDescriptionTIL"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
