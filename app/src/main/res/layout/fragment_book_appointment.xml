@@ -53,28 +53,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New York"
+        app:layout_constraintEnd_toStartOf="@id/dot"
         app:layout_constraintTop_toBottomOf="@id/name"
         android:textAppearance="@style/intro_text"
         app:layout_constraintStart_toEndOf="@id/requestsImage"
-        android:layout_marginStart="@dimen/_12sdp" />
+        />
     <ImageView
         android:id="@+id/dot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/bullet"
+        app:layout_constraintEnd_toStartOf="@id/parent"
         app:layout_constraintTop_toBottomOf="@id/name"
         app:layout_constraintStart_toEndOf="@id/place"
         android:layout_marginTop="@dimen/_7sdp"
-        android:layout_marginStart="@dimen/_12sdp" />
+        />
     <TextView
         android:id="@+id/parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Child's Mother"
+        android:layout_marginEnd="@dimen/_65sdp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/name"
         android:textAppearance="@style/intro_text"
-        app:layout_constraintStart_toEndOf="@id/dot"
-        android:layout_marginStart="@dimen/_10sdp" />
+        app:layout_constraintStart_toEndOf="@id/dot" />
     <TextView
         android:id="@+id/age"
         android:layout_width="wrap_content"
