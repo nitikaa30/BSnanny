@@ -122,8 +122,8 @@
                 android:layout_marginBottom="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_5sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginStart="@dimen/_100sdp"
-                app:layout_constraintStart_toEndOf="@id/requestsImage"/>
+                android:layout_marginStart="@dimen/_10sdp"
+                app:layout_constraintStart_toEndOf="@id/accept"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -31,6 +31,9 @@ class ProfileFragment : Fragment() {
         return binding.root
     }
 
+
+
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -96,6 +99,7 @@ class ProfileFragment : Fragment() {
                 if (editable) View.VISIBLE else View.GONE
             binding.profileGenderSelectorBoy.visibility =
                 if (editable) View.VISIBLE else View.GONE
+            binding.AgeTil.visibility=if (editable) View.VISIBLE else View.GONE
         }
 
         binding.profileGenderSelectorBoy.setOnClickListener {
