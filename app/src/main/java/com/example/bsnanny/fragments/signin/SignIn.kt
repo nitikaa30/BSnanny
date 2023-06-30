@@ -12,9 +12,10 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.bsnanny.R
 import com.example.bsnanny.databinding.FragmentSignInBinding
+import com.example.bsnanny.progressDialog.ProgressDialog
 
 class SignIn : Fragment() {
-    private lateinit var binding : FragmentSignInBinding
+    private lateinit var binding: FragmentSignInBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -58,22 +59,27 @@ class SignIn : Fragment() {
         })
         binding.AuthSignInBtn.setOnClickListener {
             @SuppressLint("ResourceAsColor")
-            when{
-                binding.phoneNum.text.toString().isEmpty() ->{
+            when {
+                binding.phoneNum.text.toString().isEmpty() -> {
                     binding.hintError.text = "Enter the Phone Number"
                     binding.card1.strokeColor = Color.RED
                     binding.card1.strokeWidth = 4
                 }
-                binding.phoneNum.text.toString().length < 10 ->{
+
+                binding.phoneNum.text.toString().length < 10 -> {
                     binding.hintError.text = "Enter the Phone Number"
                     binding.card1.strokeColor = Color.RED
                     binding.card1.strokeWidth = 4
-                }else->{
-                binding.hintError.text = ""
-                binding.card1.strokeColor = R.color.purpleU1
-                findNavController().navigate(R.id.action_signIn_to_otp)
+                }
 
-            }
+                else -> {
+                    binding.hintError.text = ""
+                    binding.card1.strokeColor = R.color.purpleU1
+                    val countryCode = binding.countryCode.selectedCountryCode
+                    val phoneNum = "+" + countryCode + binding.phoneNum.text.toString()
+                    val action = SignInDirections.actionSignInToOtp(phoneNum)
+                    findNavController().navigate(action)
+                }
             }
             binding.phoneNum.addTextChangedListener(object : TextWatcher {
                 @SuppressLint("ResourceAsColor")
@@ -83,12 +89,11 @@ class SignIn : Fragment() {
                     count: Int,
                     after: Int
                 ) {
-                    if (binding.phoneNum.text.toString().isEmpty() ){
+                    if (binding.phoneNum.text.toString().isEmpty()) {
                         binding.hintError.text = "Enter the Phone Number"
                         binding.card1.strokeColor = Color.RED
                         binding.card1.strokeWidth = 4
-                    }
-                    else {
+                    } else {
                         binding.hintError.text = ""
                         binding.card1.strokeColor = R.color.purpleU1
 
@@ -104,12 +109,11 @@ class SignIn : Fragment() {
 
                 @SuppressLint("ResourceAsColor")
                 override fun afterTextChanged(s: Editable?) {
-                    if (binding.phoneNum.text.toString().isEmpty() ){
+                    if (binding.phoneNum.text.toString().isEmpty()) {
                         binding.hintError.text = "Enter the Phone Number"
                         binding.card1.strokeColor = Color.RED
                         binding.card1.strokeWidth = 4
-                    }
-                    else {
+                    } else {
                         binding.hintError.text = ""
                         binding.card1.strokeColor = R.color.purpleU1
                     }

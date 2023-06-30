@@ -20,6 +20,9 @@ dependencyResolutionManagement {
                 password = "sk.eyJ1IjoiendpZ2F0bzEiLCJhIjoiY2xqNXAweTQ5MGdibDNsdGV4ZGIxcTBuZyJ9.tQtDtSyAb4zzOq0sxSZcow"
             }
         }
+        maven{
+            url "https://jitpack.io"
+        }
     }
 }
 rootProject.name = "BSnanny"

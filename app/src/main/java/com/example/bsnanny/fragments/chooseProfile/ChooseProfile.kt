@@ -10,6 +10,7 @@ import androidx.core.app.ActivityCompat
 import androidx.navigation.fragment.findNavController
 import com.example.bsnanny.R
 import com.example.bsnanny.databinding.FragmentChooseProfileBinding
+import com.example.bsnanny.sharedPreferences.SavePrefs
 
 class ChooseProfile : Fragment() {
     private lateinit var binding : FragmentChooseProfileBinding
@@ -30,11 +31,16 @@ class ChooseProfile : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         binding.nannyBtn.setOnClickListener {
+            binding.babysitBtn.isEnabled = false
             findNavController().navigate(R.id.action_chooseProfile_to_dashboard)
+            SavePrefs.saveChooseProfileStatus(requireContext(), CHOOSE_PROFILE_STATUS_NAME, CHOOSE_PROFILE_STATUS_KEY, "Nanny")
         }
         binding.babysitBtn.setOnClickListener {
+            binding.nannyBtn.isEnabled = false
             findNavController().navigate(R.id.action_chooseProfile_to_dashboard)
+            SavePrefs.saveChooseProfileStatus(requireContext(), CHOOSE_PROFILE_STATUS_NAME, CHOOSE_PROFILE_STATUS_KEY, "Parent")
         }
         if (ActivityCompat.checkSelfPermission(
                 requireContext(),
@@ -51,11 +57,12 @@ class ChooseProfile : Fragment() {
                 requireActivity(),
                 arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), 100
             )
-//            binding.mapView.getMapboxMap().loadStyleUri(
-//                Style.MAPBOX_STREETS
-//            )
             return
         }
+    }
+    companion object{
+        const val CHOOSE_PROFILE_STATUS_NAME = "ChooseProfileStatusName"
+        const val CHOOSE_PROFILE_STATUS_KEY = "ChooseProfileStatusKey"
     }
 
 }

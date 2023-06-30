@@ -16,7 +16,7 @@ class BookAppointment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding= FragmentBookAppointmentBinding.inflate(layoutInflater)
+        binding= FragmentBookAppointmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 

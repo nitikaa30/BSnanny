@@ -32,6 +32,7 @@
         <action
             android:id="@+id/action_signIn_to_otp"
             app:destination="@id/otp" />
+
     </fragment>
     <fragment
         android:id="@+id/onboardingFragment"
@@ -68,6 +69,9 @@
             app:destination="@id/chooseProfile"
             app:popUpToInclusive="true"
             app:popUpTo="@id/signIn"/>
+        <argument
+            android:name="phoneNum"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/chooseProfile"

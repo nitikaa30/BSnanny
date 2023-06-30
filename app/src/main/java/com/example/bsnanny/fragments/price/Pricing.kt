@@ -21,8 +21,18 @@ class Pricing : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
+//
+//        val weekly=resources.getStringArray(R.array.weekly)
+//        val weekArrayAdapter= context?.let { ArrayAdapter(it,R.layout.dropdown_item_pricing,weekly) }
+//        binding.autoCompleteTextViewWeekly.setAdapter(weekArrayAdapter)
+//
+//        val byweekly=resources.getStringArray(R.array.by_weekly)
+//        val byweekArrayAdapter= context?.let { ArrayAdapter(it,R.layout.dropdown_item_pricing,byweekly) }
+//        binding.autoCompleteByWeekly.setAdapter(byweekArrayAdapter)
+//
+//        val bymonthly=resources.getStringArray(R.array.by_monthly)
+//        val bymonthlyArrayAdapter= context?.let { ArrayAdapter(it,R.layout.dropdown_item_pricing,bymonthly) }
+//        binding.autoCompleteByMonthly.setAdapter(bymonthlyArrayAdapter)
     }
 
 

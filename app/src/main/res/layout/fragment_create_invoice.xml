@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#FAFAFA"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.price.Pricing">
+    tools:context=".fragments.invoice.CreateInvoice">
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/invoiceAppBar"
         android:layout_width="match_parent"

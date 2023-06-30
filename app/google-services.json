@@ -1,0 +1,134 @@
+{
+  "project_info": {
+    "project_number": "112401750203",
+    "project_id": "phoneotp-65a3c",
+    "storage_bucket": "phoneotp-65a3c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:112401750203:android:d4d5e9c53e81ac98f7719e",
+        "android_client_info": {
+          "package_name": "com.babysitting"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "112401750203-m13sva15tocf15iae16d2m7s7ij1576v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.babysitting",
+            "certificate_hash": "051c780336452c405cab5426d86d79807b68db40"
+          }
+        },
+        {
+          "client_id": "112401750203-bcr4c3pupqdo1383tl6lqdtrcr525pge.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-0-gn_T6JyArSBGt9PSMBsSI5JY7TmNM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "112401750203-bcr4c3pupqdo1383tl6lqdtrcr525pge.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "112401750203-0hq3c176pddv88paej602j3fr630l23h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kalpit31.babySitting"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:112401750203:android:d868eddf3184c7a0f7719e",
+        "android_client_info": {
+          "package_name": "com.bs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "112401750203-bcr4c3pupqdo1383tl6lqdtrcr525pge.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-0-gn_T6JyArSBGt9PSMBsSI5JY7TmNM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "112401750203-bcr4c3pupqdo1383tl6lqdtrcr525pge.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "112401750203-0hq3c176pddv88paej602j3fr630l23h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kalpit31.babySitting"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:112401750203:android:6d35f096643559c1f7719e",
+        "android_client_info": {
+          "package_name": "com.example.bsnanny"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "112401750203-ppiu26hs8o5eokk47n6ega0p15l5ttvd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bsnanny",
+            "certificate_hash": "d7c27adb32b6d03d0bdb6fb440b9aee62ea291d4"
+          }
+        },
+        {
+          "client_id": "112401750203-bcr4c3pupqdo1383tl6lqdtrcr525pge.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-0-gn_T6JyArSBGt9PSMBsSI5JY7TmNM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "112401750203-bcr4c3pupqdo1383tl6lqdtrcr525pge.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "112401750203-0hq3c176pddv88paej602j3fr630l23h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kalpit31.babySitting"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

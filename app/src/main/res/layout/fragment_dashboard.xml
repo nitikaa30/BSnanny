@@ -73,13 +73,18 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
+        android:visibility="visible"
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:menu="@menu/nav_menu"
-        app:headerLayout="@layout/nav_header"
-        />
+        app:headerLayout="@layout/nav_header">
+        <include
+            android:id="@+id/menu"
+            layout="@layout/fragment_profile"/>
+
+    </com.google.android.material.navigation.NavigationView>
+
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
