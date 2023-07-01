@@ -10,7 +10,7 @@ object ProgressDialog {
     fun showProgressDialog(context: Context){
         progressDialog = Dialog(context)
         progressDialog.setContentView(R.layout.progress_dialog)
-        progressDialog?.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+        progressDialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         progressDialog.setCanceledOnTouchOutside(false)
         progressDialog.window?.setBackgroundDrawableResource(R.color.transparent)
         progressDialog.setCancelable(false)

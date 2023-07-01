@@ -81,7 +81,7 @@
         app:headerLayout="@layout/nav_header">
         <include
             android:id="@+id/menu"
-            layout="@layout/fragment_profile"/>
+            layout="@layout/menu_layout"/>
 
     </com.google.android.material.navigation.NavigationView>
 

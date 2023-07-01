@@ -74,7 +74,7 @@
     <string name="add_card_btn">Add</string>
     <integer-array name="progress_colors">
         <item>@color/quantum_yellow</item>
-        <item>@color/red</item>
-        <item>@color/dark_blue</item>
+        <item>@color/white</item>
+        <item>@color/green</item>
     </integer-array>
 </resources>

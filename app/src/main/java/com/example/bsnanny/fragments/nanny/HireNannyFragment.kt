@@ -3,6 +3,8 @@ package com.example.bsnanny.fragments.nanny
 import android.app.DatePickerDialog
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -47,7 +49,16 @@ class HireNannyFragment : Fragment() {
         mList.add(HireNannyModel(R.drawable.avatar, "Rick", getString(R.string.lorem_ipsum_dolor_sit_amet_consectetur)))
 
         val adapter = HireNannyAdapter(mList)
-        binding.nannyCommentsRecyclerView.adapter = adapter
+
+        binding.shimmerLayout.startShimmer()
+        Handler(Looper.getMainLooper()).postDelayed({
+            binding.shimmerLayout.stopShimmer()
+            binding.shimmerLayout.visibility = View.INVISIBLE
+            binding.nannyCommentsRecyclerView.visibility = View.VISIBLE
+            binding.nannyCommentsRecyclerView.adapter = adapter
+        }, 3000)
+
+
 
         binding.hireNannyBtn.setOnClickListener {
             findNavController().navigate(R.id.action_hireNannyFragment_to_profileFragment)

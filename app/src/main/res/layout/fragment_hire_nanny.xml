@@ -214,12 +214,34 @@
                 app:layout_constraintTop_toBottomOf="@id/hireNannyAddress"
                 app:strokeColor="@color/purpleU1"
                 app:strokeWidth="1dp" />
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:visibility="visible"
+                android:id="@+id/shimmerLayout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_100sdp"
+                app:layout_constraintTop_toBottomOf="@id/commentsTEXT"
+                android:layout_marginTop="@dimen/_15sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <include layout="@layout/shimmer_layout"/>
+                    <include layout="@layout/shimmer_layout"/>
+                    <include layout="@layout/shimmer_layout"/>
+                </LinearLayout>
+
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
         <androidx.recyclerview.widget.RecyclerView
+            android:visibility="invisible"
             android:id="@+id/nannyCommentsRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="5dp"
+            tools:listitem="@layout/hire_nanny_items"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="5dp"
@@ -229,7 +251,7 @@
             android:id="@+id/hireNannyTEXT"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/nannyCommentsRecyclerView"
+            app:layout_constraintTop_toBottomOf="@id/shimmerLayout"
             android:textSize="16sp"
             android:layout_marginTop="15dp"
             android:fontFamily="@font/poppins_medium"
