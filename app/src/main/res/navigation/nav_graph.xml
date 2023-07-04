@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splash"
-        android:name="com.example.bsnanny.fragments.splash.Splash"
+        android:name="com.example.bsnanny.views.fragments.splash.Splash"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
@@ -20,10 +20,13 @@
             app:destination="@id/signIn"
             app:popUpTo="@id/splash"
             app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_splash_to_dashboard"
+            app:destination="@id/dashboard" />
     </fragment>
     <fragment
         android:id="@+id/signIn"
-        android:name="com.example.bsnanny.fragments.signin.SignIn"
+        android:name="com.example.bsnanny.views.fragments.signin.SignIn"
         android:label="fragment_sign_in"
         tools:layout="@layout/fragment_sign_in" >
         <action
@@ -36,18 +39,19 @@
     </fragment>
     <fragment
         android:id="@+id/onboardingFragment"
-        android:name="com.example.bsnanny.fragments.onboarding.OnboardingFragment"
+        android:name="com.example.bsnanny.views.fragments.onboarding.OnboardingFragment"
         android:label="fragment_onboarding"
         tools:layout="@layout/fragment_onboarding" >
         <action
             android:id="@+id/action_onboardingFragment_to_signIn"
             app:destination="@id/signIn"
+            app:popUpTo="@id/onboardingFragment"
             app:popUpToInclusive="true"
-            app:popUpTo="@id/splash"/>
+            />
     </fragment>
     <fragment
         android:id="@+id/signUp"
-        android:name="com.example.bsnanny.fragments.signup.SignUp"
+        android:name="com.example.bsnanny.views.fragments.signup.SignUp"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" >
         <action
@@ -61,7 +65,7 @@
     </fragment>
     <fragment
         android:id="@+id/otp"
-        android:name="com.example.bsnanny.fragments.otp.Otp"
+        android:name="com.example.bsnanny.views.fragments.otp.Otp"
         android:label="fragment_otp"
         tools:layout="@layout/fragment_otp" >
         <action
@@ -75,10 +79,19 @@
         <action
             android:id="@+id/action_otp_to_chooseProfile2"
             app:destination="@id/chooseProfile" />
+        <argument
+            android:name="callingCode"
+            app:argType="string" />
+        <argument
+            android:name="type"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_otp_to_dashboard"
+            app:destination="@id/dashboard" />
     </fragment>
     <fragment
         android:id="@+id/chooseProfile"
-        android:name="com.example.bsnanny.fragments.chooseProfile.ChooseProfile"
+        android:name="com.example.bsnanny.views.fragments.chooseProfile.ChooseProfile"
         android:label="fragment_choose_profile"
         tools:layout="@layout/fragment_choose_profile" >
         <action
@@ -86,10 +99,16 @@
             app:destination="@id/dashboard"
             app:popUpTo="@id/chooseProfile"
             app:popUpToInclusive="true"/>
+        <argument
+            android:name="phoneNumber"
+            app:argType="string" />
+        <argument
+            android:name="callingCode"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/dashboard"
-        android:name="com.example.bsnanny.fragments.dashboard.Dashboard"
+        android:name="com.example.bsnanny.views.fragments.dashboard.Dashboard"
         android:label="fragment_dashboard"
         tools:layout="@layout/fragment_dashboard" >
         <action
@@ -100,7 +119,7 @@
     </fragment>
     <fragment
         android:id="@+id/jobCard"
-        android:name="com.example.bsnanny.fragments.jobCard.JobCard"
+        android:name="com.example.bsnanny.views.fragments.jobCard.JobCard"
         android:label="fragment_job_card"
         tools:layout="@layout/fragment_job_card" >
         <action
@@ -109,12 +128,12 @@
     </fragment>
     <fragment
         android:id="@+id/hireNannyFragment"
-        android:name="com.example.bsnanny.fragments.nanny.HireNannyFragment"
+        android:name="com.example.bsnanny.views.fragments.nanny.HireNannyFragment"
         android:label="fragment_hire_nanny"
         tools:layout="@layout/fragment_hire_nanny" />
     <fragment
         android:id="@+id/requests"
-        android:name="com.example.bsnanny.fragments.requests.Requests"
+        android:name="com.example.bsnanny.views.fragments.requests.Requests"
         android:label="fragment_find_families"
         tools:layout="@layout/fragment_find_families" />
 </navigation>

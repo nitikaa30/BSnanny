@@ -1,9 +1,11 @@
 package com.example.bsnanny.retrofit
 
-import com.example.bsnanny.NetworkResults
+import com.example.bsnanny.utils.NetworkResults
+import com.example.bsnanny.models.authentication.AuthenticationBody
+import com.example.bsnanny.models.authentication.AuthenticationResponse
 import com.example.bsnanny.models.checkUser.CheckUserBody
 import com.example.bsnanny.models.checkUser.CheckUserResponse
-import com.example.bsnanny.safeApiCall
+import com.example.bsnanny.utils.safeApiCall
 import javax.inject.Inject
 
 class ApiHelperImpl @Inject constructor(
@@ -12,5 +14,11 @@ class ApiHelperImpl @Inject constructor(
     override suspend fun checkUser(checkUserBody: CheckUserBody): NetworkResults<CheckUserResponse> {
 
         return safeApiCall { apiInterface.checkUser(checkUserBody) }
+    }
+
+    override suspend fun authenticate(authenticationBody: AuthenticationBody): NetworkResults<AuthenticationResponse> {
+        return safeApiCall {
+            apiInterface.authenticate(authenticationBody)
+        }
     }
 }
