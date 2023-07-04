@@ -9,13 +9,27 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.example.bsnanny.NetworkResults
 import com.example.bsnanny.R
 import com.example.bsnanny.databinding.FragmentSignInBinding
+import com.example.bsnanny.models.checkUser.CheckUserBody
 import com.example.bsnanny.progressDialog.ProgressDialog
+import com.example.bsnanny.snackBars.SnackBars
+import com.example.bsnanny.utils.Status
+import com.example.bsnanny.viewmodels.CheckUserViewModel
+import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.EntryPoint
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignIn : Fragment() {
     private lateinit var binding: FragmentSignInBinding
+    private val checkUserViewModel: CheckUserViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -33,6 +47,9 @@ class SignIn : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        subscribeObservers()
+
         binding.phoneNum.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 if (binding.phoneNum.text.toString().isEmpty()) {
@@ -77,8 +94,7 @@ class SignIn : Fragment() {
                     binding.card1.strokeColor = R.color.purpleU1
                     val countryCode = binding.countryCode.selectedCountryCode
                     val phoneNum = "+" + countryCode + binding.phoneNum.text.toString()
-                    val action = SignInDirections.actionSignInToOtp(phoneNum)
-                    findNavController().navigate(action)
+                    checkUser(CheckUserBody(phoneNum))
                 }
             }
             binding.phoneNum.addTextChangedListener(object : TextWatcher {
@@ -120,10 +136,46 @@ class SignIn : Fragment() {
                 }
             })
         }
+
         binding.signUpIntent.setOnClickListener {
             findNavController().navigate(R.id.action_signIn_to_signUp)
         }
 
     }
 
+    private fun subscribeObservers() {
+        checkUserViewModel.res.observe(viewLifecycleOwner) {
+            when (it) {
+                is NetworkResults.Error -> {
+                    ProgressDialog.cancelProgressDialog()
+                    SnackBars.showSnackBar(binding.root, it.errorMessage.toString(), "#AA4A44")
+                }
+
+                is NetworkResults.Loading -> {
+                    ProgressDialog.showProgressDialog(requireContext())
+                }
+
+                is NetworkResults.Success -> {
+                    ProgressDialog.cancelProgressDialog()
+                    if (it.data?.success == true) {
+                        val countryCode = binding.countryCode.selectedCountryCode
+                        val phoneNum = "+" + countryCode + binding.phoneNum.text.toString()
+                        val action = SignInDirections.actionSignInToOtp(phoneNum)
+                        findNavController().navigate(action)
+                    } else {
+                        SnackBars.showSnackBar(binding.root, it.data!!.msg, "#AA4A44")
+                    }
+                }
+            }
+        }
+
+    }
+
+    private fun checkValidations() {
+
+    }
+
+    private fun checkUser(checkUserBody: CheckUserBody) {
+        checkUserViewModel.checkUserData(checkUserBody)
+    }
 }
