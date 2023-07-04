@@ -58,12 +58,6 @@ class HireNannyFragment : Fragment() {
             binding.nannyCommentsRecyclerView.adapter = adapter
         }, 3000)
 
-
-
-        binding.hireNannyBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_hireNannyFragment_to_profileFragment)
-        }
-
         val duration = resources.getStringArray(R.array.Duration)
         val durationArrayAdapter = context?.let {
             ArrayAdapter(it, R.layout.dropdown_item_pricing, duration)
