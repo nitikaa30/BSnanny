@@ -6,6 +6,7 @@ import com.example.bsnanny.retrofit.ApiHelper
 import com.example.bsnanny.retrofit.ApiHelperImpl
 import com.example.bsnanny.retrofit.ApiInterface
 import com.example.bsnanny.utils.Constants
+import com.example.bsnanny.utils.interceptor.NetworkInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,10 +16,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 import dagger.hilt.components.SingletonComponent
-import okio.Timeout
-import java.util.concurrent.TimeUnit
 
-@Module
+    @Module
     @InstallIn(SingletonComponent::class)
     object AppModule{
 
@@ -27,21 +26,15 @@ import java.util.concurrent.TimeUnit
 
         @Singleton
         @Provides
-        fun provideOkHttpClient() = if (BuildConfig.DEBUG){
+        fun provideOkHttpClient(interceptor: NetworkInterceptor) = if (BuildConfig.DEBUG){
             val loggingInterceptor = HttpLoggingInterceptor()
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
             OkHttpClient.Builder()
-                .connectTimeout(30, TimeUnit.SECONDS)
-                .readTimeout(30, TimeUnit.SECONDS)
-                .writeTimeout(30, TimeUnit.SECONDS)
-                .addInterceptor(loggingInterceptor)
+                .addInterceptor(interceptor)
                 .build()
         }else{
             OkHttpClient
                 .Builder()
-                .connectTimeout(30, TimeUnit.SECONDS)
-                .readTimeout(30, TimeUnit.SECONDS)
-                .writeTimeout(30, TimeUnit.SECONDS)
                 .build()
         }
 
@@ -69,21 +62,5 @@ import java.util.concurrent.TimeUnit
             return AuthUser()
         }
 
-    @Singleton
-    @Provides
-    fun provideMeFunctionality(): ABC {
-        return ABC()
-    }
-
 
     }
-class ABC {
-
-    init {
-     abc()
-    }
-    fun abc() {
-        println("Dependency injection success")
-
-    }
-}

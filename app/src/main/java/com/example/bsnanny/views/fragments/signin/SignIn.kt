@@ -9,10 +9,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.example.bsnanny.R
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.bsnanny.utils.NetworkResults
-import com.example.bsnanny.R
 import com.example.bsnanny.databinding.FragmentSignInBinding
 import com.example.bsnanny.models.authentication.AuthenticationBody
 import com.example.bsnanny.models.checkUser.CheckUserBody
@@ -22,7 +23,6 @@ import com.example.bsnanny.viewmodels.CheckUserViewModel
 import com.example.bsnanny.viewmodels.authentication.AuthenticationViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class SignIn : Fragment() {
     private lateinit var binding: FragmentSignInBinding
     private val checkUserViewModel: CheckUserViewModel by viewModels()
@@ -44,9 +44,6 @@ class SignIn : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        subscribeObservers()
-
         binding.phoneNum.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 if (binding.phoneNum.text.toString().isEmpty()) {
@@ -91,7 +88,8 @@ class SignIn : Fragment() {
                     binding.card1.strokeColor = R.color.purpleU1
                     val countryCode = binding.countryCode.selectedCountryCode
                     val phoneNum = "+" + countryCode + binding.phoneNum.text.toString()
-                    checkUser(CheckUserBody(phoneNum))
+                    val action = SignInDirections.actionSignInToOtp(phoneNum,countryCode,"")
+                    findNavController().navigate(action)
                 }
             }
             binding.phoneNum.addTextChangedListener(object : TextWatcher {
@@ -133,7 +131,6 @@ class SignIn : Fragment() {
                 }
             })
         }
-
         binding.signUpIntent.setOnClickListener {
             findNavController().navigate(R.id.action_signIn_to_signUp)
         }
