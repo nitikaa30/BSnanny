@@ -1,4 +1,4 @@
-package com.example.bsnanny.fragments.signin
+package com.example.bsnanny.views.fragments.signin
 
 import android.annotation.SuppressLint
 import android.graphics.Color
@@ -9,27 +9,33 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.activity.viewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
+<<<<<<<<< Temporary merge branch 1:app/src/main/java/com/example/bsnanny/fragments/signin/SignIn.kt
 import androidx.navigation.fragment.findNavController
 import com.example.bsnanny.R
 import com.example.bsnanny.databinding.FragmentSignInBinding
-import com.example.bsnanny.models.checkUser.CheckUserBody
+import com.example.bsnanny.progressDialog.ProgressDialog
+=========
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.bsnanny.utils.NetworkResults
-import com.example.bsnanny.utils.Status
+import com.example.bsnanny.R
+import com.example.bsnanny.databinding.FragmentSignInBinding
+import com.example.bsnanny.models.authentication.AuthenticationBody
+import com.example.bsnanny.models.checkUser.CheckUserBody
 import com.example.bsnanny.utils.progressDialog.ProgressDialog
+import com.example.bsnanny.utils.showSnackBar
 import com.example.bsnanny.viewmodels.CheckUserViewModel
-import com.example.bsnanny.views.fragments.signin.SignInDirections
-import com.google.android.material.snackbar.Snackbar
-import dagger.hilt.EntryPoint
+import com.example.bsnanny.viewmodels.authentication.AuthenticationViewModel
 import dagger.hilt.android.AndroidEntryPoint
+>>>>>>>>> Temporary merge branch 2:app/src/main/java/com/example/bsnanny/views/fragments/signin/SignIn.kt
 
-@AndroidEntryPoint
 class SignIn : Fragment() {
     private lateinit var binding: FragmentSignInBinding
+<<<<<<<<< Temporary merge branch 1:app/src/main/java/com/example/bsnanny/fragments/signin/SignIn.kt
+=========
     private val checkUserViewModel: CheckUserViewModel by viewModels()
+    private val authenticationViewModel : AuthenticationViewModel by viewModels()
+>>>>>>>>> Temporary merge branch 2:app/src/main/java/com/example/bsnanny/views/fragments/signin/SignIn.kt
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -47,9 +53,6 @@ class SignIn : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        subscribeObservers()
-
         binding.phoneNum.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 if (binding.phoneNum.text.toString().isEmpty()) {
@@ -94,7 +97,8 @@ class SignIn : Fragment() {
                     binding.card1.strokeColor = R.color.purpleU1
                     val countryCode = binding.countryCode.selectedCountryCode
                     val phoneNum = "+" + countryCode + binding.phoneNum.text.toString()
-                    checkUser(CheckUserBody(phoneNum))
+                    val action = SignInDirections.actionSignInToOtp(phoneNum)
+                    findNavController().navigate(action)
                 }
             }
             binding.phoneNum.addTextChangedListener(object : TextWatcher {
@@ -136,19 +140,20 @@ class SignIn : Fragment() {
                 }
             })
         }
-
         binding.signUpIntent.setOnClickListener {
             findNavController().navigate(R.id.action_signIn_to_signUp)
         }
 
     }
 
+<<<<<<<<< Temporary merge branch 1:app/src/main/java/com/example/bsnanny/fragments/signin/SignIn.kt
+=========
     private fun subscribeObservers() {
         checkUserViewModel.res.observe(viewLifecycleOwner) {
             when (it) {
                 is NetworkResults.Error -> {
                     ProgressDialog.cancelProgressDialog()
-                    SnackBars.showSnackBar(binding.root, it.errorMessage.toString(), "#AA4A44")
+                    showSnackBar(binding.root, it.errorMessage.toString(), "#AA4A44")
                 }
 
                 is NetworkResults.Loading -> {
@@ -158,12 +163,14 @@ class SignIn : Fragment() {
                 is NetworkResults.Success -> {
                     ProgressDialog.cancelProgressDialog()
                     if (it.data?.success == true) {
+
+                        val type = "Login"
                         val countryCode = binding.countryCode.selectedCountryCode
                         val phoneNum = "+" + countryCode + binding.phoneNum.text.toString()
-                        val action = SignInDirections.actionSignInToOtp(phoneNum)
+                        val action = SignInDirections.actionSignInToOtp(phoneNum, countryCode, type)
                         findNavController().navigate(action)
                     } else {
-                        SnackBars.showSnackBar(binding.root, it.data!!.msg, "#AA4A44")
+                        showSnackBar(binding.root, it.data!!.msg, "#AA4A44")
                     }
                 }
             }
@@ -178,4 +185,8 @@ class SignIn : Fragment() {
     private fun checkUser(checkUserBody: CheckUserBody) {
         checkUserViewModel.checkUserData(checkUserBody)
     }
+    private fun authenticate(authenticationBody: AuthenticationBody){
+        authenticationViewModel.authenticate(authenticationBody)
+    }
+>>>>>>>>> Temporary merge branch 2:app/src/main/java/com/example/bsnanny/views/fragments/signin/SignIn.kt
 }
