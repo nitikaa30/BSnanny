@@ -9,16 +9,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-<<<<<<<<< Temporary merge branch 1:app/src/main/java/com/example/bsnanny/fragments/signin/SignIn.kt
 import androidx.navigation.fragment.findNavController
 import com.example.bsnanny.R
-import com.example.bsnanny.databinding.FragmentSignInBinding
-import com.example.bsnanny.progressDialog.ProgressDialog
-=========
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.bsnanny.utils.NetworkResults
-import com.example.bsnanny.R
 import com.example.bsnanny.databinding.FragmentSignInBinding
 import com.example.bsnanny.models.authentication.AuthenticationBody
 import com.example.bsnanny.models.checkUser.CheckUserBody
@@ -27,15 +22,11 @@ import com.example.bsnanny.utils.showSnackBar
 import com.example.bsnanny.viewmodels.CheckUserViewModel
 import com.example.bsnanny.viewmodels.authentication.AuthenticationViewModel
 import dagger.hilt.android.AndroidEntryPoint
->>>>>>>>> Temporary merge branch 2:app/src/main/java/com/example/bsnanny/views/fragments/signin/SignIn.kt
 
 class SignIn : Fragment() {
     private lateinit var binding: FragmentSignInBinding
-<<<<<<<<< Temporary merge branch 1:app/src/main/java/com/example/bsnanny/fragments/signin/SignIn.kt
-=========
     private val checkUserViewModel: CheckUserViewModel by viewModels()
     private val authenticationViewModel : AuthenticationViewModel by viewModels()
->>>>>>>>> Temporary merge branch 2:app/src/main/java/com/example/bsnanny/views/fragments/signin/SignIn.kt
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -97,7 +88,7 @@ class SignIn : Fragment() {
                     binding.card1.strokeColor = R.color.purpleU1
                     val countryCode = binding.countryCode.selectedCountryCode
                     val phoneNum = "+" + countryCode + binding.phoneNum.text.toString()
-                    val action = SignInDirections.actionSignInToOtp(phoneNum)
+                    val action = SignInDirections.actionSignInToOtp(phoneNum,countryCode,"")
                     findNavController().navigate(action)
                 }
             }
@@ -146,8 +137,6 @@ class SignIn : Fragment() {
 
     }
 
-<<<<<<<<< Temporary merge branch 1:app/src/main/java/com/example/bsnanny/fragments/signin/SignIn.kt
-=========
     private fun subscribeObservers() {
         checkUserViewModel.res.observe(viewLifecycleOwner) {
             when (it) {
@@ -188,5 +177,4 @@ class SignIn : Fragment() {
     private fun authenticate(authenticationBody: AuthenticationBody){
         authenticationViewModel.authenticate(authenticationBody)
     }
->>>>>>>>> Temporary merge branch 2:app/src/main/java/com/example/bsnanny/views/fragments/signin/SignIn.kt
 }
