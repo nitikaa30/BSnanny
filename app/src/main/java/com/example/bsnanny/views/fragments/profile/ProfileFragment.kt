@@ -13,10 +13,19 @@ import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.bsnanny.R
 import com.example.bsnanny.databinding.FragmentProfileBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 
 
+@AndroidEntryPoint
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
     private lateinit var viewModel: ProfileViewModel
@@ -34,8 +43,18 @@ class ProfileFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         viewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
+        viewLifecycleOwner.lifecycleScope.launch {
+            val mid = async {
+                viewModel.doSomethingSomething()
+            }
+           val res = async { viewModel.doSomethingSomethingSomething("123") }
+           val re1 = async { viewModel.doSomethingSomethingSomething("111") }
+           val re2 = async { viewModel.doSomethingSomethingSomething("222") }
+            println(res)
+            println(re1)
+            println(re2)
+        }
 
         val age = resources.getStringArray(R.array.Age)
         val ageArrayAdapter = context?.let {

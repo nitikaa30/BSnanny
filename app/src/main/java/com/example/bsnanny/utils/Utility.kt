@@ -8,9 +8,12 @@ import android.widget.TextView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import org.json.JSONObject
 import retrofit2.HttpException
 import retrofit2.Response
 import java.io.IOException
+import java.net.SocketTimeoutException
+import java.util.Calendar
 
 val Int.dp: Int
     get() = (this / Resources.getSystem().displayMetrics.density).toInt()
@@ -37,9 +40,20 @@ suspend fun <T> safeApiCall(apiToBeCalled: suspend () -> Response<T>): NetworkRe
             } else {
                 // parsing api's own custom json error
                 // response in ExampleErrorResponse pojo
-               // val errorResponse: ExampleErrorResponse? = convertErrorBody(response.errorBody())
+                // val errorResponse: ExampleErrorResponse? = convertErrorBody(response.errorBody())
                 // Simply returning api's own failure message
-                NetworkResults.Error(errorMessage = "Something went wrong")
+                var messageError = ""
+                val jbjError = JSONObject(response.errorBody()!!.string())
+                val jbjError1 = jbjError.getJSONObject("errors")
+                messageError = if (jbjError1.getString("type") == "type") {
+                    jbjError1.get("msg").toString()
+                } else {
+                    val jbjError2 = jbjError1.getJSONObject("raw")
+                    jbjError2.get("message").toString()
+                }
+
+
+                NetworkResults.Error(errorMessage = messageError)
             }
 
         } catch (e: HttpException) {
@@ -54,25 +68,14 @@ suspend fun <T> safeApiCall(apiToBeCalled: suspend () -> Response<T>): NetworkRe
             // Returning 'Something went wrong' in case
             // of unknown error wrapped in Resource.Error
             NetworkResults.Error(errorMessage = "Something went wrong: $e")
+        } catch (e: SocketTimeoutException) {
+            NetworkResults.Error(errorMessage = "Timeout")
         }
     }
 }
 
-// If you don't wanna handle api's own
-// custom error response then ignore this function
-//private fun convertErrorBody(errorBody: ResponseBody?): ExampleErrorResponse? {
-//    return try {
-//        errorBody?.source()?.let {
-//            val moshiAdapter = Moshi.Builder().build().adapter(ExampleErrorResponse::class.java)
-//            moshiAdapter.fromJson(it)
-//        }
-//    } catch (exception: Exception) {
-//        null
-//    }
-//}
-
-fun showSnackBar(view: View, string: String, color: String){
-    val snackBar = Snackbar.make(view,string, Snackbar.LENGTH_SHORT)
+fun showSnackBar(view: View, string: String, color: String) {
+    val snackBar = Snackbar.make(view, string, Snackbar.LENGTH_SHORT)
     val snackBarView = snackBar.view
     snackBar.setTextColor(Color.WHITE)
     val tv = snackBar.view.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
@@ -82,4 +85,23 @@ fun showSnackBar(view: View, string: String, color: String){
 
     snackBarView.setBackgroundColor(Color.parseColor(color))
     snackBar.show()
+}
+
+fun isCreditCardExpired(expiryYear: Int, expiryMonth: Int): String? {
+    val currentYear = Calendar.getInstance().get(Calendar.YEAR)
+    val currentMonth = Calendar.getInstance().get(Calendar.MONTH) + 1
+
+    if (expiryYear < currentYear || (expiryYear == currentYear && expiryMonth < currentMonth)) {
+        return "Credit card has expired"
+    }
+
+    if (expiryYear > currentYear + 50) {
+        return "Invalid expiry year. Maximum allowed year is ${currentYear + 50}"
+    }
+
+    if (expiryMonth > 12) {
+        return "Invalid expiry month"
+    }
+
+    return null
 }

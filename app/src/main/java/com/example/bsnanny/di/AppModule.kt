@@ -15,8 +15,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 import dagger.hilt.components.SingletonComponent
+import okio.Timeout
+import java.util.concurrent.TimeUnit
 
-    @Module
+@Module
     @InstallIn(SingletonComponent::class)
     object AppModule{
 
@@ -29,11 +31,17 @@ import dagger.hilt.components.SingletonComponent
             val loggingInterceptor = HttpLoggingInterceptor()
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
             OkHttpClient.Builder()
+                .connectTimeout(30, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
+                .writeTimeout(30, TimeUnit.SECONDS)
                 .addInterceptor(loggingInterceptor)
                 .build()
         }else{
             OkHttpClient
                 .Builder()
+                .connectTimeout(30, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
+                .writeTimeout(30, TimeUnit.SECONDS)
                 .build()
         }
 
@@ -61,5 +69,21 @@ import dagger.hilt.components.SingletonComponent
             return AuthUser()
         }
 
+    @Singleton
+    @Provides
+    fun provideMeFunctionality(): ABC {
+        return ABC()
+    }
+
 
     }
+class ABC {
+
+    init {
+     abc()
+    }
+    fun abc() {
+        println("Dependency injection success")
+
+    }
+}

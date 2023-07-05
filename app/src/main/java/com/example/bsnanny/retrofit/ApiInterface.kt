@@ -14,4 +14,7 @@ interface ApiInterface {
 
     @POST("user/authenticate")
     suspend fun authenticate(@Body authenticationBody: AuthenticationBody) : Response<AuthenticationResponse>
+
+    suspend fun update(@Body authenticationBody: AuthenticationBody) : Response<AuthenticationResponse>
+
 }

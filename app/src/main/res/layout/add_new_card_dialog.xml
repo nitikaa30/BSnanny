@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/toolbar_bg"
+    android:paddingTop="@dimen/_10sdp"
+    android:paddingBottom="@dimen/_10sdp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -42,13 +43,13 @@
         android:layout_marginTop="10dp"
         app:errorIconDrawable="@null"
 
+
         android:layout_height="wrap_content">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/dialog_add_card_number"
             android:layout_width="match_parent"
             android:textColor="@color/black"
-            android:digits="0123456789- "
-
+            android:digits="0123456789-"
             android:inputType="number"
             android:maxLength="19"
             android:cursorVisible="true"
@@ -76,6 +77,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="10dp"
+        app:endIconMode="clear_text"
         android:layout_height="wrap_content">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/dialog_add_card_holder_name"
@@ -134,6 +136,8 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:hintTextColor="@color/purpleU1"
             android:layout_marginStart="16dp"
+            app:placeholderText="Eg. 09/2023"
+
             android:hint="@string/expiry">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/dialog_expiry"
@@ -158,7 +162,7 @@
         android:layout_marginEnd="16dp"
         android:backgroundTint="@color/purpleU1"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
+
         app:cornerRadius="8dp"
         android:fontFamily="@font/poppins_medium"
         android:text="@string/add_card_btn"
