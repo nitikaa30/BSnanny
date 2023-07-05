@@ -1,10 +1,12 @@
 package com.example.bsnanny.di
 
 import com.example.bsnanny.BuildConfig
+import com.example.bsnanny.authToken.AuthUser
 import com.example.bsnanny.retrofit.ApiHelper
 import com.example.bsnanny.retrofit.ApiHelperImpl
 import com.example.bsnanny.retrofit.ApiInterface
-import com.example.bsnanny.retrofit.Constants
+import com.example.bsnanny.utils.Constants
+import com.example.bsnanny.utils.interceptor.NetworkInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,11 +26,11 @@ import dagger.hilt.components.SingletonComponent
 
         @Singleton
         @Provides
-        fun provideOkHttpClient() = if (BuildConfig.DEBUG){
+        fun provideOkHttpClient(interceptor: NetworkInterceptor) = if (BuildConfig.DEBUG){
             val loggingInterceptor = HttpLoggingInterceptor()
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
             OkHttpClient.Builder()
-                .addInterceptor(loggingInterceptor)
+                .addInterceptor(interceptor)
                 .build()
         }else{
             OkHttpClient
@@ -53,5 +55,12 @@ import dagger.hilt.components.SingletonComponent
         fun provideApiHelper(apiHelper: ApiInterface): ApiHelper {
             return ApiHelperImpl(apiHelper)
         }
+
+        @Provides
+        @Singleton
+        fun providesAuthToken(): AuthUser {
+            return AuthUser()
+        }
+
 
     }

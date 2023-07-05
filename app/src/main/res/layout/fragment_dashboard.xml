@@ -77,11 +77,15 @@
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/nav_header">
+        android:layout_gravity="start">
         <include
-            android:id="@+id/menu"
+            android:visibility="gone"
+            android:id="@+id/menuParents"
             layout="@layout/menu_layout"/>
+        <include
+            android:visibility="gone"
+            android:id="@+id/menuNanny"
+            layout="@layout/menu_layout_nanny"/>
 
     </com.google.android.material.navigation.NavigationView>
 
