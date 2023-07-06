@@ -57,7 +57,9 @@ class HireNannyFragment : Fragment() {
             binding.nannyCommentsRecyclerView.visibility = View.VISIBLE
             binding.nannyCommentsRecyclerView.adapter = adapter
         }, 3000)
-
+    binding.hireNannyBtn.setOnClickListener {
+        findNavController().navigate(R.id.action_hireNannyFragment_to_paymentFragment)
+    }
         val duration = resources.getStringArray(R.array.Duration)
         val durationArrayAdapter = context?.let {
             ArrayAdapter(it, R.layout.dropdown_item_pricing, duration)

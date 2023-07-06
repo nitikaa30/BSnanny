@@ -9,10 +9,10 @@ import retrofit2.http.Header
 import javax.inject.Inject
 
 class FeedbackRepo @Inject constructor(private val apiHelper: ApiHelper) {
-    suspend fun saveFeedback(@Header("Authorization") token:String, feedback: Feedback): NetworkResults<FeedbackResponse>{
-        return apiHelper.saveFeedback(token, feedback)
+    suspend fun saveFeedback(feedback: Feedback): NetworkResults<FeedbackResponse>{
+        return apiHelper.saveFeedback(feedback)
     }
-    suspend fun getFeedbackList(@Header("Authorization") token:String): NetworkResults<FeedbackListResponse> {
-        return apiHelper.getFeedbackList(token)
+    suspend fun getFeedbackList(): NetworkResults<FeedbackListResponse> {
+        return apiHelper.getFeedbackList()
     }
 }

@@ -72,6 +72,7 @@
     <string name="cvv">CVV</string>
     <string name="expiry">Expiry</string>
     <string name="add_card_btn">Add</string>
+    <string name="loading">Adding Card</string>
     <integer-array name="progress_colors">
         <item>@color/quantum_yellow</item>
         <item>@color/white</item>

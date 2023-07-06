@@ -8,7 +8,6 @@ import okhttp3.Response
 import java.io.IOException
 
 class NetworkInterceptor(private val authToken: String) : Interceptor {
-    private lateinit var context: Context
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
         val originalRequest: Request = chain.request()
@@ -17,8 +16,8 @@ class NetworkInterceptor(private val authToken: String) : Interceptor {
             .build()
 
         val response = chain.proceed(authorizedRequest)
-        if (response.code == 404) {
-            Toast.makeText(context,"Session Expired",Toast.LENGTH_LONG).show()
+        if (response.code == 401) {
+            //Toast.makeText(MyA,"Session Expired",Toast.LENGTH_LONG).show()
         }else{
             return response
         }
