@@ -11,4 +11,9 @@ class AuthUser {
     ) {
         SharedPreferences.saveUser(sharedPrefKey, authenticationData!!)
     }
+
+    fun getUser(
+    ): AuthenticationData? {
+        return SharedPreferences.getUser(SharedPreferences.SAVE_JWT_USER_KEY)
+    }
 }

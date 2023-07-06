@@ -1,10 +1,12 @@
 package com.example.bsnanny.models.feedbackModel
 
 data class Feedback(
-    val booking_id: Int,
-    val comment: String,
     val id: Int,
-    val nany_id: Int,
-    val parent_id: Int,
-    val stars: String
+    val parentId: Int,
+    val nannyId: Int,
+    val bookingId: Int,
+    val stars: String,
+    val comment: String,
+    val updatedAt: String,
+    val createdAt: String
 )

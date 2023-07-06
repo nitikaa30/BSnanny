@@ -72,9 +72,20 @@
     <string name="cvv">CVV</string>
     <string name="expiry">Expiry</string>
     <string name="add_card_btn">Add</string>
+    <string name="loading">Adding Card</string>
     <integer-array name="progress_colors">
         <item>@color/quantum_yellow</item>
         <item>@color/white</item>
         <item>@color/green</item>
     </integer-array>
+    <plurals name="hours_ago">
+        <item quantity="one">%d hour ago</item>
+        <item quantity="other">%d hours ago</item>
+    </plurals>
+
+    <plurals name="minutes_ago">
+        <item quantity="one">%d minute ago</item>
+        <item quantity="other">%d minutes ago</item>
+    </plurals>
+
 </resources>

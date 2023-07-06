@@ -232,7 +232,6 @@ class Otp : Fragment() {
                         SAVE_JWT_USER_KEY, it.data?.authenticationData
                     )
                     if (type == "Login") {
-
                         findNavController().navigate(R.id.action_otp_to_dashboard)
                     } else {
                         val action = OtpDirections.actionOtpToChooseProfile(phoneNum, countryCode)
