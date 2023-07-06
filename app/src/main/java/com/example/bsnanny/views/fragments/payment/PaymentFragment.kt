@@ -158,14 +158,17 @@ class PaymentFragment : Fragment() {
         cardHolderName?.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 if (cardHolderName.text.toString().isEmpty()) {
+
                     cardNameTil?.error = "Enter the Name"
                 } else {
                     cardNameTil?.error = null
+                    cardNameTil?.isErrorEnabled = false
                 }
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 cardNameTil?.error = null
+                cardNameTil?.isErrorEnabled = false
             }
 
             override fun afterTextChanged(s: Editable?) {
@@ -173,6 +176,7 @@ class PaymentFragment : Fragment() {
                     cardNameTil?.error = "Enter the Name"
                 } else {
                     cardNameTil?.error = null
+                    cardNameTil?.isErrorEnabled = false
                 }
             }
 
@@ -184,11 +188,13 @@ class PaymentFragment : Fragment() {
                     cvvTil?.error = "Enter the CVV"
                 } else {
                     cvvTil?.error = null
+                    cvvTil?.isErrorEnabled = false
                 }
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 cvvTil?.error = null
+                cvvTil?.isErrorEnabled = false
             }
 
             override fun afterTextChanged(s: Editable?) {
@@ -196,6 +202,7 @@ class PaymentFragment : Fragment() {
                     cvvTil?.error = "Enter the CVV"
                 } else {
                     cvvTil?.error = null
+                    cvvTil?.isErrorEnabled = false
                 }
             }
 
@@ -207,6 +214,7 @@ class PaymentFragment : Fragment() {
                     expiryTil?.error = "Enter the Expiry of the Card"
                 } else {
                     expiryTil?.error = null
+                    expiryTil?.isErrorEnabled = false
                 }
             }
 
@@ -244,8 +252,16 @@ class PaymentFragment : Fragment() {
             val name = cardHolderName?.text.toString()
 
             when {
-                cardNumber?.text.toString().isEmpty() -> {
-                    cardNumberTil?.error = "Enter the Card Number"
+                cardNumber?.text.toString().isEmpty() || cardNumber?.text.toString().replace("-", "").length != 16 ->  {
+
+
+                    if (cardNumber?.text.toString().isEmpty()){
+                        cardNumberTil?.error = "Enter the Card Number"
+                    }else{
+                        cardNumberTil?.error = "Card Number Must be 16 digits"
+                    }
+
+
                 }
 
                 cardHolderName?.text.toString().isEmpty() -> {

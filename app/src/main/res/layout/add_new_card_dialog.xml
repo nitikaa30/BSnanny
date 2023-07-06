@@ -5,6 +5,9 @@
     android:paddingTop="@dimen/_10sdp"
     android:paddingBottom="@dimen/_10sdp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -30,6 +33,7 @@
         app:layout_constraintStart_toStartOf="parent"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:hint="@string/card_number"
         app:boxStrokeColor="@color/purpleU1"
         app:hintTextColor="@color/purpleU1"
@@ -43,8 +47,16 @@
         android:layout_marginTop="10dp"
         app:errorIconDrawable="@null"
 
+        app:helperText="*Required"
+        app:helperTextEnabled="true"
+        app:helperTextTextAppearance="@style/require_text"
+        app:counterTextAppearance="@style/require_text"
+        app:counterEnabled="true"
+        app:counterMaxLength="19"
+        app:placeholderText="XXXX-XXXX-XXXX-XXXX"
+        app:placeholderTextAppearance="@style/place_holder"
+        >
 
-        android:layout_height="wrap_content">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/dialog_add_card_number"
             android:layout_width="match_parent"
@@ -78,6 +90,10 @@
         android:layout_marginEnd="16dp"
         android:layout_marginTop="10dp"
         app:endIconMode="clear_text"
+        app:helperText="*Required"
+        app:helperTextTextAppearance="@style/require_text"
+        app:placeholderText="John Doe"
+        app:placeholderTextAppearance="@style/place_holder"
         android:layout_height="wrap_content">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/dialog_add_card_holder_name"
@@ -111,6 +127,10 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:hintTextColor="@color/purpleU1"
             android:layout_marginEnd="16dp"
+            app:helperTextTextAppearance="@style/require_text"
+            app:helperText="*Required"
+            app:placeholderText="***"
+            app:placeholderTextAppearance="@style/place_holder"
             android:hint="@string/cvv">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/card_cvv"
@@ -137,7 +157,9 @@
             app:hintTextColor="@color/purpleU1"
             android:layout_marginStart="16dp"
             app:placeholderText="Eg. 09/2023"
-
+            app:placeholderTextAppearance="@style/place_holder"
+            app:helperText="*Required"
+            app:helperTextTextAppearance="@style/require_text"
             android:hint="@string/expiry">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/dialog_expiry"
@@ -174,7 +196,7 @@
         android:layout_height="1dp"
         app:layout_constraintTop_toBottomOf="@id/addBtn"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
+    </ScrollView>
 
 
 </RelativeLayout>
