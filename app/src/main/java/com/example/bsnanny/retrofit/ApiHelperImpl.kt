@@ -17,7 +17,7 @@ class ApiHelperImpl @Inject constructor(
 ) : ApiHelper {
     override suspend fun checkUser(checkUserBody: CheckUserBody): NetworkResults<CheckUserResponse> {
 
-        return safeApiCall {apiInterface.checkUser(checkUserBody)}
+        return safeApiCall { apiInterface.checkUser(checkUserBody) }
     }
 
     override suspend fun authenticate(authenticationBody: AuthenticationBody): NetworkResults<AuthenticationResponse> {
@@ -29,7 +29,7 @@ class ApiHelperImpl @Inject constructor(
     override suspend fun saveFeedback(
         feedback: Feedback
     ): NetworkResults<FeedbackResponse> {
-        return safeApiCall {apiInterface.saveFeedback(feedback)}
+        return safeApiCall { apiInterface.saveFeedback(feedback) }
     }
 
     override suspend fun getFeedbackList(): NetworkResults<FeedbackListResponse> {
