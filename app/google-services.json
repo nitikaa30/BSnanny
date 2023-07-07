@@ -14,14 +14,6 @@
       },
       "oauth_client": [
         {
-          "client_id": "112401750203-m13sva15tocf15iae16d2m7s7ij1576v.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.babysitting",
-            "certificate_hash": "051c780336452c405cab5426d86d79807b68db40"
-          }
-        },
-        {
           "client_id": "112401750203-bcr4c3pupqdo1383tl6lqdtrcr525pge.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -93,6 +85,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "112401750203-jn3m4g2mchod62il01kdvfkee1242nse.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bsnanny",
+            "certificate_hash": "875e604d86155be983d9ce1e859122610e27207f"
+          }
+        },
         {
           "client_id": "112401750203-ppiu26hs8o5eokk47n6ega0p15l5ttvd.apps.googleusercontent.com",
           "client_type": 1,
