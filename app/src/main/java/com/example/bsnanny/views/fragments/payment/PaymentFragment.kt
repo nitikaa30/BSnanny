@@ -2,33 +2,32 @@ package com.example.bsnanny.views.fragments.payment
 
 import android.graphics.Color
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
-import androidx.core.widget.doAfterTextChanged
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bsnanny.R
 import com.example.bsnanny.adapter.payment.PaymentAdapter
+import com.example.bsnanny.databinding.AddNewCardDialogBinding
 import com.example.bsnanny.databinding.FragmentPaymentBinding
 import com.example.bsnanny.models.payment.PaymentModel
+import com.example.bsnanny.utils.CardFields
+import com.example.bsnanny.utils.CommonTextWatcher
 import com.example.bsnanny.utils.CreditCardTextFormatter
 import com.example.bsnanny.utils.isCreditCardExpired
+import com.example.bsnanny.utils.setEditTextCompoundDrawable
+import com.example.bsnanny.utils.validateCard
 import com.github.razir.progressbutton.attachTextChangeAnimator
 import com.github.razir.progressbutton.showProgress
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.regex.Pattern
-
 
 class PaymentFragment : Fragment() {
     private lateinit var binding: FragmentPaymentBinding
@@ -61,225 +60,189 @@ class PaymentFragment : Fragment() {
         }
         adapter.submitData(mList)
         binding.paymentRecyclerView.adapter = adapter
+        binding.makePaymentBtn.setOnClickListener {
+
+        }
 
 
     }
 
     private fun addNewCardDialog(adapter: PaymentAdapter, mList: ArrayList<PaymentModel>) {
+        val bind: AddNewCardDialogBinding = AddNewCardDialogBinding.inflate(layoutInflater)
         val dialog: AlertDialog? = MaterialAlertDialogBuilder(
             requireContext(),
             R.style.MyRounded_MaterialComponents_MaterialAlertDialog
         )
-            .setView(R.layout.add_new_card_dialog)
+            .setView(bind.root)
             .show()
         dialog?.setCanceledOnTouchOutside(false)
         dialog!!.window?.setLayout(
             ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.WRAP_CONTENT
         )
-        val cardNumber = dialog.findViewById<EditText>(R.id.dialog_add_card_number)
-        val cardHolderName = dialog.findViewById<EditText>(R.id.dialog_add_card_holder_name)
-        val cardNumberTil = dialog.findViewById<TextInputLayout>(R.id.til1)
-        val expiry = dialog.findViewById<EditText>(R.id.dialog_expiry)
-        val cardNameTil = dialog.findViewById<TextInputLayout>(R.id.til2)
-        val cvvTil = dialog.findViewById<TextInputLayout>(R.id.cvvTil)
-        val expiryTil = dialog.findViewById<TextInputLayout>(R.id.expiryTil)
-        val cardCvv = dialog.findViewById<EditText>(R.id.card_cvv)
-        val addCardBtn = dialog.findViewById<Button>(R.id.addBtn)
-        cardNumber?.addTextChangedListener(CreditCardTextFormatter())
 
-        expiry!!.doOnTextChanged { text, start, before, _ ->
+
+
+        bind.dialogAddCardNumber.addTextChangedListener(CreditCardTextFormatter())
+
+        bind.dialogExpiry.doOnTextChanged { text, start, before, _ ->
             var current = text.toString()
             if (current.length == 2 && start == 1) {
-                expiry.setText("$current/")
-                expiry.setSelection(current.length + 1)
+                bind.dialogExpiry.setText("$current/")
+                bind.dialogExpiry.setSelection(current.length + 1)
             } else if (current.length == 2 && before == 1) {
                 current = current.substring(0, 1)
-                expiry.setText(current)
-                expiry.setSelection(current.length)
+                bind.dialogExpiry.setText(current)
+                bind.dialogExpiry.setSelection(current.length)
             }
-            expiryTil?.error = null
-            expiryTil?.isErrorEnabled = false
+            bind.expiryTil.error = null
+            bind.expiryTil.isErrorEnabled = false
         }
-//        expiry.doAfterTextChanged {
-//
-//
-//        }
-        cardNumber?.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(
-                s: CharSequence?,
-                start: Int,
-                count: Int,
-                after: Int
-            ) {
-
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
+        val cardNumberTextWatcher = CommonTextWatcher(
+            beforeTextChanged = null,
+            onTextChanged = { s, _, _, _ ->
                 val match1 = Pattern.compile("^4[0-9]{6,}\$")
                 val match2 = Pattern.compile("^5[1-5][0-9]{5,}\$")
                 when {
-                    match1.matcher(cardNumber.text.toString().replace("-", "")).matches() -> {
-                        cardNumber.setCompoundDrawablesRelativeWithIntrinsicBounds(
-                            0,
-                            0,
-                            R.drawable.ic_visa_card,
-                            0
-                        )
+                    match1.matcher(s.toString().replace("-", "")).matches() -> {
+                        bind.dialogAddCardNumber.setEditTextCompoundDrawable(end = R.drawable.ic_visa_card)
                     }
 
-                    match2.matcher(cardNumber.text.toString().replace("-", "")).matches() -> {
-                        cardNumber.setCompoundDrawablesRelativeWithIntrinsicBounds(
-                            0,
-                            0,
-                            R.drawable.ic_master_card,
-                            0
-                        )
+                    match2.matcher(s.toString().replace("-", "")).matches() -> {
+                        bind.dialogAddCardNumber.setEditTextCompoundDrawable(end = R.drawable.ic_master_card)
                     }
                 }
 
-                if (cardNumber.text.toString().isEmpty()) {
-                    cardNumberTil?.error = "Enter the Card Number"
-                } else {
-                    cardNumberTil?.error = null
-                    cardNumberTil?.isErrorEnabled = false
-                }
-
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                if (cardNumber.text.toString().isEmpty()) {
-                    cardNumber.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, 0, 0)
+                validateCard(
+                    s.toString(),
+                    "Enter the card Number",
+                    bind.cardNumberTil,
+                    CardFields.CARD_NO
+                )
+            },
+            afterTextChanged = { editable ->
+                if (editable.toString().isEmpty()) {
+                    bind.dialogAddCardNumber.setEditTextCompoundDrawable(end = 0)
                 }
             }
-        })
-        cardHolderName?.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                if (cardHolderName.text.toString().isEmpty()) {
+        )
+        bind.dialogAddCardNumber.addTextChangedListener(cardNumberTextWatcher)
 
-                    cardNameTil?.error = "Enter the Name"
-                } else {
-                    cardNameTil?.error = null
-                    cardNameTil?.isErrorEnabled = false
-                }
+        val cardNameTextWatcher = CommonTextWatcher(
+            beforeTextChanged = { s, _, _, _ ->
+                validateCard(
+                    s.toString(),
+                    "Enter the name",
+                    bind.cardNameTil,
+                    CardFields.CARDHOLDER_NAME
+                )
+            },
+            onTextChanged = { s, _, _, _ ->
+                bind.cardNameTil.error = null
+                bind.cardNameTil.isErrorEnabled = false
+            },
+            afterTextChanged = { editable ->
+                validateCard(
+                    editable.toString(),
+                    "Enter the name",
+                    bind.cardNameTil,
+                    CardFields.CARDHOLDER_NAME
+                )
             }
+        )
+        bind.dialogAddCardHolderName.addTextChangedListener(cardNameTextWatcher)
 
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                cardNameTil?.error = null
-                cardNameTil?.isErrorEnabled = false
+
+        val cvvTextWatcher = CommonTextWatcher(
+            beforeTextChanged = { s, _, _, _ ->
+                validateCard(s.toString(), "Enter the CVV", bind.cvvTil, CardFields.CVV)
+            },
+            onTextChanged = { s, _, _, _ ->
+                bind.cvvTil.error = null
+                bind.cvvTil.isErrorEnabled = false
+            },
+            afterTextChanged = { editable ->
+                validateCard(editable.toString(), "Enter the CVV", bind.cvvTil, CardFields.CVV)
             }
+        )
+        bind.cardCvv.addTextChangedListener(cvvTextWatcher)
 
-            override fun afterTextChanged(s: Editable?) {
-                if (cardHolderName.text.toString().isEmpty()) {
-                    cardNameTil?.error = "Enter the Name"
-                } else {
-                    cardNameTil?.error = null
-                    cardNameTil?.isErrorEnabled = false
-                }
-            }
-
-        })
-
-        cardCvv?.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                if (cardCvv.text.toString().isEmpty()) {
-                    cvvTil?.error = "Enter the CVV"
-                } else {
-                    cvvTil?.error = null
-                    cvvTil?.isErrorEnabled = false
-                }
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                cvvTil?.error = null
-                cvvTil?.isErrorEnabled = false
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                if (cardCvv.text.toString().isEmpty()) {
-                    cvvTil?.error = "Enter the CVV"
-                } else {
-                    cvvTil?.error = null
-                    cvvTil?.isErrorEnabled = false
-                }
-            }
-
-        })
-
-        expiry.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                if (expiry.text.toString().isEmpty()) {
-                    expiryTil?.error = "Enter the Expiry of the Card"
-                } else {
-                    expiryTil?.error = null
-                    expiryTil?.isErrorEnabled = false
-                }
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                if (expiry.text.toString().isEmpty()) {
-                    expiryTil?.error = "Enter the Expiry of the Card"
+        val expiryTextWatcher = CommonTextWatcher(
+            beforeTextChanged = { s, _, _, _ ->
+                validateCard(
+                    s.toString(),
+                    "Enter the expiry of the card",
+                    bind.expiryTil,
+                    CardFields.EXPIRY
+                )
+            },
+            onTextChanged = null,
+            afterTextChanged = { editable ->
+                if (editable.toString().isEmpty()) {
+                    bind.expiryTil.error = "Enter the Expiry of the Card"
 
                 } else {
-                    if (expiry.length() >= 7) {
-                        val expiry1 = expiry.text.toString()
+                    if (bind.dialogExpiry.length() >= 7) {
+                        val expiry1 = bind.dialogExpiry.text.toString()
                         val ex = expiry1.split("/")
                         val year = ex[1].toDouble().toInt()
                         val month = ex[0].toDouble().toInt()
 
                         val errorMessage = isCreditCardExpired(year, month)
                         if (errorMessage != null) {
-                            expiryTil?.error = errorMessage
+                            bind.expiryTil.error = errorMessage
                         }
 
                     }
                 }
             }
+        )
+        bind.dialogExpiry.addTextChangedListener(expiryTextWatcher)
 
-        })
-        addCardBtn?.setOnClickListener {
+
+        bind.addBtn.setOnClickListener {
 
 
-            val num = cardNumber?.text.toString()
+            val num = bind.dialogAddCardNumber.text.toString()
 
 
             val k: String = num.replace("-", " ")
-            val name = cardHolderName?.text.toString()
+            val name = bind.dialogAddCardHolderName.text.toString()
 
             when {
-                cardNumber?.text.toString().isEmpty() || cardNumber?.text.toString().replace("-", "").length != 16 ->  {
+                bind.dialogAddCardNumber.text.toString()
+                    .isEmpty() || bind.dialogAddCardNumber.text.toString()
+                    .replace("-", "").length != 16 -> {
 
 
-                    if (cardNumber?.text.toString().isEmpty()){
-                        cardNumberTil?.error = "Enter the Card Number"
-                    }else{
-                        cardNumberTil?.error = "Card Number Must be 16 digits"
+                    if (bind.dialogAddCardNumber.text.toString().isEmpty()) {
+                        bind.cardNumberTil.error = "Enter the Card Number"
+                    } else {
+                        bind.cardNumberTil.error = "Card Number Must be 16 digits"
                     }
 
 
                 }
 
-                cardHolderName?.text.toString().isEmpty() -> {
-                    cardNameTil?.error = "Enter the Card Holder Name"
+                bind.dialogAddCardHolderName.text.toString().isEmpty() -> {
+                    bind.cardNameTil.error = "Enter the Card Holder Name"
                 }
 
-                cardCvv?.text.toString().isEmpty() -> {
-                    cvvTil?.error = "Enter the CVV"
+                bind.cardCvv.text.toString().isEmpty() -> {
+                    bind.cvvTil.error = "Enter the CVV"
                 }
 
-                expiry.text.toString().isEmpty() -> {
-                    expiryTil?.error = "Enter the Expiry of the Card"
+                bind.dialogExpiry.text.toString().isEmpty() -> {
+                    bind.expiryTil.error = "Enter the Expiry of the Card"
                 }
 
                 else -> {
                     mList.add(
                         0,
-                        PaymentModel.CardModel(R.drawable.master_card, "${cardNumber?.text}")
+                        PaymentModel.CardModel(
+                            R.drawable.master_card,
+                            "${bind.dialogAddCardNumber.text}"
+                        )
                     )
                     adapter.submitData(mList)
                     binding.paymentRecyclerView.adapter = adapter
@@ -287,8 +250,8 @@ class PaymentFragment : Fragment() {
 
                     adapter.notifyDataSetChanged()
                     lifecycleScope.launch {
-                        addCardBtn.attachTextChangeAnimator()
-                        addCardBtn.showProgress {
+                        bind.addBtn.attachTextChangeAnimator()
+                        bind.addBtn.showProgress {
                             progressColor = Color.WHITE
                             buttonTextRes = R.string.loading
 

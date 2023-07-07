@@ -23,19 +23,21 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@drawable/toolbar_bg"
-            app:title="Nanny"
             app:titleCentered="true">
-            <ImageButton
+            <TextSwitcher
+                android:id="@+id/titleTetSwitcher"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/search"
-                android:background="@color/white"
-                android:layout_gravity="end"
-                android:layout_marginEnd="10dp"/>
+                style="@style/TextAppearance.AppCompat.Title"
+                android:inAnimation="@anim/slide_down"
+                android:outAnimation="@anim/slide_up"
+
+                android:layout_gravity="center"/>
         </com.google.android.material.appbar.MaterialToolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
     <ProgressBar
+        android:visibility="gone"
         android:id="@+id/nannyProgressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -48,7 +50,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/requests_RecyclerView"
-        android:layout_width="408dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -56,6 +58,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/nannyAppbar"
         tools:listitem="@layout/nanny_items" />
+    <TextView
+        android:id="@+id/nanny_RCV_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:translationZ="90dp"
+        android:textSize="13sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="center"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,6 @@ package com.example.bsnanny.viewmodels.feedback
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.bsnanny.models.feedbackModel.Feedback
 import com.example.bsnanny.models.feedbackModel.FeedbackBody
 import com.example.bsnanny.models.feedbackModel.FeedbackListResponse
 import com.example.bsnanny.models.feedbackModel.FeedbackResponse

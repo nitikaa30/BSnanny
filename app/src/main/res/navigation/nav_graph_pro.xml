@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_pro"
+    app:startDestination="@id/findNannyFragment">
+
+    <fragment
+        android:id="@+id/findNannyFragment"
+        android:name="com.example.bsnanny.views.fragments.nanny.FindNannyFragment"
+        android:label="FindNannyFragment"
+        tools:layout="@layout/fragment_find_nanny">
+        <action
+            android:id="@+id/action_findNannyFragment_to_hireNannyFragment"
+            app:destination="@id/hireNannyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/hireNannyFragment"
+        android:name="com.example.bsnanny.views.fragments.nanny.HireNannyFragment"
+        android:label="HireNannyFragment"
+        tools:layout="@layout/fragment_hire_nanny">
+        <action
+            android:id="@+id/action_hireNannyFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.example.bsnanny.views.fragments.payment.PaymentFragment"
+        android:label="PaymentFragment"
+        tools:layout="@layout/fragment_payment"/>
+
+</navigation>

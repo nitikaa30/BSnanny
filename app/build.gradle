@@ -96,5 +96,4 @@ dependencies {
     implementation 'com.github.razir.progressbutton:progressbutton:2.1.0'
 
     implementation 'com.github.bumptech.glide:glide:4.15.1'
-
 }
