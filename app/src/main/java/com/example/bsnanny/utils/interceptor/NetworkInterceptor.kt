@@ -18,11 +18,12 @@ class NetworkInterceptor(private val authToken: String) : Interceptor {
         val response = chain.proceed(authorizedRequest)
         if (response.code == 401) {
             //Toast.makeText(MyA,"Session Expired",Toast.LENGTH_LONG).show()
-        }else{
-            return response
+            doRefreshToken()
         }
-
         return response
+    }
+
+    private fun doRefreshToken() {
     }
 
 }
