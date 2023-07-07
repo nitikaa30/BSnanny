@@ -31,12 +31,12 @@ class Splash : Fragment() {
         Handler(Looper.getMainLooper()).postDelayed({
             if (SharedPreferences.getOnBoardingStatus(ONBOARDING_SAVE_KEY)) {
                 if (SharedPreferences.getUser(SAVE_JWT_USER_KEY)?.token == null){
-                    findNavController().navigate(R.id.action_splash_to_ratings)
+                    findNavController().navigate(R.id.action_splash_to_signIn)
                 }else{
-                    findNavController().navigate(R.id.action_splash_to_ratings)
+                    findNavController().navigate(R.id.action_splash_to_dashboard)
                 }
             } else {
-                findNavController().navigate(R.id.action_splash_to_ratings)
+                findNavController().navigate(R.id.action_splash_to_onboardingFragment)
             }
         }, 3000)
     }
