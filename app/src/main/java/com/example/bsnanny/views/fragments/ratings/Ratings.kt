@@ -60,6 +60,7 @@ class Ratings : Fragment() {
                 }
             }
         })
+        viewModel.getList()
     }
 
 }

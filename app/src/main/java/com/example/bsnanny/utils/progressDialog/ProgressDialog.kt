@@ -17,6 +17,8 @@ object ProgressDialog {
         progressDialog.show()
     }
     fun cancelProgressDialog(){
-        progressDialog.dismiss()
+        if (::progressDialog.isInitialized && progressDialog.isShowing) {
+            progressDialog.dismiss()
+        }
     }
 }

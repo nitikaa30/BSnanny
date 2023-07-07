@@ -29,6 +29,7 @@ class FeedbackViewModel @Inject constructor
             _res.postValue(it)
         }
     }
+
     fun getList()=viewModelScope.launch {
         feedbackRepo.getFeedbackList().let {
             _new.postValue(it)
