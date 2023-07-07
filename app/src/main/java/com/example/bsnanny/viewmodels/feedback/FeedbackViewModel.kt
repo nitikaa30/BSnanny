@@ -21,12 +21,12 @@ class FeedbackViewModel @Inject constructor
     val new: LiveData<NetworkResults<FeedbackListResponse>>
     get()=_new
     fun save(token: String,feedback: Feedback)=viewModelScope.launch {
-        feedbackRepo.saveFeedback(token, feedback).let {
+        feedbackRepo.saveFeedback( feedback).let {
             _res.postValue(it)
         }
     }
     fun getList(token:String)=viewModelScope.launch {
-        feedbackRepo.getFeedbackList(token).let {
+        feedbackRepo.getFeedbackList().let {
             _new.postValue(it)
         }
     }

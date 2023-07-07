@@ -129,26 +129,8 @@
         android:label="fragment_job_card"
         tools:layout="@layout/fragment_job_card" >
         <action
-            android:id="@+id/action_jobCard_to_hireNannyFragment"
-            app:destination="@id/hireNannyFragment" />
+            android:id="@+id/action_jobCard_to_nav_graph_pro"
+            app:destination="@id/nav_graph_pro" />
     </fragment>
-    <fragment
-        android:id="@+id/hireNannyFragment"
-        android:name="com.example.bsnanny.views.fragments.nanny.HireNannyFragment"
-        android:label="fragment_hire_nanny"
-        tools:layout="@layout/fragment_hire_nanny" >
-        <action
-            android:id="@+id/action_hireNannyFragment_to_paymentFragment"
-            app:destination="@id/paymentFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/requests"
-        android:name="com.example.bsnanny.views.fragments.requests.Requests"
-        android:label="fragment_find_families"
-        tools:layout="@layout/fragment_find_families" />
-    <fragment
-        android:id="@+id/paymentFragment"
-        android:name="com.example.bsnanny.views.fragments.payment.PaymentFragment"
-        android:label="PaymentFragment"
-        tools:layout="@layout/fragment_payment"/>
+    <include app:graph="@navigation/nav_graph_pro" />
 </navigation>

@@ -159,78 +159,13 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/poppins_medium"
         />
-    <LinearLayout
-        android:id="@+id/Timings_LL"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="16dp"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/Timing_TEXT">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/From_TIL"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_weight="1"
-            android:hint="From"
-            android:textColorHint="#5F5F5F"
-            app:boxCornerRadiusBottomEnd="8dp"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxCornerRadiusTopStart="8dp"
-            app:boxStrokeColor="@color/purpleU1"
-            app:hintTextColor="#5F5F5F">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/From_ED"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:focusable="false"
-                android:clickable="false"
-                android:fontFamily="@font/poppins_medium"
-                android:drawableEnd="@drawable/clock_white"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/TO_TIL"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_weight="1"
-            android:hint="To"
-            android:textColorHint="#5F5F5F"
-            app:boxCornerRadiusBottomEnd="8dp"
-            app:boxCornerRadiusBottomStart="8dp"
-            app:boxCornerRadiusTopEnd="8dp"
-            app:boxCornerRadiusTopStart="8dp"
-            app:boxStrokeColor="@color/purpleU1"
-            app:hintTextColor="#5F5F5F">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/TO_ED"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/poppins_medium"
-                android:focusable="false"
-                android:clickable="false"
-                android:drawableEnd="@drawable/clock_white"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
-        </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
 
     <TextView
         android:id="@+id/Pricing_TEXT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/Timings_LL"
+        app:layout_constraintTop_toBottomOf="@id/Timing_TEXT"
         app:layout_constraintStart_toStartOf="parent"
         android:text="Pricing"
         android:textSize="12sp"

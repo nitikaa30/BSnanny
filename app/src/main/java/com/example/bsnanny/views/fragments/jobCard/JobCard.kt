@@ -47,15 +47,10 @@ class JobCard : Fragment() {
         binding.jobCardToolbar.setNavigationOnClickListener {
             activity?.onBackPressedDispatcher?.onBackPressed()
         }
-        binding.FromED.setOnClickListener {
-            pickTime(binding.FromED)
-        }
-        binding.TOED.setOnClickListener {
-            pickTime(binding.TOED)
-        }
+
 
         binding.SearchNannyBtn.setOnClickListener{
-            findNavController().navigate(R.id.action_jobCard_to_hireNannyFragment)
+            findNavController().navigate(R.id.action_jobCard_to_nav_graph_pro)
         }
 
 
@@ -82,33 +77,6 @@ class JobCard : Fragment() {
 
         })
     }
-    @SuppressLint("ResourceAsColor")
-    private fun pickTime(text : EditText){
-        val c = Calendar.getInstance()
-        val hour = c.get(Calendar.HOUR_OF_DAY)
-        val minute = c.get(Calendar.MINUTE)
 
-        val timePickerDialog = TimePickerDialog(
-            requireContext(),
-            { view, hourOfDay, minute ->
-                val amPm = if (hourOfDay < 12) "AM" else "PM"
-                val hourFormatted = if (hourOfDay > 12) hourOfDay - 12 else hourOfDay
-                text.setText("$hourOfDay:$minute $amPm")
-
-                if (text.text.toString().isEmpty()){
-                    text.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.clock_white,0)
-                }else{
-                    text.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.enabled_clock, 0)
-                    binding.FromTIL.boxStrokeColor = R.color.purpleU1
-                }
-
-            },
-            hour,
-            minute,
-            false
-        )
-        timePickerDialog.setCanceledOnTouchOutside(false)
-        timePickerDialog.show()
-    }
 
 }

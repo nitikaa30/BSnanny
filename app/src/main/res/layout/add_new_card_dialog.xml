@@ -27,7 +27,7 @@
         android:text="@string/add_new_card"
         android:gravity="center"/>
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til1"
+        android:id="@+id/cardNumberTil"
         app:layout_constraintTop_toBottomOf="@id/addText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,8 +72,8 @@
 
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til2"
-        app:layout_constraintTop_toBottomOf="@id/til1"
+        android:id="@+id/cardNameTil"
+        app:layout_constraintTop_toBottomOf="@id/cardNumberTil"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -108,7 +108,7 @@
         android:id="@+id/ll1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/til2"
+        app:layout_constraintTop_toBottomOf="@id/cardNameTil"
         android:layout_marginTop="10dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"

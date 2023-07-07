@@ -1,6 +1,8 @@
 package com.example.bsnanny.views.fragments.nanny
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
@@ -10,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.EditText
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -40,13 +43,13 @@ class HireNannyFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.nannyCommentsRecyclerView.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL, false)
         val mList = ArrayList<HireNannyModel>()
-        mList.add(HireNannyModel(R.drawable.avatar, "Alice", getString(R.string.lorem_ipsum_dolor_sit_amet_consectetur)))
-        mList.add(HireNannyModel(R.drawable.avatar, "Bob", getString(R.string.lorem_ipsum_dolor_sit_amet_consectetur)))
-        mList.add(HireNannyModel(R.drawable.avatar, "Edward", getString(R.string.lorem_ipsum_dolor_sit_amet_consectetur)))
-        mList.add(HireNannyModel(R.drawable.avatar, "Rose", getString(R.string.lorem_ipsum_dolor_sit_amet_consectetur)))
-        mList.add(HireNannyModel(R.drawable.avatar, "Ele", getString(R.string.lorem_ipsum_dolor_sit_amet_consectetur)))
-        mList.add(HireNannyModel(R.drawable.avatar, "kate", getString(R.string.lorem_ipsum_dolor_sit_amet_consectetur)))
-        mList.add(HireNannyModel(R.drawable.avatar, "Rick", getString(R.string.lorem_ipsum_dolor_sit_amet_consectetur)))
+        mList.add(HireNannyModel(R.drawable.image, "Alice", getString(R.string.lorem_ipsum_dolor_sit_amet_consectetur)))
+        mList.add(HireNannyModel(R.drawable.image, "Bob", getString(R.string.lorem_ipsum_dolor_sit_amet_consectetur)))
+        mList.add(HireNannyModel(R.drawable.image, "Edward", getString(R.string.lorem_ipsum_dolor_sit_amet_consectetur)))
+        mList.add(HireNannyModel(R.drawable.image, "Rose", getString(R.string.lorem_ipsum_dolor_sit_amet_consectetur)))
+        mList.add(HireNannyModel(R.drawable.image, "Ele", getString(R.string.lorem_ipsum_dolor_sit_amet_consectetur)))
+        mList.add(HireNannyModel(R.drawable.image, "kate", getString(R.string.lorem_ipsum_dolor_sit_amet_consectetur)))
+        mList.add(HireNannyModel(R.drawable.image, "Rick", getString(R.string.lorem_ipsum_dolor_sit_amet_consectetur)))
 
         val adapter = HireNannyAdapter(mList)
 
@@ -57,7 +60,7 @@ class HireNannyFragment : Fragment() {
             binding.nannyCommentsRecyclerView.visibility = View.VISIBLE
             binding.nannyCommentsRecyclerView.adapter = adapter
         }, 3000)
-    binding.hireNannyBtn.setOnClickListener {
+    binding.invite.setOnClickListener {
         findNavController().navigate(R.id.action_hireNannyFragment_to_paymentFragment)
     }
         val duration = resources.getStringArray(R.array.Duration)
@@ -68,7 +71,12 @@ class HireNannyFragment : Fragment() {
         binding.startDateTIL.setEndIconOnClickListener {
             datePicker()
         }
-    }
+        binding.FromED.setOnClickListener {
+            pickTime(binding.FromED)
+        }
+        binding.TOED.setOnClickListener {
+            pickTime(binding.TOED)
+        }    }
     private fun datePicker() {
         val myCalender = Calendar.getInstance()
         val year = myCalender.get(Calendar.YEAR)
@@ -85,5 +93,32 @@ class HireNannyFragment : Fragment() {
         datePickerDialog.datePicker.setBackgroundColor(Color.TRANSPARENT)
         datePickerDialog.datePicker.maxDate = System.currentTimeMillis() - 864000
     }
+    @SuppressLint("ResourceAsColor")
+    private fun pickTime(text : EditText){
+        val c = Calendar.getInstance()
+        val hour = c.get(Calendar.HOUR_OF_DAY)
+        val minute = c.get(Calendar.MINUTE)
 
+        val timePickerDialog = TimePickerDialog(
+            requireContext(),
+            { view, hourOfDay, minute ->
+                val amPm = if (hourOfDay < 12) "AM" else "PM"
+                val hourFormatted = if (hourOfDay > 12) hourOfDay - 12 else hourOfDay
+                text.setText("$hourOfDay:$minute $amPm")
+
+                if (text.text.toString().isEmpty()){
+                    text.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.clock_white,0)
+                }else{
+                    text.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.enabled_clock, 0)
+                    binding.FromTIL.boxStrokeColor = R.color.purpleU1
+                }
+
+            },
+            hour,
+            minute,
+            false
+        )
+        timePickerDialog.setCanceledOnTouchOutside(false)
+        timePickerDialog.show()
+    }
 }

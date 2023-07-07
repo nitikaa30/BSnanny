@@ -3,9 +3,13 @@ package com.example.bsnanny.utils
 import android.content.res.Resources
 import android.graphics.Color
 import android.graphics.Typeface
+import android.text.TextUtils
 import android.view.View
+import android.widget.EditText
 import android.widget.TextView
+import androidx.annotation.DrawableRes
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
@@ -104,4 +108,59 @@ fun isCreditCardExpired(expiryYear: Int, expiryMonth: Int): String? {
     }
 
     return null
+}
+fun EditText.setEditTextCompoundDrawable(
+    start: Int = 0,
+    top: Int = 0,
+    @DrawableRes end: Int,
+    bottom: Int = 0
+){
+    this.setCompoundDrawablesRelativeWithIntrinsicBounds(start, top, end, bottom)
+}
+fun validateCard(input: String,
+                 errorMsg: String = "",
+                 textInputLayout: TextInputLayout?,
+                 cardFields: CardFields) {
+    when (cardFields) {
+        CardFields.CVV -> {
+            if (TextUtils.isEmpty(input.trim())){
+                textInputLayout?.error = errorMsg
+            }else{
+                textInputLayout?.error = null
+                textInputLayout?.isErrorEnabled = false
+            }
+        }
+        CardFields.EXPIRY -> {
+            if (TextUtils.isEmpty(input.trim())){
+                textInputLayout?.error = errorMsg
+            }else{
+                textInputLayout?.error = null
+                textInputLayout?.isErrorEnabled = false
+            }
+
+        }
+        CardFields.CARDHOLDER_NAME -> {
+            if (TextUtils.isEmpty(input.trim())) {
+                textInputLayout?.error = errorMsg
+            } else {
+                textInputLayout?.error = null
+                textInputLayout?.isErrorEnabled = false
+            }
+        }
+        CardFields.CARD_NO -> {
+            if (TextUtils.isEmpty(input.trim())){
+                textInputLayout?.error = errorMsg
+            }else{
+                textInputLayout?.error = null
+                textInputLayout?.isErrorEnabled = false
+            }
+        }
+    }
+}
+
+enum class CardFields {
+    CVV,
+    EXPIRY,
+    CARDHOLDER_NAME,
+    CARD_NO,
 }
