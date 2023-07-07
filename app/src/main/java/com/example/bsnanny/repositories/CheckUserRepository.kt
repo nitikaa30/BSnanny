@@ -12,4 +12,6 @@ class CheckUserRepository @Inject constructor(
     suspend fun checkUser(checkUserBody: CheckUserBody): NetworkResults<CheckUserResponse> {
         return apiHelper.checkUser(checkUserBody)
     }
+
+
 }

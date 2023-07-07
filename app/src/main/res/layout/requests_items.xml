@@ -40,6 +40,7 @@
                 android:background="@android:color/transparent"
                 android:src="@drawable/your_image"/>
             <ImageView
+                android:id="@+id/chat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/chat"
@@ -75,33 +76,25 @@
                 app:layout_constraintStart_toEndOf="@id/dot"
                 android:layout_marginStart="@dimen/_10sdp" />
             <TextView
-                android:id="@+id/age"
+                android:id="@+id/noOfChild"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Child's age: 5 year"
+                android:text="No. of child:"
                 app:layout_constraintTop_toBottomOf="@id/place"
                 android:textAppearance="@style/intro_text"
                 app:layout_constraintStart_toEndOf="@id/requestsImage"
                 android:layout_marginTop="@dimen/_2sdp"
                 android:layout_marginStart="@dimen/_12sdp" />
-            <ImageView
-                android:id="@+id/boy"
+            <TextView
+                android:id="@+id/child"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@id/age"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:background="@drawable/boy"
-                android:layout_marginTop="@dimen/_3sdp"
-                app:layout_constraintTop_toBottomOf="@id/parent"/>
-            <ImageView
-                android:id="@+id/girl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@id/age"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:background="@drawable/girl"
-                android:layout_marginTop="@dimen/_3sdp"
-                app:layout_constraintTop_toBottomOf="@id/parent"/>
+                android:text="1"
+                app:layout_constraintTop_toBottomOf="@id/place"
+                android:textAppearance="@style/intro_text"
+                android:layout_marginTop="@dimen/_2sdp"
+                app:layout_constraintStart_toEndOf="@id/noOfChild"
+                android:layout_marginStart="@dimen/_5sdp" />
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/accept"
                 android:layout_width="@dimen/_85sdp"

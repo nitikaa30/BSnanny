@@ -4,10 +4,14 @@ import com.example.bsnanny.models.authentication.AuthenticationBody
 import com.example.bsnanny.models.authentication.AuthenticationResponse
 import com.example.bsnanny.models.checkUser.CheckUserBody
 import com.example.bsnanny.models.checkUser.CheckUserResponse
-import com.example.bsnanny.models.feedbackModel.Feedback
 import com.example.bsnanny.models.feedbackModel.FeedbackBody
 import com.example.bsnanny.models.feedbackModel.FeedbackListResponse
 import com.example.bsnanny.models.feedbackModel.FeedbackResponse
+import com.example.bsnanny.models.requests.parent.Booking
+import com.example.bsnanny.models.requests.parent.ParentRequestsResponse
+import com.example.bsnanny.models.requests.parent.accept.AcceptResponse
+import com.example.bsnanny.models.requests.parent.accept.Bookings
+import com.example.bsnanny.models.requests.parent.reject.RejectResponse
 import com.example.bsnanny.utils.NetworkResults
 import com.example.bsnanny.utils.safeApiCall
 
@@ -35,5 +39,17 @@ class ApiHelperImpl @Inject constructor(
 
     override suspend fun getFeedbackList(): NetworkResults<FeedbackListResponse> {
         return safeApiCall { apiInterface.getFeedbackList() }
+    }
+
+    override suspend fun getParentRequests(): NetworkResults<ParentRequestsResponse> {
+        return safeApiCall { apiInterface.getParentRequests() }
+    }
+
+    override suspend fun acceptParentRequest(id: Booking): NetworkResults<AcceptResponse> {
+        return safeApiCall { apiInterface.acceptParentRequest(id.id) }
+    }
+
+    override suspend fun rejectParentRequest(): NetworkResults<RejectResponse> {
+        return safeApiCall { apiInterface.rejectParentRequest() }
     }
 }
