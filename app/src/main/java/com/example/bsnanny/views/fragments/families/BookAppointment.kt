@@ -22,9 +22,10 @@ import com.example.bsnanny.utils.showSnackBar
 import com.example.bsnanny.viewmodels.families.BookAppointmentViewModel
 import com.example.bsnanny.views.fragments.congratulations.Congratulations
 import com.example.bsnanny.views.fragments.profile.ProfileFragment
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
-
+@AndroidEntryPoint
 class BookAppointment : Fragment() {
 
     private lateinit var binding: FragmentBookAppointmentBinding
@@ -51,10 +52,10 @@ class BookAppointment : Fragment() {
                 Toast.makeText(requireContext(), "Please fill the dates", Toast.LENGTH_LONG).show()
             }
             else{
-                val parent_id=""
+                val booking_id=4
                 val start=binding.FromED.text.toString()
                 val end=binding.TOED.text.toString()
-                viewModel.apply(parent_id,start,end)
+                viewModel.apply(booking_id)
                 FragmentTransaction.replaceFragment(Congratulations(), requireActivity(), Congratulations().tag)
             }
         }
@@ -70,7 +71,7 @@ class BookAppointment : Fragment() {
                 }
                 is NetworkResults.Success -> {
                     ProgressDialog.cancelProgressDialog()
-                    if (it.data?.sucess == true) {
+                    if (it.data?.success == true) {
                         Toast.makeText(requireContext(), "Saved successfully", Toast.LENGTH_LONG).show()
                     }
                 }

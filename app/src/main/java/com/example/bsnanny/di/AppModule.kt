@@ -1,7 +1,7 @@
 package com.example.bsnanny.di
 
 import com.example.bsnanny.BuildConfig
-import com.example.bsnanny.authToken.AuthUser
+import com.example.bsnanny.authUser.AuthUser
 import com.example.bsnanny.retrofit.ApiHelper
 import com.example.bsnanny.retrofit.ApiHelperImpl
 import com.example.bsnanny.retrofit.ApiInterface
@@ -16,7 +16,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 import dagger.hilt.components.SingletonComponent
-import okio.Timeout
 import java.util.concurrent.TimeUnit
 
 @Module

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bsnanny.adapter.requests.ParentsRequestAdapter
 import com.example.bsnanny.databinding.FragmentRequestsBinding
@@ -14,10 +15,12 @@ import com.example.bsnanny.utils.NetworkResults
 import com.example.bsnanny.utils.progressDialog.ProgressDialog
 import com.example.bsnanny.utils.showSnackBar
 import com.example.bsnanny.viewmodels.requests.RequestViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class Requests : Fragment() {
     private lateinit var binding : FragmentRequestsBinding
-    private val viewModel: RequestViewModel by viewModels()
+    private lateinit var viewModel: RequestViewModel
     private lateinit var requestAdapter: ParentsRequestAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +38,7 @@ class Requests : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        viewModel=ViewModelProvider(this).get(RequestViewModel::class.java)
         requestAdapter= ParentsRequestAdapter(arrayListOf(),this)
         binding.requestsRecyclerView.apply {
             layoutManager=LinearLayoutManager(requireContext())

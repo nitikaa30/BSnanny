@@ -23,6 +23,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bsnanny.R
@@ -32,9 +33,7 @@ import com.example.bsnanny.models.findNanny.FindNanny
 import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.util.Locale
-import java.util.Timer
-import java.util.TimerTask
+import java.util.*
 
 
 class FindNannyFragment : Fragment() {

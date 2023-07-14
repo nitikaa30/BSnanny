@@ -1,7 +1,7 @@
 package com.example.bsnanny.models.bookAppointment
 
 data class BookAppointmentResponse(
-    val booking: BookingApp,
+    val `data`: Data,
     val msg: String,
-    val sucess: Boolean
+    val success: Boolean
 )

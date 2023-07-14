@@ -19,7 +19,7 @@ import com.example.bsnanny.R
 import com.example.bsnanny.databinding.FragmentJobCardBinding
 import java.util.Calendar
 
-class JobCard : Fragment() {
+class JobCard :Fragment() {
     private lateinit var binding : FragmentJobCardBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

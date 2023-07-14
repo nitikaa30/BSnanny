@@ -1,4 +1,4 @@
-package com.example.bsnanny.authToken
+package com.example.bsnanny.authUser
 
 import com.example.bsnanny.models.authentication.AuthenticationData
 import com.example.bsnanny.utils.sharedPreferences.SharedPreferences
