@@ -11,12 +11,15 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.bsnanny.utils.NetworkResults
 import com.example.bsnanny.R
+import com.example.bsnanny.authUser.AuthUser
 import com.example.bsnanny.databinding.FragmentChooseProfileBinding
 import com.example.bsnanny.models.authentication.AuthenticationBody
 import com.example.bsnanny.utils.progressDialog.ProgressDialog
 import com.example.bsnanny.utils.sharedPreferences.SharedPreferences
+import com.example.bsnanny.utils.sharedPreferences.SharedPreferences.SAVE_JWT_USER_KEY
 import com.example.bsnanny.viewmodels.authentication.AuthenticationViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class ChooseProfile : Fragment() {
@@ -24,6 +27,7 @@ class ChooseProfile : Fragment() {
     private lateinit var countryCode: String
     private lateinit var binding: FragmentChooseProfileBinding
     private val authenticationViewModel: AuthenticationViewModel by viewModels()
+    @Inject lateinit var authUser: AuthUser
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -56,7 +60,7 @@ class ChooseProfile : Fragment() {
         }
         binding.babysitBtn.setOnClickListener {
             binding.nannyBtn.isEnabled = false
-            findNavController().navigate(R.id.action_chooseProfile_to_dashboard)
+
             SharedPreferences.saveChooseProfileStatus(CHOOSE_PROFILE_STATUS_KEY, "Parent")
             val phoneNumber = phoneNum
             val authenticationBody = AuthenticationBody(phoneNumber, 2)
@@ -98,6 +102,10 @@ class ChooseProfile : Fragment() {
                 }
 
                 is NetworkResults.Success -> {
+                    findNavController().navigate(R.id.action_chooseProfile_to_dashboard)
+
+                    authUser.saveToken(SAVE_JWT_USER_KEY, it.data?.authenticationData)
+
                     ProgressDialog.cancelProgressDialog()
                 }
             }
