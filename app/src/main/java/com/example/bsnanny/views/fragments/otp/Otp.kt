@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.bsnanny.R
-import com.example.bsnanny.authToken.AuthUser
+import com.example.bsnanny.authUser.AuthUser
 import com.example.bsnanny.databinding.FragmentOtpBinding
 import com.example.bsnanny.models.authentication.AuthenticationBody
 import com.example.bsnanny.utils.NetworkResults
