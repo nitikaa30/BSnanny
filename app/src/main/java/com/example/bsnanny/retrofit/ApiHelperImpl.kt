@@ -2,6 +2,9 @@ package com.example.bsnanny.retrofit
 
 import com.example.bsnanny.models.authentication.AuthenticationBody
 import com.example.bsnanny.models.authentication.AuthenticationResponse
+import com.example.bsnanny.models.bookAppointment.BookAppointmentResponse
+import com.example.bsnanny.models.bookAppointment.BookRequest
+import com.example.bsnanny.models.bookAppointment.BookingApp
 import com.example.bsnanny.models.checkUser.CheckUserBody
 import com.example.bsnanny.models.checkUser.CheckUserResponse
 import com.example.bsnanny.models.feedbackModel.FeedbackBody
@@ -49,7 +52,11 @@ class ApiHelperImpl @Inject constructor(
         return safeApiCall { apiInterface.acceptParentRequest(id.id) }
     }
 
-    override suspend fun rejectParentRequest(): NetworkResults<RejectResponse> {
-        return safeApiCall { apiInterface.rejectParentRequest() }
+    override suspend fun rejectParentRequest(id: Booking): NetworkResults<RejectResponse> {
+        return safeApiCall { apiInterface.rejectParentRequest(id.id) }
+    }
+
+    override suspend fun applytoFamilies(apply: BookRequest): NetworkResults<BookAppointmentResponse> {
+        return safeApiCall { apiInterface.applytoFamiliy(apply) }
     }
 }

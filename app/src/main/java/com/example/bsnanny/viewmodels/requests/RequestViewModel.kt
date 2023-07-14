@@ -38,9 +38,9 @@ class RequestViewModel @Inject constructor(private val requestsRepo: RequestsRep
         val result=requestsRepo.acceptParentRequest(bookings)
         _new.postValue(result)
     }
-    fun rejectRequest()=viewModelScope.launch {
+    fun rejectRequest(bookings: Booking)=viewModelScope.launch {
         _abc.postValue(NetworkResults.Loading())
-        val result=requestsRepo.rejectParentRequest()
+        val result=requestsRepo.rejectParentRequest(bookings)
         _abc.postValue(result)
     }
 }

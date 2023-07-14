@@ -64,7 +64,7 @@ class ParentsRequestAdapter(private val mList: ArrayList<Booking>, private val v
                     }
                     reject.setOnClickListener {
                         val viewModel=ViewModelProvider(viewModelStoreOwner)[RequestViewModel::class.java]
-                        viewModel.rejectRequest()
+                        viewModel.rejectRequest(list)
                     }
                     chat.setOnClickListener {
 //                        FragmentTransaction.replaceFragment(ChatFragment(), fragmentActivity = , ChatFragment().tag)

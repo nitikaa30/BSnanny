@@ -17,7 +17,7 @@ class RequestsRepo @Inject constructor(private val apiHelper: ApiHelper) {
         return apiHelper.acceptParentRequest(id)
     }
 
-    suspend fun rejectParentRequest():NetworkResults<RejectResponse>{
-        return apiHelper.rejectParentRequest()
+    suspend fun rejectParentRequest(id: Booking):NetworkResults<RejectResponse>{
+        return apiHelper.rejectParentRequest(id)
     }
 }

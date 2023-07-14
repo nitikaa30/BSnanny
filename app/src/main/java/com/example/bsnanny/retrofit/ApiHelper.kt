@@ -3,6 +3,9 @@ package com.example.bsnanny.retrofit
 import com.example.bsnanny.utils.NetworkResults
 import com.example.bsnanny.models.authentication.AuthenticationBody
 import com.example.bsnanny.models.authentication.AuthenticationResponse
+import com.example.bsnanny.models.bookAppointment.BookAppointmentResponse
+import com.example.bsnanny.models.bookAppointment.BookRequest
+import com.example.bsnanny.models.bookAppointment.BookingApp
 import com.example.bsnanny.models.checkUser.CheckUserBody
 import com.example.bsnanny.models.checkUser.CheckUserResponse
 import com.example.bsnanny.models.feedbackModel.FeedbackBody
@@ -28,5 +31,7 @@ interface ApiHelper {
 
     suspend fun acceptParentRequest(id: Booking):NetworkResults<AcceptResponse>
 
-    suspend fun rejectParentRequest():NetworkResults<RejectResponse>
+    suspend fun rejectParentRequest(id: Booking):NetworkResults<RejectResponse>
+
+    suspend fun applytoFamilies(apply: BookRequest):NetworkResults<BookAppointmentResponse>
 }

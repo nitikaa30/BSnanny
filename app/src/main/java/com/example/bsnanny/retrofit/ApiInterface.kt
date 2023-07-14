@@ -2,6 +2,9 @@ package com.example.bsnanny.retrofit
 
 import com.example.bsnanny.models.authentication.AuthenticationBody
 import com.example.bsnanny.models.authentication.AuthenticationResponse
+import com.example.bsnanny.models.bookAppointment.BookAppointmentResponse
+import com.example.bsnanny.models.bookAppointment.BookRequest
+import com.example.bsnanny.models.bookAppointment.BookingApp
 import com.example.bsnanny.models.checkUser.CheckUserBody
 import com.example.bsnanny.models.checkUser.CheckUserResponse
 import com.example.bsnanny.models.feedbackModel.FeedbackBody
@@ -34,6 +37,9 @@ interface ApiInterface {
     suspend fun acceptParentRequest(id:Int): Response<AcceptResponse>
 
     @POST("nany/reject")
-    suspend fun rejectParentRequest():Response<RejectResponse>
+    suspend fun rejectParentRequest(id:Int):Response<RejectResponse>
+
+    @POST("nany/apply")
+    suspend fun applytoFamiliy(@Body apply: BookRequest):Response<BookAppointmentResponse>
 
 }
