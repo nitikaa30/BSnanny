@@ -12,16 +12,14 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
 import com.example.bsnanny.R
 import com.example.bsnanny.databinding.FragmentBookAppointmentBinding
 import com.example.bsnanny.utils.NetworkResults
-import com.example.bsnanny.utils.fragmentTransactions.FragmentTransaction
+import com.example.bsnanny.utils.fragmentTransactions.FragmentTransactions
 import com.example.bsnanny.utils.progressDialog.ProgressDialog
 import com.example.bsnanny.utils.showSnackBar
 import com.example.bsnanny.viewmodels.families.BookAppointmentViewModel
 import com.example.bsnanny.views.fragments.congratulations.Congratulations
-import com.example.bsnanny.views.fragments.profile.ProfileFragment
 import java.util.*
 
 
@@ -55,7 +53,7 @@ class BookAppointment : Fragment() {
                 val start=binding.FromED.text.toString()
                 val end=binding.TOED.text.toString()
                 viewModel.apply(parent_id,start,end)
-                FragmentTransaction.replaceFragment(Congratulations(), requireActivity(), Congratulations().tag)
+                FragmentTransactions.replaceFragment(Congratulations(), requireActivity(), Congratulations().tag)
             }
         }
         viewModel.res.observe(viewLifecycleOwner, Observer {

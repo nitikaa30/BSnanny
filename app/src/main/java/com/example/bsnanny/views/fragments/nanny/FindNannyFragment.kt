@@ -1,7 +1,10 @@
 package com.example.bsnanny.views.fragments.nanny
 
+import android.app.Dialog
 import android.graphics.Color
+import android.graphics.Rect
 import android.graphics.Typeface
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -13,10 +16,17 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
+import android.view.WindowManager
 import android.view.animation.AlphaAnimation
+import android.widget.Button
+import android.widget.FrameLayout
+import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.PopupWindow
 import android.widget.TextView
 import android.widget.Toast
+import android.widget.Toolbar
 import android.widget.ViewSwitcher.ViewFactory
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -29,6 +39,11 @@ import com.example.bsnanny.R
 import com.example.bsnanny.adapter.findNanny.FindNannyAdapter
 import com.example.bsnanny.databinding.FragmentFindNannyBinding
 import com.example.bsnanny.models.findNanny.FindNanny
+import com.example.bsnanny.utils.progressDialog.ProgressDialog
+import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.button.MaterialButton
+import com.google.android.play.integrity.internal.x
+import com.google.android.play.integrity.internal.y
 import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -51,7 +66,6 @@ class FindNannyFragment : Fragment() {
     private var stringIndex : Int = 0
 
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -67,13 +81,22 @@ class FindNannyFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val activity = activity as AppCompatActivity?
+
+
         activity?.setSupportActionBar(binding.nannyToolbar)
+        if (activity?.supportActionBar != null) {
+            activity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            activity.supportActionBar?.setHomeAsUpIndicator(R.drawable.back)
+        }
+        binding.nannyToolbar.setNavigationOnClickListener {
+            activity?.onBackPressedDispatcher?.onBackPressed()
+        }
         setHasOptionsMenu(true)
         binding.nannyToolbar.title = ""
         binding.nannyToolbar.setOnClickListener {
             handleToolbarClick()
         }
-        arrayList = ArrayList<String>()
+        arrayList = ArrayList()
         arrayList.add("Find Nanny")
         arrayList.add("Get Nanny")
         arrayList.add("Choose the best Nanny")
@@ -114,12 +137,13 @@ class FindNannyFragment : Fragment() {
         binding.titleTetSwitcher.setFactory {
             val textView = TextView(requireActivity())
             textView.setTextColor(Color.BLACK)
-            textView.textSize = 22F
+            textView.textSize = 20F
             textView.typeface = Typeface.DEFAULT_BOLD
             textView.gravity = Gravity.CENTER_HORIZONTAL
             textView
         }
         binding.titleTetSwitcher.setText(arrayList[stringIndex])
+
 
     }
 
@@ -134,6 +158,7 @@ class FindNannyFragment : Fragment() {
         inflater.inflate(R.menu.search_menu, menu)
         val menuItem: MenuItem = menu.findItem(R.id.searchMenu)
         val searchView: SearchView = menuItem.actionView as SearchView
+
         searchView.queryHint = "Search Nanny here"
         searchView.findViewById<LinearLayout>(androidx.appcompat.R.id.search_plate)
             .setBackgroundColor(Color.TRANSPARENT)
@@ -152,8 +177,38 @@ class FindNannyFragment : Fragment() {
                 }
 
             })
+
+
+
+
+        val filterItem = menu.findItem(R.id.Filter)
+        filterItem.setOnMenuItemClickListener {
+            filterItem.isEnabled = false
+            val popupView = layoutInflater.inflate(R.layout.filter_nanny_dialog, null)
+            val popupWindow = PopupWindow(popupView, WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT)
+            popupWindow.showAsDropDown(searchView,0,0)
+            popupWindow.setBackgroundDrawable(ColorDrawable(Color.WHITE))
+
+            popupWindow.animationStyle = R.style.PopupAnimation
+
+            val dismiss : MaterialButton = popupView.findViewById(R.id.filterApplyButton)
+            dismiss.setOnClickListener {
+                filterItem.isEnabled = true
+
+                popupWindow.dismiss()
+            }
+
+
+            true
+        }
+
+
+
             super.onCreateOptionsMenu(menu, inflater)
         }
+
+
+
 
     private fun filterList(query: String?) {
         if (query != null) {
@@ -352,6 +407,15 @@ class FindNannyFragment : Fragment() {
         }else{
             iterator = 0
         }
+    }
+
+
+
+    private fun showFilterDialog(){
+        val dialog = Dialog(requireContext())
+        dialog.setContentView(R.layout.filter_nanny_dialog)
+        dialog.window?.setBackgroundDrawableResource(R.color.transparent1)
+        dialog.show()
     }
     override fun onStart() {
         handler.postDelayed(runnable, 7000)

@@ -1,5 +1,6 @@
 package com.example.bsnanny.adapter.payment
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -12,6 +13,7 @@ import com.example.bsnanny.viewHolders.PaymentViewHolder
 class PaymentAdapter(private val onAddNewCardClicked: () -> Unit) : RecyclerView.Adapter<PaymentViewHolder>() {
     private var selectedPosition = -1
     private var items = ArrayList<PaymentModel>()
+        @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field = value
             notifyDataSetChanged()

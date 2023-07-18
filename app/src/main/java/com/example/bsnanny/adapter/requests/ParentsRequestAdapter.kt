@@ -3,20 +3,13 @@ package com.example.bsnanny.adapter.requests
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.bsnanny.databinding.RequestsItemsBinding
-import com.example.bsnanny.models.feedbackModel.FeedbackList
 import com.example.bsnanny.models.requests.parent.Booking
-import com.example.bsnanny.models.requests.parent.Parent
-import com.example.bsnanny.models.requests.parent.User
-import com.example.bsnanny.utils.fragmentTransactions.FragmentTransaction
 import com.example.bsnanny.viewmodels.requests.RequestViewModel
-import com.example.bsnanny.views.fragments.chat.ChatFragment
-import com.example.bsnanny.views.fragments.profile.ProfileFragment
 
 class ParentsRequestAdapter(private val mList: ArrayList<Booking>, private val viewModelStoreOwner: ViewModelStoreOwner)
     : RecyclerView.Adapter<ParentsRequestAdapter.ParentRequestsViewHolder>() {

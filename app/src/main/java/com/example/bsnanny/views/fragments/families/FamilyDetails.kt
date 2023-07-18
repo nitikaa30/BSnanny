@@ -15,7 +15,7 @@ class FamilyDetails : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding= FragmentFamilyDetailsBinding.inflate(layoutInflater)
+        binding= FragmentFamilyDetailsBinding.inflate(inflater, container, false)
         return binding.root
     }
 

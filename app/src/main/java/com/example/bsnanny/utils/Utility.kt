@@ -1,15 +1,34 @@
 package com.example.bsnanny.utils
 
+import android.Manifest
+import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.res.Resources
 import android.graphics.Color
 import android.graphics.Typeface
+import android.net.Uri
 import android.text.TextUtils
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
+import com.mapbox.android.core.location.LocationEngine
+import com.mapbox.android.core.location.LocationEngineCallback
+import com.mapbox.android.core.location.LocationEngineResult
+import com.mapbox.android.core.permissions.PermissionsManager
+import com.mapbox.geojson.BoundingBox
+import com.mapbox.geojson.Point
+import com.mapbox.maps.MapboxMap
+import com.mapbox.maps.toCameraOptions
+import com.mapbox.search.result.SearchAddress
+import com.mapbox.search.ui.view.place.SearchPlace
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
@@ -164,3 +183,8 @@ enum class CardFields {
     CARDHOLDER_NAME,
     CARD_NO,
 }
+
+const val placesAutoCompleteTag = "PlacesAutoComplete"
+
+
+
