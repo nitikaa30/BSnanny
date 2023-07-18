@@ -1,9 +1,7 @@
 package com.example.bsnanny.models.requests.parent
 
 data class User(
-    val address: String,
-    val avatar: Any,
-    val gender: String,
-    val id: Int,
+    val avatar: String,
+    val city: String,
     val name: String
 )

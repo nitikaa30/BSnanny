@@ -57,7 +57,7 @@ class Requests : Fragment() {
                 is NetworkResults.Success -> {
                     ProgressDialog.cancelProgressDialog()
                     if (it.data?.success == true) {
-                        val list = it.data.bookings
+                        val list = it.data.data
                         requestAdapter.setRequests(list)
                     }
                 }
