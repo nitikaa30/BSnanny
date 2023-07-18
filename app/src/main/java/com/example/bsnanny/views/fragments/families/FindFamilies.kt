@@ -16,7 +16,7 @@ class FindFamilies : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding= FragmentFindFamiliesBinding.inflate(layoutInflater)
+        binding= FragmentFindFamiliesBinding.inflate(inflater, container, false)
         return binding.root
     }
 

@@ -5,7 +5,12 @@
     android:layout_height="match_parent"
     android:background="#FAFAFA"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.jobCard.JobCard">
+    tools:context=".views.fragments.jobCard.JobCard">
+    <FrameLayout
+        android:visibility="gone"
+        android:id="@+id/maps_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/jobCardAppbar"
@@ -54,6 +59,8 @@
             android:drawableEnd="@drawable/loc1"
             android:fontFamily="@font/poppins_medium"
             android:hint="Address"
+            android:clickable="false"
+            android:focusable="false"
             android:textColor="@color/black"
             android:textSize="12sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -145,46 +152,56 @@
             android:textColor="@color/black"
             android:textSize="12sp" />
     </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/Timing_TEXT"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/NoChild_TIL"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/Country_TIL"
+        android:layout_margin="16dp"
+        android:layout_marginTop="10dp"
+        android:textColorHint="#5F5F5F"
+        app:boxCornerRadiusBottomEnd="8dp"
+        app:boxCornerRadiusBottomStart="8dp"
+        app:boxCornerRadiusTopEnd="8dp"
+        app:boxCornerRadiusTopStart="8dp"
+        app:boxStrokeColor="@color/purpleU1"
+        app:hintTextColor="#5F5F5F"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="Timings"
-        android:textColor="#5F5F5F"
-        android:textSize="12sp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/poppins_medium"
-        />
+        app:layout_constraintTop_toBottomOf="@id/Country_TIL">
 
+        <EditText
+            android:id="@+id/NoChild_ED"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="No. of Children"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/Pricing_TEXT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/Timing_TEXT"
+        app:layout_constraintTop_toBottomOf="@id/NoChild_TIL"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="Pricing"
-        android:textSize="12sp"
-        android:textColor="#5F5F5F"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="25dp"
         android:fontFamily="@font/poppins_medium"
-        />
+        android:textSize="12sp"
+        android:textColor="@color/black"
+        android:text="Pricing"
+        android:layout_margin="14dp"/>
     <RelativeLayout
         android:id="@+id/pricing_Layout"
         app:layout_constraintTop_toBottomOf="@id/Pricing_TEXT"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="5dp">
         <TextView
             android:id="@+id/progressTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
+            android:textSize="11sp"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="7dp"
             android:layout_marginEnd="10dp"
@@ -198,16 +215,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/progressTextView"
-            android:max="500"
-            android:outlineSpotShadowColor="@color/purpleU1"
-            android:progressDrawable="@drawable/seekbar_track_custom"
-            android:thumb="@color/purpleU1"
+            android:max="1000"
+            android:maxHeight="@dimen/_3sdp"
+            style="?android:attr/progressBarStyleHorizontal"
             android:thumbTint="@color/purpleU1"
-            android:tickMark="@color/purpleU1"
-            android:tickMarkTint="@color/purpleU1" />
+            android:tickMark="@color/purpleU1" />
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/Rs0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/pricing_Layout"
@@ -226,11 +242,179 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:textSize="14sp"
         android:layout_marginTop="10dp"
-        android:text="₹500"
+        android:text="₹1000"
         android:layout_marginEnd="15dp"
         android:textColor="@color/black"
         android:fontFamily="@font/poppins_medium"
         />
+
+    <TextView
+        android:id="@+id/Timing_Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/Rs0"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="14dp"
+        android:textColor="#5F5F5F"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="12sp"
+        android:text="TImings"
+        />
+
+    <LinearLayout
+        android:id="@+id/Timings_LL_Job"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/Timing_Text"
+        android:baselineAligned="false">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/From_TIL_Job"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="From"
+            android:textColorHint="#5F5F5F"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
+            app:boxStrokeColor="@color/purpleU1"
+            app:hintTextColor="#5F5F5F">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/From_ED_job"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:focusable="false"
+                android:clickable="false"
+
+                android:fontFamily="@font/poppins_medium"
+                android:drawableEnd="@drawable/clock_white"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/TO_TIL"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:hint="To"
+            android:textColorHint="#5F5F5F"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
+            app:boxStrokeColor="@color/purpleU1"
+            app:hintTextColor="#5F5F5F">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/TO_ED"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/poppins_medium"
+                android:focusable="false"
+                android:clickable="false"
+
+                android:drawableEnd="@drawable/clock_white"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/Date_Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/Timings_LL_Job"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="14dp"
+        android:textColor="#5F5F5F"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="12sp"
+        android:text="Date"
+        />
+    <LinearLayout
+        android:id="@+id/Date_LL_Job"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/Date_Text"
+        android:baselineAligned="false">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/startDate_TIL_Job"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Start Date"
+            android:textColorHint="#5F5F5F"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
+            app:endIconMode="custom"
+            app:endIconDrawable="@drawable/calender"
+            app:endIconTint="@color/purpleU1"
+            app:boxStrokeColor="@color/purpleU1"
+            app:hintTextColor="#5F5F5F">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/startDate_ED_job"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:focusable="false"
+                android:enabled="false"
+                android:clickable="false"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/EndDate_TIL_job"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:hint="End Date"
+            android:textColorHint="#5F5F5F"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
+            app:boxStrokeColor="@color/purpleU1"
+            app:endIconMode="custom"
+            app:endIconDrawable="@drawable/calender"
+            app:endIconTint="@color/purpleU1"
+            app:hintTextColor="#5F5F5F">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/EndDate_ED_job"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/poppins_medium"
+                android:focusable="false"
+                android:enabled="false"
+                android:clickable="false"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/SearchNannyBtn"
         android:layout_width="match_parent"
@@ -243,6 +427,10 @@
         android:text="Continue"
         android:backgroundTint="@color/black"
         android:layout_margin="16dp"/>
+
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

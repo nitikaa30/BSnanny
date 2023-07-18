@@ -16,7 +16,7 @@ import androidx.lifecycle.ViewModel
 import com.example.bsnanny.R
 import com.example.bsnanny.databinding.FragmentBookAppointmentBinding
 import com.example.bsnanny.utils.NetworkResults
-import com.example.bsnanny.utils.fragmentTransactions.FragmentTransaction
+import com.example.bsnanny.utils.fragmentTransactions.FragmentTransactions
 import com.example.bsnanny.utils.progressDialog.ProgressDialog
 import com.example.bsnanny.utils.showSnackBar
 import com.example.bsnanny.viewmodels.families.BookAppointmentViewModel
@@ -56,7 +56,7 @@ class BookAppointment : Fragment() {
                 val start=binding.FromED.text.toString()
                 val end=binding.TOED.text.toString()
                 viewModel.apply(booking_id)
-                FragmentTransaction.replaceFragment(Congratulations(), requireActivity(), Congratulations().tag)
+                FragmentTransactions.replaceFragment(Congratulations(), requireActivity(), Congratulations().tag)
             }
         }
         viewModel.res.observe(viewLifecycleOwner, Observer {

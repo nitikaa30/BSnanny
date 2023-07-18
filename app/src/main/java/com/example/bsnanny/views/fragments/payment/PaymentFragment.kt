@@ -33,7 +33,6 @@ class PaymentFragment : Fragment() {
     private lateinit var binding: FragmentPaymentBinding
     private lateinit var adapter: PaymentAdapter
 
-    // private lateinit var dialog: Dialog
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

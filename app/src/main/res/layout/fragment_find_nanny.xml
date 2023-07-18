@@ -23,6 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@drawable/toolbar_bg"
+            app:navigationIcon="@drawable/back"
             app:titleCentered="true">
             <TextSwitcher
                 android:id="@+id/titleTetSwitcher"
@@ -34,7 +35,6 @@
 
                 android:layout_gravity="center"/>
         </com.google.android.material.appbar.MaterialToolbar>
-
     </com.google.android.material.appbar.AppBarLayout>
     <ProgressBar
         android:visibility="gone"

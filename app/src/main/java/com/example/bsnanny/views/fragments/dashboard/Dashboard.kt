@@ -13,7 +13,7 @@ import androidx.core.app.ActivityCompat
 import androidx.navigation.fragment.findNavController
 import com.example.bsnanny.R
 import com.example.bsnanny.databinding.FragmentDashboardBinding
-import com.example.bsnanny.utils.fragmentTransactions.FragmentTransaction
+import com.example.bsnanny.utils.fragmentTransactions.FragmentTransactions
 import com.example.bsnanny.utils.sharedPreferences.SharedPreferences
 import com.example.bsnanny.utils.sharedPreferences.SharedPreferences.SAVE_JWT_USER_KEY
 import com.example.bsnanny.views.fragments.profile.ProfileFragment
@@ -83,11 +83,11 @@ class Dashboard : Fragment() {
         }
         menu.profileMenuLayout.setOnClickListener {
             menu.homeMenuLayout.isSelected = false
-            FragmentTransaction.replaceFragment(ProfileFragment(), requireActivity(), ProfileFragment().tag)
+            FragmentTransactions.replaceFragment(ProfileFragment(), requireActivity(), ProfileFragment().tag)
         }
         menu.jobRequestMenuLayout.setOnClickListener {
             menu.homeMenuLayout.isSelected=false
-            FragmentTransaction.replaceFragment(Requests(),requireActivity(), Requests().tag)
+            FragmentTransactions.replaceFragment(Requests(),requireActivity(), Requests().tag)
         }
 
     }
