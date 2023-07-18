@@ -10,12 +10,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.app.ActivityCompat
+import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.fragment.findNavController
 import com.example.bsnanny.R
 import com.example.bsnanny.databinding.FragmentDashboardBinding
-import com.example.bsnanny.utils.fragmentTransactions.FragmentTransaction
+import com.example.bsnanny.utils.fragmentTransactions.FragmentTransactions
 import com.example.bsnanny.utils.sharedPreferences.SharedPreferences
 import com.example.bsnanny.utils.sharedPreferences.SharedPreferences.SAVE_JWT_USER_KEY
+import com.example.bsnanny.views.fragments.notification.Notification
 import com.example.bsnanny.views.fragments.profile.ProfileFragment
 import com.example.bsnanny.views.fragments.requests.Requests
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -76,6 +78,7 @@ class Dashboard : Fragment() {
         }
 
         val menu = binding.menuParents
+        val menuNanny=binding.menuNanny
         menu.homeMenuLayout.isSelected = true
         binding.mainDrawer.closeDrawers()
         menu.homeMenuLayout.setOnClickListener {
@@ -83,11 +86,15 @@ class Dashboard : Fragment() {
         }
         menu.profileMenuLayout.setOnClickListener {
             menu.homeMenuLayout.isSelected = false
-            FragmentTransaction.replaceFragment(ProfileFragment(), requireActivity(), ProfileFragment().tag)
+            FragmentTransactions.replaceFragment(ProfileFragment(), requireActivity(), ProfileFragment().tag)
         }
         menu.jobRequestMenuLayout.setOnClickListener {
             menu.homeMenuLayout.isSelected=false
-            FragmentTransaction.replaceFragment(Requests(),requireActivity(), Requests().tag)
+            FragmentTransactions.replaceFragment(Requests(),requireActivity(), Requests().tag)
+        }
+        menuNanny.homeMenuLayout.isSelected=true
+        menuNanny.homeMenuLayout.setOnClickListener {
+            binding.mainDrawer.closeDrawers()
         }
 
     }

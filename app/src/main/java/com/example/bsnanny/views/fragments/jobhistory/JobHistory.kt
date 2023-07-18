@@ -15,7 +15,7 @@ class JobHistory : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding= FragmentJobHistoryBinding.inflate(layoutInflater)
+        binding= FragmentJobHistoryBinding.inflate(inflater, container, false)
         return binding.root
     }
 

@@ -11,6 +11,7 @@ import com.example.bsnanny.models.feedbackModel.FeedbackBody
 import com.example.bsnanny.models.feedbackModel.FeedbackListResponse
 import com.example.bsnanny.models.feedbackModel.FeedbackResponse
 import com.example.bsnanny.models.requests.parent.Booking
+import com.example.bsnanny.models.requests.parent.Data
 import com.example.bsnanny.models.requests.parent.ParentRequestsResponse
 import com.example.bsnanny.models.requests.parent.accept.AcceptResponse
 import com.example.bsnanny.models.requests.parent.reject.RejectResponse
@@ -27,9 +28,9 @@ interface ApiHelper {
 
     suspend fun getParentRequests():NetworkResults<ParentRequestsResponse>
 
-    suspend fun acceptParentRequest(id: Booking):NetworkResults<AcceptResponse>
+    suspend fun acceptParentRequest(id: Data):NetworkResults<AcceptResponse>
 
-    suspend fun rejectParentRequest(id: Booking):NetworkResults<RejectResponse>
+    suspend fun rejectParentRequest(id: Data):NetworkResults<RejectResponse>
 
     suspend fun applytoFamilies(apply: BookRequest):NetworkResults<BookAppointmentResponse>
 }

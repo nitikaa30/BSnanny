@@ -6,6 +6,10 @@
         android:icon="@drawable/search"
         android:title="SearchView"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
-        app:showAsAction="always|collapseActionView"/>
+        app:showAsAction="ifRoom"/>
+    <item android:id="@+id/Filter"
+        android:icon="@drawable/pricing"
+        android:title="Filter"
 
+        app:showAsAction="ifRoom" />
 </menu>

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.bsnanny.models.requests.parent.Booking
+import com.example.bsnanny.models.requests.parent.Data
 import com.example.bsnanny.models.requests.parent.ParentRequestsResponse
 import com.example.bsnanny.models.requests.parent.accept.AcceptResponse
 import com.example.bsnanny.models.requests.parent.reject.RejectResponse
@@ -33,12 +34,12 @@ class RequestViewModel @Inject constructor(private val requestsRepo: RequestsRep
         val result = requestsRepo.getParentRequests()
         _res.postValue(result)
     }
-    fun acceptRequest(bookings: Booking)=viewModelScope.launch {
+    fun acceptRequest(bookings: Data)=viewModelScope.launch {
         _new.postValue(NetworkResults.Loading())
         val result=requestsRepo.acceptParentRequest(bookings)
         _new.postValue(result)
     }
-    fun rejectRequest(bookings: Booking)=viewModelScope.launch {
+    fun rejectRequest(bookings: Data)=viewModelScope.launch {
         _abc.postValue(NetworkResults.Loading())
         val result=requestsRepo.rejectParentRequest(bookings)
         _abc.postValue(result)

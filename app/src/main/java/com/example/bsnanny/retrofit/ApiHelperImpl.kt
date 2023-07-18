@@ -10,6 +10,7 @@ import com.example.bsnanny.models.feedbackModel.FeedbackBody
 import com.example.bsnanny.models.feedbackModel.FeedbackListResponse
 import com.example.bsnanny.models.feedbackModel.FeedbackResponse
 import com.example.bsnanny.models.requests.parent.Booking
+import com.example.bsnanny.models.requests.parent.Data
 import com.example.bsnanny.models.requests.parent.ParentRequestsResponse
 import com.example.bsnanny.models.requests.parent.accept.AcceptResponse
 import com.example.bsnanny.models.requests.parent.reject.RejectResponse
@@ -46,11 +47,11 @@ class ApiHelperImpl @Inject constructor(
         return safeApiCall { apiInterface.getParentRequests() }
     }
 
-    override suspend fun acceptParentRequest(id: Booking): NetworkResults<AcceptResponse> {
+    override suspend fun acceptParentRequest(id: Data): NetworkResults<AcceptResponse> {
         return safeApiCall { apiInterface.acceptParentRequest(id.id) }
     }
 
-    override suspend fun rejectParentRequest(id: Booking): NetworkResults<RejectResponse> {
+    override suspend fun rejectParentRequest(id: Data): NetworkResults<RejectResponse> {
         return safeApiCall { apiInterface.rejectParentRequest(id.id) }
     }
 
