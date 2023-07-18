@@ -45,9 +45,9 @@ class ParentsRequestAdapter(private val mList: ArrayList<Booking>, private val v
             fun bind(list: Booking){
                 binding.apply {
                     name.text=list.Parent.User.name
-                    place.text=list.Parent.User.address
-                    parent.text=list.Parent.User.gender
-                    child.text=list.Parent.no_of_children.toString()
+                    place.text=list.Parent.User.city
+                    parent.text=list.Parent.child_category.toString()
+                    child.text=list.no_of_children.toString()
                     Glide.with(itemView)
                         .load(list.Parent.User.avatar)
                         .into(requestsImage)

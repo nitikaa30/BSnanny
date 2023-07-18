@@ -5,7 +5,6 @@ import com.example.bsnanny.models.authentication.AuthenticationBody
 import com.example.bsnanny.models.authentication.AuthenticationResponse
 import com.example.bsnanny.models.bookAppointment.BookAppointmentResponse
 import com.example.bsnanny.models.bookAppointment.BookRequest
-import com.example.bsnanny.models.bookAppointment.BookingApp
 import com.example.bsnanny.models.checkUser.CheckUserBody
 import com.example.bsnanny.models.checkUser.CheckUserResponse
 import com.example.bsnanny.models.feedbackModel.FeedbackBody
@@ -14,7 +13,6 @@ import com.example.bsnanny.models.feedbackModel.FeedbackResponse
 import com.example.bsnanny.models.requests.parent.Booking
 import com.example.bsnanny.models.requests.parent.ParentRequestsResponse
 import com.example.bsnanny.models.requests.parent.accept.AcceptResponse
-import com.example.bsnanny.models.requests.parent.accept.Bookings
 import com.example.bsnanny.models.requests.parent.reject.RejectResponse
 
 

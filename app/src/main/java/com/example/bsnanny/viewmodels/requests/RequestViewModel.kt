@@ -6,14 +6,14 @@ import androidx.lifecycle.viewModelScope
 import com.example.bsnanny.models.requests.parent.Booking
 import com.example.bsnanny.models.requests.parent.ParentRequestsResponse
 import com.example.bsnanny.models.requests.parent.accept.AcceptResponse
-import com.example.bsnanny.models.requests.parent.accept.Bookings
 import com.example.bsnanny.models.requests.parent.reject.RejectResponse
 import com.example.bsnanny.repositories.requests.RequestsRepo
 import com.example.bsnanny.utils.NetworkResults
 import com.example.bsnanny.utils.SingleMutableLiveData
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-
+@HiltViewModel
 class RequestViewModel @Inject constructor(private val requestsRepo: RequestsRepo) : ViewModel() {
     private val _res = SingleMutableLiveData<NetworkResults<ParentRequestsResponse>>()
     val res: LiveData<NetworkResults<ParentRequestsResponse>>

@@ -52,8 +52,8 @@ class JobCard : Fragment() {
     private lateinit var binding: FragmentJobCardBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
         binding = FragmentJobCardBinding.inflate(inflater, container, false)
@@ -87,7 +87,7 @@ class JobCard : Fragment() {
         }
 
         binding.AddressED.setOnClickListener {
-           showMapDialog(it)
+            showMapDialog(it)
         }
 
 
@@ -108,7 +108,7 @@ class JobCard : Fragment() {
                 try {
                     margin = (seekBarWidth * progress) / seekBarWidth
                     val layoutParams =
-                        binding.progressTextView.layoutParams as RelativeLayout.LayoutParams
+                            binding.progressTextView.layoutParams as RelativeLayout.LayoutParams
                     layoutParams.marginStart = margin
                     binding.progressTextView.layoutParams = layoutParams
                 } catch (e: Exception) {
@@ -136,27 +136,27 @@ class JobCard : Fragment() {
         val day = myCalender.get(Calendar.DAY_OF_MONTH)
 
         val datePickerDialog =
-            DatePickerDialog(requireContext(), { _, selYear, selMonth, dayOfMonth ->
-                val selDate = "$dayOfMonth/${selMonth + 1}/$selYear"
+                DatePickerDialog(requireContext(), { _, selYear, selMonth, dayOfMonth ->
+                    val selDate = "$dayOfMonth/${selMonth + 1}/$selYear"
 
-                when (v) {
+                    when (v) {
 
-                    binding.startDateEDJob -> {
-                        binding.startDateEDJob.setText(selDate)
+                        binding.startDateEDJob -> {
+                            binding.startDateEDJob.setText(selDate)
+
+                        }
+
+                        binding.EndDateEDJob -> {
+                            binding.EndDateEDJob.setText(selDate)
+                        }
 
                     }
 
-                    binding.EndDateEDJob -> {
-                        binding.EndDateEDJob.setText(selDate)
-                    }
 
-                }
-
-
-            }, year, month, day)
+                }, year, month, day)
         datePickerDialog.show()
         datePickerDialog.datePicker.background =
-            AppCompatResources.getDrawable(requireContext(), R.color.white)
+                AppCompatResources.getDrawable(requireContext(), R.color.white)
         datePickerDialog.datePicker.setBackgroundColor(Color.TRANSPARENT)
         datePickerDialog.datePicker.maxDate = System.currentTimeMillis() - 864000
     }
@@ -168,33 +168,33 @@ class JobCard : Fragment() {
         val minute = c.get(Calendar.MINUTE)
 
         val timePickerDialog = TimePickerDialog(
-            requireContext(),
-            { view, hourOfDay, minute ->
-                val amPm = if (hourOfDay < 12) "AM" else "PM"
-                val hourFormatted = if (hourOfDay > 12) hourOfDay - 12 else hourOfDay
-                text.setText("$hourOfDay:$minute $amPm")
+                requireContext(),
+                { view, hourOfDay, minute ->
+                    val amPm = if (hourOfDay < 12) "AM" else "PM"
+                    val hourFormatted = if (hourOfDay > 12) hourOfDay - 12 else hourOfDay
+                    text.setText("$hourOfDay:$minute $amPm")
 
-                if (text.text.toString().isEmpty()) {
-                    text.setCompoundDrawablesRelativeWithIntrinsicBounds(
-                        0,
-                        0,
-                        R.drawable.clock_white,
-                        0
-                    )
-                } else {
-                    text.setCompoundDrawablesRelativeWithIntrinsicBounds(
-                        0,
-                        0,
-                        R.drawable.enabled_clock,
-                        0
-                    )
-                    binding.FromTILJob.boxStrokeColor = R.color.purpleU1
-                }
+                    if (text.text.toString().isEmpty()) {
+                        text.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                                0,
+                                0,
+                                R.drawable.clock_white,
+                                0
+                        )
+                    } else {
+                        text.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                                0,
+                                0,
+                                R.drawable.enabled_clock,
+                                0
+                        )
+                        binding.FromTILJob.boxStrokeColor = R.color.purpleU1
+                    }
 
-            },
-            hour,
-            minute,
-            false
+                },
+                hour,
+                minute,
+                false
         )
         timePickerDialog.setCanceledOnTouchOutside(false)
         timePickerDialog.show()
@@ -208,26 +208,26 @@ class JobCard : Fragment() {
         mapboxDialog = Dialog(requireContext())
         mapboxDialog.setContentView(R.layout.search_engine)
         val accessToken =
-            getString(R.string.mapbox_access_token)
+                getString(R.string.mapbox_access_token)
         val queryEditText = mapboxDialog.findViewById<EditText>(R.id.query_edit_text)
         val searchResultsView1 =
-            mapboxDialog.findViewById<SearchResultsView>(R.id.search_results_view_engine)
+                mapboxDialog.findViewById<SearchResultsView>(R.id.search_results_view_engine)
         searchResultsView1.initialize(
-            SearchResultsView.Configuration(
-                commonConfiguration = CommonSearchViewConfiguration(DistanceUnitType.IMPERIAL)
-            )
+                SearchResultsView.Configuration(
+                        commonConfiguration = CommonSearchViewConfiguration(DistanceUnitType.IMPERIAL)
+                )
         )
         val searchEngine = SearchEngine.createSearchEngineWithBuiltInDataProviders(
-            apiType = ApiType.GEOCODING,
-            settings = SearchEngineSettings(accessToken)
+                apiType = ApiType.GEOCODING,
+                settings = SearchEngineSettings(accessToken)
         )
         val offlineSearchEngine = OfflineSearchEngine.create(
-            OfflineSearchEngineSettings(accessToken)
+                OfflineSearchEngineSettings(accessToken)
         )
         val searchEngineUiAdapter = SearchEngineUiAdapter(
-            view = searchResultsView1,
-            searchEngine = searchEngine,
-            offlineSearchEngine = offlineSearchEngine,
+                view = searchResultsView1,
+                searchEngine = searchEngine,
+                offlineSearchEngine = offlineSearchEngine,
         )
         searchEngineUiAdapter.addSearchListener(object : SearchEngineUiAdapter.SearchListener {
 
@@ -236,22 +236,22 @@ class JobCard : Fragment() {
             }
 
             override fun onSuggestionsShown(
-                suggestions: List<SearchSuggestion>,
-                responseInfo: ResponseInfo
+                    suggestions: List<SearchSuggestion>,
+                    responseInfo: ResponseInfo
             ) {
             }
 
             override fun onCategoryResultsShown(
-                suggestion: SearchSuggestion,
-                results: List<SearchResult>,
-                responseInfo: ResponseInfo
+                    suggestion: SearchSuggestion,
+                    results: List<SearchResult>,
+                    responseInfo: ResponseInfo
             ) {
 
             }
 
             override fun onOfflineSearchResultsShown(
-                results: List<OfflineSearchResult>,
-                responseInfo: OfflineResponseInfo
+                    results: List<OfflineSearchResult>,
+                    responseInfo: OfflineResponseInfo
             ) {
 
             }
@@ -261,8 +261,8 @@ class JobCard : Fragment() {
             }
 
             override fun onSearchResultSelected(
-                searchResult: SearchResult,
-                responseInfo: ResponseInfo
+                    searchResult: SearchResult,
+                    responseInfo: ResponseInfo
             ) {
                 showToast("SearchResult clicked: ${searchResult.coordinate.latitude()}")
                 binding.AddressED.setText(searchResult.fullAddress)
@@ -278,8 +278,8 @@ class JobCard : Fragment() {
             }
 
             override fun onOfflineSearchResultSelected(
-                searchResult: OfflineSearchResult,
-                responseInfo: OfflineResponseInfo
+                    searchResult: OfflineSearchResult,
+                    responseInfo: OfflineResponseInfo
             ) {
                 showToast("OfflineSearchResult clicked: ${searchResult.name}")
             }
@@ -306,8 +306,8 @@ class JobCard : Fragment() {
             }
 
             override fun onPopulateQueryClick(
-                suggestion: SearchSuggestion,
-                responseInfo: ResponseInfo
+                    suggestion: SearchSuggestion,
+                    responseInfo: ResponseInfo
             ) {
                 queryEditText.setText(suggestion.name)
             }
@@ -331,17 +331,17 @@ class JobCard : Fragment() {
         })
         if (requireContext().isPermissionGranted(Manifest.permission.ACCESS_FINE_LOCATION)) {
             ActivityCompat.requestPermissions(
-                requireActivity(),
-                arrayOf(
-                    Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_COARSE_LOCATION
-                ),
-                PERMISSIONS_REQUEST_LOCATION
+                    requireActivity(),
+                    arrayOf(
+                            Manifest.permission.ACCESS_FINE_LOCATION,
+                            Manifest.permission.ACCESS_COARSE_LOCATION
+                    ),
+                    PERMISSIONS_REQUEST_LOCATION
             )
         }
         mapboxDialog.window?.setLayout(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.MATCH_PARENT
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
         )
         mapboxDialog.show()
     }
@@ -351,7 +351,7 @@ class JobCard : Fragment() {
 
         fun Context.isPermissionGranted(permission: String): Boolean {
             return ContextCompat.checkSelfPermission(
-                this, permission
+                    this, permission
             ) == PackageManager.PERMISSION_GRANTED
         }
     }

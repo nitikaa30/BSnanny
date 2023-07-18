@@ -3,7 +3,6 @@ package com.example.bsnanny.repositories.requests
 import com.example.bsnanny.models.requests.parent.Booking
 import com.example.bsnanny.models.requests.parent.ParentRequestsResponse
 import com.example.bsnanny.models.requests.parent.accept.AcceptResponse
-import com.example.bsnanny.models.requests.parent.accept.Bookings
 import com.example.bsnanny.models.requests.parent.reject.RejectResponse
 import com.example.bsnanny.retrofit.ApiHelper
 import com.example.bsnanny.utils.NetworkResults
