@@ -59,7 +59,7 @@ class Requests : Fragment() {
                     ProgressDialog.cancelProgressDialog()
                     if (it.data?.success == true) {
                         val list = it.data.data
-                      // requestAdapter.setRequests(list)
+                        requestAdapter.setRequests(list)
                     }
                 }
             }
