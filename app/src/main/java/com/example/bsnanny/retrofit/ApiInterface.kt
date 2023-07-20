@@ -4,6 +4,7 @@ import com.example.bsnanny.models.authentication.AuthenticationBody
 import com.example.bsnanny.models.authentication.AuthenticationResponse
 import com.example.bsnanny.models.bookAppointment.BookAppointmentResponse
 import com.example.bsnanny.models.bookAppointment.BookRequest
+import com.example.bsnanny.models.bookings.BookingsResponse
 import com.example.bsnanny.models.checkUser.CheckUserBody
 import com.example.bsnanny.models.checkUser.CheckUserResponse
 import com.example.bsnanny.models.feedbackModel.FeedbackBody
@@ -40,6 +41,9 @@ interface ApiInterface {
 
     @POST("nany/apply")
     suspend fun applytoFamiliy(@Body apply: BookRequest):Response<BookAppointmentResponse>
+
+    @GET("nany/view-parent-booking?booking_id=booking_id")
+    suspend fun viewBooking():Response<BookingsResponse>
 
 
 
