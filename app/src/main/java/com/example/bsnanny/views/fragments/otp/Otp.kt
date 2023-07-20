@@ -75,7 +75,7 @@ class Otp : Fragment() {
 
 
         generateOTP()
-        subscribeObserver()
+
         ProgressDialog.showProgressDialog(requireContext())
 
         v = activity?.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator?
@@ -174,6 +174,7 @@ class Otp : Fragment() {
                             ProgressDialog.cancelProgressDialog()
                             val authenticationBody = AuthenticationBody(phoneNumber)
                             authenticate(authenticationBody)
+                            subscribeObserver()
                         } else {
                             ProgressDialog.cancelProgressDialog()
                             val action =
@@ -228,10 +229,11 @@ class Otp : Fragment() {
 
                 is NetworkResults.Success -> {
                     ProgressDialog.cancelProgressDialog()
-                    authUser.saveToken(
-                        SAVE_JWT_USER_KEY, it.data?.authenticationData
-                    )
+
                     if (type == "Login") {
+                        authUser.saveToken(
+                            SAVE_JWT_USER_KEY, it.data?.authenticationData
+                        )
                         findNavController().navigate(R.id.action_otp_to_dashboard)
                     } else {
                         val action = OtpDirections.actionOtpToChooseProfile(phoneNum, countryCode)
