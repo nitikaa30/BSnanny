@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#FAFAFA"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.requests.Requests">
+    tools:context="views.fragments.families.FindFamilies">
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/familiesAppBar"
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@drawable/toolbar_bg"
-            app:title="Requests"
+            app:title="Families"
             app:titleTextAppearance="@style/heading"
             app:titleCentered="true"/>
     </com.google.android.material.appbar.AppBarLayout>

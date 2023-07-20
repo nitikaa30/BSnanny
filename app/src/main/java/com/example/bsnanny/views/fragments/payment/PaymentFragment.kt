@@ -62,6 +62,9 @@ class PaymentFragment : Fragment() {
         binding.makePaymentBtn.setOnClickListener {
 
         }
+        binding.makePaymentBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_paymentFragment_to_bookingsFragment)
+        }
 
 
     }

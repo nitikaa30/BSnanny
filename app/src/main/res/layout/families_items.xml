@@ -29,8 +29,8 @@
                 android:textAppearance="@style/name"/>
             <ImageView
                 android:id="@+id/requestsImage"
-                android:layout_width="@dimen/_90sdp"
-                android:layout_height="@dimen/_110sdp"
+                android:layout_width="@dimen/_75sdp"
+                android:layout_height="@dimen/_90sdp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="@dimen/_10sdp"
@@ -45,65 +45,31 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New York"
+                android:layout_marginTop="@dimen/_10sdp"
                 app:layout_constraintTop_toBottomOf="@id/name"
                 android:textAppearance="@style/intro_text"
                 app:layout_constraintStart_toEndOf="@id/requestsImage"
                 android:layout_marginStart="@dimen/_12sdp" />
-            <ImageView
-                android:id="@+id/dot"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bullet"
-                app:layout_constraintTop_toBottomOf="@id/name"
-                app:layout_constraintStart_toEndOf="@id/place"
-                android:layout_marginTop="@dimen/_7sdp"
-                android:layout_marginStart="@dimen/_12sdp" />
             <TextView
-                android:id="@+id/parent"
+                android:id="@+id/noOfChild"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Child's Mother"
-                app:layout_constraintTop_toBottomOf="@id/name"
-                android:textAppearance="@style/intro_text"
-                app:layout_constraintStart_toEndOf="@id/dot"
-                android:layout_marginStart="@dimen/_10sdp" />
-            <TextView
-                android:id="@+id/age"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Child's age: 5 year"
+                android:text="No. of children:"
                 app:layout_constraintTop_toBottomOf="@id/place"
                 android:textAppearance="@style/intro_text"
                 app:layout_constraintStart_toEndOf="@id/requestsImage"
-                android:layout_marginTop="@dimen/_2sdp"
+                android:layout_marginTop="@dimen/_12sdp"
                 android:layout_marginStart="@dimen/_12sdp" />
-            <ImageView
-                android:id="@+id/boy"
+            <TextView
+                android:id="@+id/child"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@id/age"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:background="@drawable/boy"
-                android:layout_marginTop="@dimen/_3sdp"
-                app:layout_constraintTop_toBottomOf="@id/parent"/>
-            <ImageView
-                android:id="@+id/girl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@id/age"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:background="@drawable/girl"
-                android:layout_marginTop="@dimen/_3sdp"
-                app:layout_constraintTop_toBottomOf="@id/parent"/>
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="@dimen/_180sdp"
-                android:layout_height="@dimen/_33sdp"
-                android:background="@drawable/apply_2"
-                android:layout_marginBottom="@dimen/_10sdp"
-                app:layout_constraintBottom_toBottomOf="parent"
-
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/requestsImage"/>
+                android:text="1"
+                app:layout_constraintTop_toBottomOf="@id/place"
+                android:textAppearance="@style/intro_text"
+                android:layout_marginTop="@dimen/_12sdp"
+                app:layout_constraintStart_toEndOf="@id/noOfChild"
+                android:layout_marginStart="@dimen/_5sdp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

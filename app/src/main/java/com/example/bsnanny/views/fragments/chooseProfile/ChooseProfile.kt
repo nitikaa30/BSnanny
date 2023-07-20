@@ -47,16 +47,16 @@ class ChooseProfile : Fragment() {
 
         phoneNum = arguments.let { ChooseProfileArgs.fromBundle(it!!).phoneNumber }
         countryCode = arguments.let { ChooseProfileArgs.fromBundle(it!!).callingCode }
-        subscribeObserver()
 
         binding.nannyBtn.setOnClickListener {
             binding.babysitBtn.isEnabled = false
-            findNavController().navigate(R.id.action_chooseProfile_to_dashboard)
+           // findNavController().navigate(R.id.action_chooseProfile_to_dashboard)
             SharedPreferences.saveChooseProfileStatus(CHOOSE_PROFILE_STATUS_KEY, "Nanny")
             val phoneNumber = phoneNum
             val authenticationBody = AuthenticationBody(phoneNumber, 1)
             ProgressDialog.cancelProgressDialog()
             authenticate(authenticationBody)
+            subscribeObserver()
         }
         binding.babysitBtn.setOnClickListener {
             binding.nannyBtn.isEnabled = false
@@ -66,6 +66,7 @@ class ChooseProfile : Fragment() {
             val authenticationBody = AuthenticationBody(phoneNumber, 2)
             authenticate(authenticationBody)
             ProgressDialog.cancelProgressDialog()
+            subscribeObserver()
         }
         if (ActivityCompat.checkSelfPermission(
                 requireContext(),
@@ -102,9 +103,13 @@ class ChooseProfile : Fragment() {
                 }
 
                 is NetworkResults.Success -> {
-                    findNavController().navigate(R.id.action_chooseProfile_to_dashboard)
-
                     authUser.saveToken(SAVE_JWT_USER_KEY, it.data?.authenticationData)
+                    if (it.data?.authenticationData != null){
+                        findNavController().navigate(R.id.action_chooseProfile_to_dashboard)
+                    }
+
+
+
 
                     ProgressDialog.cancelProgressDialog()
                 }

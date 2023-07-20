@@ -39,7 +39,7 @@ class Requests : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel=ViewModelProvider(this).get(RequestViewModel::class.java)
+        viewModel= ViewModelProvider(this)[RequestViewModel::class.java]
         requestAdapter= ParentsRequestAdapter(arrayListOf(),this)
         binding.requestsRecyclerView.apply {
             layoutManager=LinearLayoutManager(requireContext())

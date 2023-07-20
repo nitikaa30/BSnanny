@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#FAFAFA"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.nanny.FindNannyFragment">
+    tools:context="views.fragments.nanny.FindNannyFragment">
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/nannyAppbar"
         android:layout_width="match_parent"

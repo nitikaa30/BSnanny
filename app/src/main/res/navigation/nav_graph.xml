@@ -90,7 +90,7 @@
         <action
             android:id="@+id/action_otp_to_dashboard"
             app:destination="@id/dashboard"
-            app:popUpTo="@id/dashboard"
+            app:popUpTo="@id/signIn"
             app:popUpToInclusive="true"
             />
 
@@ -103,7 +103,7 @@
         <action
             android:id="@+id/action_chooseProfile_to_dashboard"
             app:destination="@id/dashboard"
-            app:popUpTo="@id/chooseProfile"
+            app:popUpTo="@id/signIn"
             app:popUpToInclusive="true"/>
         <argument
             android:name="phoneNumber"
