@@ -6,11 +6,6 @@
     android:background="#FAFAFA"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".views.fragments.jobCard.JobCard">
-    <FrameLayout
-        android:visibility="gone"
-        android:id="@+id/maps_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/jobCardAppbar"
@@ -34,6 +29,16 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/jobCardAppbar"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Job_card_Address_TIL"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -50,13 +55,15 @@
         app:hintTextColor="#5F5F5F"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/jobCardAppbar">
+        app:endIconMode="custom"
+        app:endIconDrawable="@drawable/loc1"
+        app:endIconTint="@color/purpleU1"
+        app:layout_constraintTop_toTopOf="parent">
 
         <EditText
             android:id="@+id/Address_ED"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:drawableEnd="@drawable/loc1"
             android:fontFamily="@font/poppins_medium"
             android:hint="Address"
             android:clickable="false"
@@ -86,6 +93,7 @@
             android:textColorHint="#5F5F5F"
             app:boxCornerRadiusBottomEnd="8dp"
             app:boxCornerRadiusBottomStart="8dp"
+
             app:boxCornerRadiusTopEnd="8dp"
             app:boxCornerRadiusTopStart="8dp"
             app:boxStrokeColor="@color/purpleU1"
@@ -94,8 +102,11 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/City"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+
                 android:fontFamily="@font/poppins_medium"
+                android:inputType="textPostalAddress"
+
                 android:textColor="@color/black"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -119,8 +130,9 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/Pin"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
+                android:inputType="number"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -149,6 +161,7 @@
             android:layout_height="match_parent"
             android:fontFamily="@font/poppins_medium"
             android:hint="Country"
+            android:inputType="textPostalAddress"
             android:textColor="@color/black"
             android:textSize="12sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -176,6 +189,8 @@
             android:layout_height="match_parent"
             android:fontFamily="@font/poppins_medium"
             android:hint="No. of Children"
+            android:inputType="number"
+            android:maxLength="2"
             android:textColor="@color/black"
             android:textSize="12sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -420,6 +435,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Date_LL_Job"
         android:padding="15dp"
         app:cornerRadius="8dp"
         android:textAllCaps="false"
@@ -428,7 +444,8 @@
         android:backgroundTint="@color/black"
         android:layout_margin="16dp"/>
 
-
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 
 

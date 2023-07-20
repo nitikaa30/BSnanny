@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.bsnanny.models.feedbackModel.FeedbackBody
 import com.example.bsnanny.models.feedbackModel.FeedbackListResponse
 import com.example.bsnanny.models.feedbackModel.FeedbackResponse
-import com.example.bsnanny.repositories.feedback.FeedbackRepo
+import com.example.bsnanny.retrofit.feedback.FeedbackRepo
 import com.example.bsnanny.utils.NetworkResults
 import com.example.bsnanny.utils.SingleMutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel

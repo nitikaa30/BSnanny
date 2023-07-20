@@ -32,6 +32,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -40,17 +41,22 @@ import com.example.bsnanny.R
 import com.example.bsnanny.adapter.findNanny.FindNannyAdapter
 import com.example.bsnanny.databinding.FragmentFindNannyBinding
 import com.example.bsnanny.models.findNanny.FindNanny
+import com.example.bsnanny.models.findNanny.FindNannyApiItems
+import com.example.bsnanny.models.findNanny.FindNannyBody
+import com.example.bsnanny.utils.NetworkResults
 import com.example.bsnanny.utils.progressDialog.ProgressDialog
+import com.example.bsnanny.viewmodels.nannies.FindNannyViewModel
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
 import com.google.android.play.integrity.internal.x
 import com.google.android.play.integrity.internal.y
+import dagger.hilt.android.AndroidEntryPoint
 import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.*
 
-
+@AndroidEntryPoint
 class FindNannyFragment : Fragment() {
     private lateinit var binding: FragmentFindNannyBinding
     private lateinit var nannyNameArray: Array<String?>
@@ -63,6 +69,7 @@ class FindNannyFragment : Fragment() {
     private val handler = Handler()
     private lateinit var runnable: Runnable
     private var stringIndex : Int = 0
+    private val findNannyViewModel : FindNannyViewModel by viewModels()
 
 
     override fun onCreateView(
@@ -78,6 +85,32 @@ class FindNannyFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Log.d("FN", "onViewCreated: ${arguments?.getString("data")} ")
+
+
+
+
+        val findNannyItems: FindNannyApiItems? = arguments?.getParcelable("findNannyItems")
+
+        val findNannyBody = FindNannyBody(
+            latitude = findNannyItems?.latitude.toString(),
+            longitude = findNannyItems?.longitude.toString(),
+            price = findNannyItems?.price.toString(),
+            noOfChildren = findNannyItems?.noOfChildren?.toDouble()?.toInt()!!,
+            from = findNannyItems.from.toString(),
+            to = findNannyItems.to.toString(),
+            startDate = findNannyItems.startDate.toString(),
+            endDate = findNannyItems.endDate.toString(),
+            city = findNannyItems.city.toString(),
+            pin = findNannyItems.pin.toString(),
+            country = findNannyItems.country.toString(),
+            address = findNannyItems.address.toString()
+        )
+
+        findNanny(findNannyBody)
+        subscribeObserver()
+
+
 
         val activity = activity as AppCompatActivity?
 
@@ -127,8 +160,7 @@ class FindNannyFragment : Fragment() {
             override fun run() {
 
                 handleTitleText()
-                Log.d("titleText", "run: invoked")
-                println("run Invoked")
+
                 handler.postDelayed(this, 7000)
             }
         }
@@ -407,15 +439,6 @@ class FindNannyFragment : Fragment() {
             iterator = 0
         }
     }
-
-
-
-    private fun showFilterDialog(){
-        val dialog = Dialog(requireContext())
-        dialog.setContentView(R.layout.filter_nanny_dialog)
-        dialog.window?.setBackgroundDrawableResource(R.color.transparent1)
-        dialog.show()
-    }
     override fun onStart() {
         handler.postDelayed(runnable, 7000)
         super.onStart()
@@ -424,6 +447,26 @@ class FindNannyFragment : Fragment() {
     override fun onStop() {
         handler.removeCallbacks(runnable)
         super.onStop()
+    }
+    private fun subscribeObserver(){
+        findNannyViewModel.res.observe(viewLifecycleOwner){
+            when(it){
+                is NetworkResults.Error -> {
+                    Toast.makeText(requireContext(), it.errorMessage.toString(), Toast.LENGTH_SHORT).show()
+                }
+                is NetworkResults.Loading -> {
+
+
+                }
+                is NetworkResults.Success -> {
+                    Toast.makeText(requireContext(), "ok ", Toast.LENGTH_LONG).show()
+
+                }
+            }
+        }
+    }
+    private fun findNanny(findNannyBody: FindNannyBody){
+        findNannyViewModel.findNannies(findNannyBody)
     }
 
 }

@@ -187,4 +187,98 @@ enum class CardFields {
 const val placesAutoCompleteTag = "PlacesAutoComplete"
 
 
+fun countDigits(n : Int) : Int{
+    if (n/10 == 0){
+        return 1
+    }
+    return 1 + countDigits(n / 10)
+}
+
+fun validateJobCardFields(input: String,
+                          errorMsg: String = "",
+                          textInputLayout: TextInputLayout?,
+                          jobCardFields: JobCardFields)
+{
+    when(jobCardFields){
+        JobCardFields.CITY -> {
+            if (TextUtils.isEmpty(input.trim())){
+                textInputLayout?.error = errorMsg
+            }else{
+                textInputLayout?.error = null
+                textInputLayout?.isErrorEnabled = false
+            }
+        }
+        JobCardFields.PIN -> {
+            if (TextUtils.isEmpty(input.trim())){
+                textInputLayout?.error = errorMsg
+            }else{
+                textInputLayout?.error = null
+                textInputLayout?.isErrorEnabled = false
+            }
+        }
+        JobCardFields.COUNTRY -> {
+            if (TextUtils.isEmpty(input.trim())){
+                textInputLayout?.error = errorMsg
+            }else{
+                textInputLayout?.error = null
+                textInputLayout?.isErrorEnabled = false
+            }
+        }
+        JobCardFields.CHILD_COUNT -> {
+            if (TextUtils.isEmpty(input.trim())){
+                textInputLayout?.error = errorMsg
+            }else{
+                textInputLayout?.error = null
+                textInputLayout?.isErrorEnabled = false
+            }
+        }
+        JobCardFields.TIME_FROM -> {
+            if (TextUtils.isEmpty(input.trim())){
+                textInputLayout?.error = errorMsg
+            }else{
+                textInputLayout?.error = null
+                textInputLayout?.isErrorEnabled = false
+            }
+        }
+        JobCardFields.TIME_TO -> {
+            if (TextUtils.isEmpty(input.trim())){
+                textInputLayout?.error = errorMsg
+            }else{
+                textInputLayout?.error = null
+                textInputLayout?.isErrorEnabled = false
+            }
+        }
+        JobCardFields.START_DATE -> {
+            if (TextUtils.isEmpty(input.trim())){
+                textInputLayout?.error = errorMsg
+            }else{
+                textInputLayout?.error = null
+                textInputLayout?.isErrorEnabled = false
+            }
+        }
+        JobCardFields.END_DATE -> {
+            if (TextUtils.isEmpty(input.trim())){
+                textInputLayout?.error = errorMsg
+            }else{
+                textInputLayout?.error = null
+                textInputLayout?.isErrorEnabled = false
+            }
+        }
+    }
+}
+
+enum class JobCardFields{
+    CITY,
+    PIN,
+    COUNTRY,
+    CHILD_COUNT,
+    TIME_FROM,
+    TIME_TO,
+    START_DATE,
+    END_DATE
+}
+
+
+
+
 
