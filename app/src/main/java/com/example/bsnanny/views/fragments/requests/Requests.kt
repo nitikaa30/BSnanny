@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bsnanny.adapter.requests.ParentsRequestAdapter
 import com.example.bsnanny.databinding.FragmentRequestsBinding
@@ -64,6 +65,13 @@ class Requests : Fragment() {
             }
         })
         viewModel.getParentsRequests()
+
+        requestAdapter.itemClicked(object :ParentsRequestAdapter.OnItemsClicked{
+            override fun onClicked(position: Int) {
+
+            }
+
+        })
     }
 
 }
