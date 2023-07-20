@@ -31,11 +31,20 @@
         android:id="@+id/paymentFragment"
         android:name="com.example.bsnanny.views.fragments.payment.PaymentFragment"
         android:label="PaymentFragment"
-        tools:layout="@layout/fragment_payment"/>
+        tools:layout="@layout/fragment_payment">
+        <action
+            android:id="@+id/action_paymentFragment_to_bookingsFragment"
+            app:destination="@id/bookingsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/ratings"
         android:name="com.example.bsnanny.views.fragments.ratings.Ratings"
         android:label="Ratings"
         tools:layout="@layout/fragment_ratings"/>
+    <fragment
+        android:id="@+id/bookingsFragment"
+        android:name="com.example.bsnanny.views.fragments.bookings.BookingsFragment"
+        android:label="fragment_bookings"
+        tools:layout="@layout/fragment_bookings" />
 
 </navigation>

@@ -5,11 +5,15 @@ import com.example.bsnanny.models.authentication.AuthenticationResponse
 import com.example.bsnanny.models.bookAppointment.BookAppointmentResponse
 import com.example.bsnanny.models.bookAppointment.BookRequest
 import com.example.bsnanny.models.bookings.BookingsResponse
+import com.example.bsnanny.models.bookings.parentBooking.ParentBookingResponse
 import com.example.bsnanny.models.checkUser.CheckUserBody
 import com.example.bsnanny.models.checkUser.CheckUserResponse
 import com.example.bsnanny.models.feedbackModel.FeedbackBody
 import com.example.bsnanny.models.feedbackModel.FeedbackListResponse
 import com.example.bsnanny.models.feedbackModel.FeedbackResponse
+import com.example.bsnanny.models.findNanny.FindNannyBody
+import com.example.bsnanny.models.findNanny.FindNannyResponse
+import com.example.bsnanny.models.pendingBookings.PendingBookingResponse
 import com.example.bsnanny.models.requests.parent.ParentRequestsResponse
 import com.example.bsnanny.models.requests.parent.accept.AcceptResponse
 import com.example.bsnanny.models.requests.parent.reject.RejectResponse
@@ -44,6 +48,15 @@ interface ApiInterface {
 
     @GET("nany/view-parent-booking?booking_id=booking_id")
     suspend fun viewBooking():Response<BookingsResponse>
+
+    @POST("parent/find_nany")
+    suspend fun findNanny(@Body findNannyBody: FindNannyBody) : Response<FindNannyResponse>
+
+    @GET("parent/is_booking_pending")
+    suspend fun getBookingStatus() : Response<PendingBookingResponse>
+
+    @GET("user/booking_history")
+    suspend fun getBookingHistory() : Response<ParentBookingResponse>
 
 
 

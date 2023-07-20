@@ -4,6 +4,7 @@ import com.example.bsnanny.models.authentication.AuthenticationBody
 import com.example.bsnanny.models.authentication.AuthenticationResponse
 import com.example.bsnanny.models.bookAppointment.BookAppointmentResponse
 import com.example.bsnanny.models.bookAppointment.BookRequest
+import com.example.bsnanny.models.bookings.parentBooking.ParentBookingResponse
 import com.example.bsnanny.models.checkUser.CheckUserBody
 import com.example.bsnanny.models.checkUser.CheckUserResponse
 import com.example.bsnanny.models.feedbackModel.FeedbackBody
@@ -11,6 +12,7 @@ import com.example.bsnanny.models.feedbackModel.FeedbackListResponse
 import com.example.bsnanny.models.feedbackModel.FeedbackResponse
 import com.example.bsnanny.models.findNanny.FindNannyBody
 import com.example.bsnanny.models.findNanny.FindNannyResponse
+import com.example.bsnanny.models.pendingBookings.PendingBookingResponse
 import com.example.bsnanny.models.requests.parent.Booking
 import com.example.bsnanny.models.requests.parent.Data
 import com.example.bsnanny.models.requests.parent.ParentRequestsResponse
@@ -63,5 +65,13 @@ class ApiHelperImpl @Inject constructor(
 
     override suspend fun findNanny(findNannyBody: FindNannyBody): NetworkResults<FindNannyResponse> {
         return safeApiCall { apiInterface.findNanny(findNannyBody) }
+    }
+
+    override suspend fun bookingStatus(): NetworkResults<PendingBookingResponse> {
+        return safeApiCall { apiInterface.getBookingStatus() }
+    }
+
+    override suspend fun getBookingHistory(): NetworkResults<ParentBookingResponse> {
+        return safeApiCall { apiInterface.getBookingHistory() }
     }
 }

@@ -26,6 +26,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.bsnanny.R
 import com.example.bsnanny.authUser.AuthUser
@@ -33,10 +34,14 @@ import com.example.bsnanny.databinding.FragmentJobCardBinding
 import com.example.bsnanny.models.findNanny.FindNannyApiItems
 import com.example.bsnanny.utils.CommonTextWatcher
 import com.example.bsnanny.utils.JobCardFields
+import com.example.bsnanny.utils.NetworkResults
 import com.example.bsnanny.utils.countDigits
+import com.example.bsnanny.utils.showSnackBar
 import com.example.bsnanny.utils.validateJobCardFields
+import com.example.bsnanny.viewmodels.bookingStatus.BookingStatusViewModels
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.google.android.material.snackbar.Snackbar
 import com.mapbox.search.ApiType
 import com.mapbox.search.ResponseInfo
 import com.mapbox.search.SearchEngine
@@ -67,6 +72,7 @@ class JobCard : Fragment() {
     private var latitude: Double = 0.0
     private var longitude: Double = 0.0
     private var price: String = ""
+    private val bookingStatusViewModels: BookingStatusViewModels by viewModels()
 
     @Inject
     lateinit var authUser: AuthUser
@@ -83,6 +89,9 @@ class JobCard : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        subscribeObservers()
+        getBookingStatus()
         fusedLocationProviderClient =
             LocationServices.getFusedLocationProviderClient(requireActivity())
         val activity = activity as AppCompatActivity?
@@ -313,7 +322,7 @@ class JobCard : Fragment() {
                     JobCardFields.END_DATE
                 )
             },
-            onTextChanged = { s: CharSequence?, _, _, _ ->
+            onTextChanged = { _, _, _, _ ->
                 binding.EndDateTILJob.error = null
                 binding.EndDateTILJob.isErrorEnabled = false
             },
@@ -520,8 +529,8 @@ class JobCard : Fragment() {
 
         val timePickerDialog = TimePickerDialog(
             requireContext(),
-            { view, hourOfDay, minute ->
-                val amPm = if (hourOfDay < 12) "AM" else "PM"
+            { _, hourOfDay, minute ->
+
                 val hourFormatted = if (hourOfDay > 12) hourOfDay - 12 else hourOfDay
                 if (minute <= 10) {
                     text.setText("$hourOfDay:0$minute:00")
@@ -783,4 +792,31 @@ class JobCard : Fragment() {
         return true
     }
 
+    private fun subscribeObservers() {
+        bookingStatusViewModels.res.observe(viewLifecycleOwner){
+            when(it){
+                is NetworkResults.Error -> {
+
+                }
+                is NetworkResults.Loading -> {
+
+                }
+                is NetworkResults.Success -> {
+
+                    if (it.data?.msg != null){
+                        Snackbar.make(binding.root, "You already have a pending booking", Snackbar.LENGTH_LONG).show()
+                    }
+
+                    if (it.data?.success == true){
+                        binding.SearchNannyBtn.visibility = View.INVISIBLE
+                    }else{
+                        binding.SearchNannyBtn.visibility = View.VISIBLE
+                    }
+                }
+            }
+        }
+    }
+    private fun getBookingStatus(){
+        bookingStatusViewModels.getBookingStatus()
+    }
 }
