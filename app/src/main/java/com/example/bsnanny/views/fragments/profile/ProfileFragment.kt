@@ -60,7 +60,10 @@ class ProfileFragment : Fragment() {
         val ageArrayAdapter = context?.let {
             ArrayAdapter(it, R.layout.dropdown_item_pricing, age)
         }
-        binding.autoCompleteTextViewAge.setAdapter(ageArrayAdapter)
+
+      binding.scroll.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+          hideSoftInput()
+      }
 
         binding.editProfileBtn.setOnClickListener {
             viewModel.setProfileEditable(true)
@@ -68,13 +71,14 @@ class ProfileFragment : Fragment() {
         }
 
         binding.SVProfileBtn.setOnClickListener {
+
             viewModel.setProfileEditable(false)
             saveProfileListener()
+            hideSoftInput()
         }
 
         viewModel.isProfileEditable.observe(viewLifecycleOwner) { editable ->
             if (editable) {
-
                 showSoftInput(binding.ProfileName)
                 binding.ProfileEmail.requestFocusFromTouch()
                 binding.ProfileEmail.isFocusableInTouchMode = true
@@ -98,25 +102,20 @@ class ProfileFragment : Fragment() {
             binding.ProfileEmail.isEnabled = editable
             binding.ProfileDescription.isEnabled = editable
             binding.ProfileAddress.isEnabled = editable
-            binding.ProfileChildDetails.isEnabled = editable
-            binding.autoCompleteTextViewAge.isEnabled = editable
             binding.addUploadImage1.visibility = if (editable) View.VISIBLE else View.GONE
             binding.ProfileToolbar.title = if (editable) "Edit Profile" else "Profile"
             binding.editProfileBtn.visibility = if (editable) View.GONE else View.VISIBLE
             binding.SVProfileBtn.visibility = if (editable) View.VISIBLE else View.GONE
-            binding.profileGenderGirl.visibility =
+            binding.GenderFemale.visibility =
                 if (editable) View.INVISIBLE else View.VISIBLE
-            binding.profileGenderBoy.visibility =
+            binding.GenderMale.visibility =
                 if (editable) View.INVISIBLE else View.VISIBLE
-            binding.profileChildTIL.visibility =
-                if (editable) View.INVISIBLE else View.VISIBLE
-            binding.AgeTil.visibility = if (editable) View.VISIBLE else View.GONE
+
             binding.genderSelector.visibility = if (editable) View.VISIBLE else View.GONE
             binding.profileGenderSelectorGirl.visibility =
                 if (editable) View.VISIBLE else View.GONE
             binding.profileGenderSelectorBoy.visibility =
                 if (editable) View.VISIBLE else View.GONE
-            binding.AgeTil.visibility = if (editable) View.VISIBLE else View.GONE
         }
 
         binding.profileGenderSelectorBoy.setOnClickListener {
@@ -130,12 +129,12 @@ class ProfileFragment : Fragment() {
         // Observe gender selection and update UI accordingly
         viewModel.isProfileEditable.observe(viewLifecycleOwner) { editable ->
             if (!editable) {
-                if (genderSelect == "Boy") {
-                    binding.profileGenderBoy.visibility = View.VISIBLE
-                    binding.profileGenderGirl.visibility = View.GONE
+                if (genderSelect == "Male") {
+                    binding.GenderMale.visibility = View.VISIBLE
+                    binding.GenderFemale.visibility = View.INVISIBLE
                 } else {
-                    binding.profileGenderGirl.visibility = View.VISIBLE
-                    binding.profileGenderBoy.visibility = View.INVISIBLE
+                    binding.GenderFemale.visibility = View.VISIBLE
+                    binding.GenderMale.visibility = View.INVISIBLE
                 }
             }
         }
@@ -153,6 +152,7 @@ class ProfileFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun saveProfileListener() {
+        hideSoftInput()
         viewModel.setProfileEditable(false)
     }
 

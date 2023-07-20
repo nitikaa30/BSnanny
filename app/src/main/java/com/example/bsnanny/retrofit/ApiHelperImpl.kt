@@ -9,6 +9,8 @@ import com.example.bsnanny.models.checkUser.CheckUserResponse
 import com.example.bsnanny.models.feedbackModel.FeedbackBody
 import com.example.bsnanny.models.feedbackModel.FeedbackListResponse
 import com.example.bsnanny.models.feedbackModel.FeedbackResponse
+import com.example.bsnanny.models.findNanny.FindNannyBody
+import com.example.bsnanny.models.findNanny.FindNannyResponse
 import com.example.bsnanny.models.requests.parent.Booking
 import com.example.bsnanny.models.requests.parent.Data
 import com.example.bsnanny.models.requests.parent.ParentRequestsResponse
@@ -57,5 +59,9 @@ class ApiHelperImpl @Inject constructor(
 
     override suspend fun applytoFamilies(apply: BookRequest): NetworkResults<BookAppointmentResponse> {
         return safeApiCall { apiInterface.applytoFamiliy(apply) }
+    }
+
+    override suspend fun findNanny(findNannyBody: FindNannyBody): NetworkResults<FindNannyResponse> {
+        return safeApiCall { apiInterface.findNanny(findNannyBody) }
     }
 }

@@ -10,6 +10,7 @@
         android:name="com.example.bsnanny.views.fragments.nanny.FindNannyFragment"
         android:label="FindNannyFragment"
         tools:layout="@layout/fragment_find_nanny">
+
         <action
             android:id="@+id/action_findNannyFragment_to_hireNannyFragment"
             app:destination="@id/hireNannyFragment" />

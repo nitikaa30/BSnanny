@@ -131,6 +131,8 @@
         <action
             android:id="@+id/action_jobCard_to_nav_graph_pro"
             app:destination="@id/nav_graph_pro" />
+
     </fragment>
     <include app:graph="@navigation/nav_graph_pro" />
+
 </navigation>

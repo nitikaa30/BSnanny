@@ -1,4 +1,4 @@
-package com.example.bsnanny.repositories.feedback
+package com.example.bsnanny.retrofit.feedback
 
 import com.example.bsnanny.models.feedbackModel.Feedback
 import com.example.bsnanny.models.feedbackModel.FeedbackBody
