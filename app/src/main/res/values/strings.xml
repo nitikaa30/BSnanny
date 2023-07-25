@@ -91,5 +91,11 @@
     <string name="place_autocomplete_query_hint">Search for places</string>
     <string name="place_autocomplete_reverse_geocoding_error_message">Unable to locate selected coordinate</string>
     <string name="place_autocomplete_selection_error">Error happened during request</string>
+    <string name="bookings">Bookings</string>
+    <string name="notifications">Notifications</string>
+    <string name="invitations">Invitations</string>
+    <string name="ratings_and_reviews">Ratings and Reviews</string>
+    <string name="job_requests">Job Requests</string>
+    <string name="logout">Logout</string>
 
 </resources>

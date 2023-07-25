@@ -48,6 +48,9 @@ class Otp : Fragment() {
     @Inject
     lateinit var authUser: AuthUser
 
+
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -231,6 +234,9 @@ class Otp : Fragment() {
                     ProgressDialog.cancelProgressDialog()
 
                     if (type == "Login") {
+
+
+
                         authUser.saveToken(
                             SAVE_JWT_USER_KEY, it.data?.authenticationData
                         )

@@ -278,7 +278,6 @@
                 app:boxStrokeColor="@color/purpleU1"
                 app:hintTextColor="@color/purpleU1"
                 android:textColorHint="@color/black"
-                app:endIconDrawable="@drawable/calender"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
                 <EditText
                     android:id="@+id/startDate"
@@ -298,7 +297,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+
                 android:layout_marginTop="@dimen/_20sdp"
                 app:boxCornerRadiusBottomEnd="8dp"
                 app:boxCornerRadiusBottomStart="8dp"
@@ -309,17 +308,21 @@
                 app:boxStrokeColor="@color/purpleU1"
                 app:hintTextColor="@color/purpleU1"
                 android:textColorHint="@color/black"
-                android:hint="Duration"
+                android:hint="End Date"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 app:layout_constraintTop_toBottomOf="@id/startDateTIL">
-                <AutoCompleteTextView
-                    android:id="@+id/autoCompleteTextViewDuration"
+
+                <EditText
+                    android:id="@+id/endDate"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:fontFamily="@font/poppins_medium"
                     android:textSize="12sp"
+                    android:focusable="false"
+                    android:clickable="false"
                     android:textColor="@color/black"
-                    android:inputType="none"/>
+
+                    />
             </com.google.android.material.textfield.TextInputLayout>
 
 

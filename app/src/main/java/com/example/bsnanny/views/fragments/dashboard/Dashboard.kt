@@ -14,9 +14,11 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.fragment.findNavController
 import com.example.bsnanny.R
 import com.example.bsnanny.databinding.FragmentDashboardBinding
+import com.example.bsnanny.utils.BOOKINGS_FRAGMENT_TAG
 import com.example.bsnanny.utils.fragmentTransactions.FragmentTransactions
 import com.example.bsnanny.utils.sharedPreferences.SharedPreferences
 import com.example.bsnanny.utils.sharedPreferences.SharedPreferences.SAVE_JWT_USER_KEY
+import com.example.bsnanny.views.fragments.bookings.BookingsFragment
 import com.example.bsnanny.views.fragments.notification.Notification
 import com.example.bsnanny.views.fragments.profile.ProfileFragment
 import com.example.bsnanny.views.fragments.requests.Requests
@@ -25,7 +27,9 @@ import com.google.android.gms.location.LocationServices
 import com.mapbox.geojson.Point
 import com.mapbox.maps.CameraOptions
 import com.mapbox.maps.Style
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class Dashboard : Fragment() {
     private lateinit var binding : FragmentDashboardBinding
     private var textLatitude: Double = 0.0
@@ -84,6 +88,12 @@ class Dashboard : Fragment() {
         menu.homeMenuLayout.setOnClickListener {
             binding.mainDrawer.closeDrawers()
         }
+        menu.bookingsMenuLayout.setOnClickListener {
+            menu.bookingsMenuLayout.isSelected = true
+            //FragmentTransactions.replaceFragment(BookingsFragment(), requireActivity(), BOOKINGS_FRAGMENT_TAG )
+            findNavController().navigate(R.id.action_dashboard_to_bookingsFragment2)
+        }
+
         menu.profileMenuLayout.setOnClickListener {
             menu.homeMenuLayout.isSelected = false
             FragmentTransactions.replaceFragment(ProfileFragment(), requireActivity(), ProfileFragment().tag)
@@ -96,6 +106,8 @@ class Dashboard : Fragment() {
         menuNanny.homeMenuLayout.setOnClickListener {
             binding.mainDrawer.closeDrawers()
         }
+
+
 
     }
     private fun setUpDrawer() {

@@ -105,6 +105,39 @@
             app:layout_constraintStart_toEndOf="@id/profile_imageView"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bookings_menuLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:background="@drawable/menu_selector"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profile_menuLayout">
+
+        <ImageView
+            android:id="@+id/bookings_imageView"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:src="@drawable/bookings"
+            android:scaleType="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/bookings"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/bookings_imageView"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/notification_menuLayout"
@@ -115,7 +148,7 @@
         android:background="@drawable/menu_selector"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profile_menuLayout">
+        app:layout_constraintTop_toBottomOf="@id/bookings_menuLayout">
 
         <ImageView
             android:id="@+id/notification_imageView"
@@ -132,9 +165,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_8sdp"
 
-            android:layout_marginTop="@dimen/_6sdp"
+            android:layout_marginTop="@dimen/_7sdp"
             android:fontFamily="@font/poppins_medium"
-            android:text="Notifications"
+            android:text="@string/notifications"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@id/notification_imageView"
@@ -178,7 +211,7 @@
             android:layout_marginStart="@dimen/_8sdp"
             android:layout_marginTop="@dimen/_6sdp"
             android:fontFamily="@font/poppins_medium"
-            android:text="Invitations"
+            android:text="@string/invitations"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@id/requests_imageView"
@@ -209,7 +242,7 @@
             android:layout_marginStart="@dimen/_8sdp"
             android:layout_marginTop="@dimen/_7sdp"
             android:fontFamily="@font/poppins_medium"
-            android:text="Ratings and Reviews"
+            android:text="@string/ratings_and_reviews"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@id/ratings_imageView"
@@ -242,7 +275,7 @@
             android:layout_marginStart="@dimen/_8sdp"
             android:layout_marginTop="@dimen/_7sdp"
             android:fontFamily="@font/poppins_medium"
-            android:text="Job Requests"
+            android:text="@string/job_requests"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@id/jobRequest_imageView"
@@ -284,7 +317,7 @@
             android:layout_marginStart="@dimen/_7sdp"
             android:layout_marginTop="@dimen/_7sdp"
             android:fontFamily="@font/poppins_medium"
-            android:text="Logout"
+            android:text="@string/logout"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@id/createInvoice_imageView"

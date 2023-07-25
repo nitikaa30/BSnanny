@@ -122,6 +122,9 @@
             app:destination="@id/jobCard"
             app:popUpTo="@id/splash"
             app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/action_dashboard_to_bookingsFragment2"
+            app:destination="@id/bookingsFragment2" />
     </fragment>
     <fragment
         android:id="@+id/jobCard"
@@ -134,5 +137,14 @@
 
     </fragment>
     <include app:graph="@navigation/nav_graph_pro" />
+    <fragment
+        android:id="@+id/bookingsFragment2"
+        android:name="com.example.bsnanny.views.fragments.bookings.BookingsFragment"
+        android:label="fragment_bookings"
+        tools:layout="@layout/fragment_bookings" >
+        <action
+            android:id="@+id/action_bookingsFragment2_to_nav_graph_pro"
+            app:destination="@id/nav_graph_pro" />
+    </fragment>
 
 </navigation>

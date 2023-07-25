@@ -1,13 +1,10 @@
 package com.example.bsnanny.views.fragments.nanny
 
-import android.app.Dialog
 import android.graphics.Color
-import android.graphics.Rect
 import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -16,25 +13,15 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewTreeObserver
 import android.view.WindowManager
-import android.view.animation.AlphaAnimation
-import android.widget.Button
-import android.widget.FrameLayout
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.TextView
 import android.widget.Toast
-import android.widget.Toolbar
-import android.widget.ViewSwitcher.ViewFactory
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bsnanny.R
@@ -43,13 +30,10 @@ import com.example.bsnanny.databinding.FragmentFindNannyBinding
 import com.example.bsnanny.models.findNanny.FindNanny
 import com.example.bsnanny.models.findNanny.FindNannyApiItems
 import com.example.bsnanny.models.findNanny.FindNannyBody
+import com.example.bsnanny.models.findNanny.FindNannyData
 import com.example.bsnanny.utils.NetworkResults
-import com.example.bsnanny.utils.progressDialog.ProgressDialog
 import com.example.bsnanny.viewmodels.nannies.FindNannyViewModel
-import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.button.MaterialButton
-import com.google.android.play.integrity.internal.x
-import com.google.android.play.integrity.internal.y
 import dagger.hilt.android.AndroidEntryPoint
 import es.dmoral.toasty.Toasty
 import kotlinx.coroutines.delay
@@ -59,9 +43,9 @@ import java.util.*
 @AndroidEntryPoint
 class FindNannyFragment : Fragment() {
     private lateinit var binding: FragmentFindNannyBinding
-    private lateinit var nannyNameArray: Array<String?>
-    private lateinit var mList: ArrayList<FindNanny>
-    private lateinit var searchList: ArrayList<FindNanny>
+
+    private lateinit var mList: ArrayList<FindNannyData>
+    private lateinit var searchList: ArrayList<FindNannyData>
     private lateinit var adapter: FindNannyAdapter
     private var titleText: String = ""
     private var iterator: Int = 0
@@ -136,23 +120,15 @@ class FindNannyFragment : Fragment() {
         arrayList.add("Search Here")
 
         binding.requestsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        mList = ArrayList<FindNanny>()
-        addDataToList()
-        adapter = FindNannyAdapter(mList)
-        binding.requestsRecyclerView.adapter = adapter
 
-        nannyNameArray = arrayOfNulls<String>(mList.size)
+        //addDataToList()
 
-        for (i in mList.indices) {
-            nannyNameArray[i] = mList[i].name
-        }
 
-        adapter.itemClicked(object : FindNannyAdapter.OnItemsClicked{
-            override fun onClicked(position: Int) {
-                findNavController().navigate(R.id.action_findNannyFragment_to_hireNannyFragment)
-            }
+      //  nannyNameArray = arrayOfNulls<String>(mList.size)
 
-        })
+
+
+
 
 
 
@@ -269,160 +245,6 @@ class FindNannyFragment : Fragment() {
         searchView.isIconified = false
     }
 
-    private fun addDataToList() {
-        mList.add(
-            FindNanny(
-                "Rose Smith",
-                R.drawable.image,
-                "28 years old",
-                3.0F,
-                "New York",
-                "3.0"
-            )
-        )
-        mList.add(
-            FindNanny(
-                "Nicole Neustadt",
-                R.drawable.image,
-                "28 years old",
-                3.0F,
-                "New York",
-                "3.0"
-            )
-        )
-        mList.add(
-            FindNanny(
-                "Karin Dietrich",
-                R.drawable.image,
-                "28 years old",
-                3.0F,
-                "New York",
-                "3.0"
-            )
-        )
-        mList.add(FindNanny("Leah Hahn", R.drawable.image, "28 years old", 3.0F, "New York", "3.0"))
-        mList.add(
-            FindNanny(
-                "Leah Eiffel",
-                R.drawable.image,
-                "28 years old",
-                3.0F,
-                "New York",
-                "3.0"
-            )
-        )
-        mList.add(
-            FindNanny(
-                "Kristin Eberhardt",
-                R.drawable.image,
-                "28 years old",
-                3.0F,
-                "New York",
-                "3.0"
-            )
-        )
-        mList.add(
-            FindNanny(
-                "Kristin Brauer",
-                R.drawable.image,
-                "28 years old",
-                3.0F,
-                "New York",
-                "3.0"
-            )
-        )
-        mList.add(
-            FindNanny(
-                "Heike Vogel",
-                R.drawable.image,
-                "28 years old",
-                3.0F,
-                "New York",
-                "3.0"
-            )
-        )
-        mList.add(
-            FindNanny(
-                "Christina Schwartz",
-                R.drawable.image,
-                "28 years old",
-                3.0F,
-                "New York",
-                "3.0"
-            )
-        )
-        mList.add(FindNanny("Jana Kuhn", R.drawable.image, "28 years old", 3.0F, "New York", "3.0"))
-        mList.add(
-            FindNanny(
-                "Silke Müller",
-                R.drawable.image,
-                "28 years old",
-                3.0F,
-                "New York",
-                "3.0"
-            )
-        )
-        mList.add(
-            FindNanny(
-                "Stephanie Schulze",
-                R.drawable.image,
-                "28 years old",
-                3.0F,
-                "New York",
-                "3.0"
-            )
-        )
-        mList.add(
-            FindNanny(
-                "Claudia Faerber",
-                R.drawable.image,
-                "28 years old",
-                3.0F,
-                "New York",
-                "3.0"
-            )
-        )
-        mList.add(
-            FindNanny(
-                "Ute Feierabend",
-                R.drawable.image,
-                "28 years old",
-                3.0F,
-                "New York",
-                "3.0"
-            )
-        )
-        mList.add(
-            FindNanny(
-                "Daniela Trommler",
-                R.drawable.image,
-                "28 years old",
-                3.0F,
-                "New York",
-                "3.0"
-            )
-        )
-        mList.add(
-            FindNanny(
-                "Melanie Traugott",
-                R.drawable.image,
-                "28 years old",
-                3.0F,
-                "New York",
-                "3.0"
-            )
-        )
-        mList.add(
-            FindNanny(
-                "Melanie Kirsch",
-                R.drawable.image,
-                "28 years old",
-                3.0F,
-                "New York",
-                "3.0"
-            )
-        )
-    }
 
     private fun handleTitleText() {
 
@@ -459,8 +281,18 @@ class FindNannyFragment : Fragment() {
 
                 }
                 is NetworkResults.Success -> {
-                    Toast.makeText(requireContext(), "ok ", Toast.LENGTH_LONG).show()
 
+                    mList = it.data?.nanny?.nannies!!
+                    Toast.makeText(requireContext(), "ok ", Toast.LENGTH_LONG).show()
+                    adapter = FindNannyAdapter(it.data?.nanny?.nannies)
+                    binding.requestsRecyclerView.adapter = adapter
+                    adapter.itemClicked(object : FindNannyAdapter.OnItemsClicked{
+                        override fun onClicked(position: Int) {
+                            val action = FindNannyFragmentDirections.actionFindNannyFragmentToHireNannyFragment(it.data.nanny.nannies[position].id.toString())
+                            findNavController().navigate(action)
+                        }
+
+                    })
                 }
             }
         }

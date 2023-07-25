@@ -1,5 +1,6 @@
 package com.example.bsnanny.di
 
+import android.util.Log
 import com.example.bsnanny.BuildConfig
 import com.example.bsnanny.authUser.AuthUser
 import com.example.bsnanny.retrofit.ApiHelper
@@ -80,6 +81,7 @@ import java.util.concurrent.TimeUnit
     @Singleton
     @Provides
     fun provideNetworkInterceptor(authUser: AuthUser): NetworkInterceptor {
+        Log.d("authToken", "provideNetworkInterceptor: ${authUser.getUser()?.token}")
         return NetworkInterceptor(authUser.getUser()?.token.toString())
     }
 

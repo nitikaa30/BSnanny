@@ -5,37 +5,30 @@ import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.bsnanny.R
-import androidx.fragment.app.viewModels
-import com.example.bsnanny.utils.NetworkResults
 import com.example.bsnanny.databinding.FragmentSignInBinding
-import com.example.bsnanny.models.authentication.AuthenticationBody
 import com.example.bsnanny.models.checkUser.CheckUserBody
+import com.example.bsnanny.utils.NetworkResults
 import com.example.bsnanny.utils.progressDialog.ProgressDialog
 import com.example.bsnanny.utils.showSnackBar
 import com.example.bsnanny.viewmodels.CheckUserViewModel
-import com.example.bsnanny.viewmodels.authentication.AuthenticationViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SignIn : Fragment() {
     private lateinit var binding: FragmentSignInBinding
     private val checkUserViewModel: CheckUserViewModel by viewModels()
-    private val authenticationViewModel : AuthenticationViewModel by viewModels()
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentSignInBinding.inflate(inflater, container, false)
         //return inflater.inflate(R.layout.fragment_sign_in, container, false)
@@ -168,14 +161,8 @@ class SignIn : Fragment() {
 
     }
 
-    private fun checkValidations() {
-
-    }
-
     private fun checkUser(checkUserBody: CheckUserBody) {
         checkUserViewModel.checkUserData(checkUserBody)
     }
-    private fun authenticate(authenticationBody: AuthenticationBody){
-        authenticationViewModel.authenticate(authenticationBody)
-    }
+
 }

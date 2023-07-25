@@ -17,4 +17,9 @@
     <color name="dark_blue">#0000cd</color>
     <color name="shadow">#66000000</color>
     <color name="green">#00FF00</color>
+    <color name="pending">#E9FFFC</color>
+    <color name="accepted">#FFF6E7</color>
+    <color name="cancelled">#FFE0E2</color>
+    <color name="red">#FF0000</color>
+
 </resources>

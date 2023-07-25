@@ -20,21 +20,16 @@
         android:name="com.example.bsnanny.views.fragments.nanny.HireNannyFragment"
         android:label="HireNannyFragment"
         tools:layout="@layout/fragment_hire_nanny">
-        <action
-            android:id="@+id/action_hireNannyFragment_to_paymentFragment"
-            app:destination="@id/paymentFragment" />
+
         <action
             android:id="@+id/action_hireNannyFragment_to_ratings"
             app:destination="@id/ratings" />
-    </fragment>
-    <fragment
-        android:id="@+id/paymentFragment"
-        android:name="com.example.bsnanny.views.fragments.payment.PaymentFragment"
-        android:label="PaymentFragment"
-        tools:layout="@layout/fragment_payment">
+        <argument
+            android:name="nannyId"
+            app:argType="string" />
         <action
-            android:id="@+id/action_paymentFragment_to_bookingsFragment"
-            app:destination="@id/bookingsFragment" />
+            android:id="@+id/action_hireNannyFragment_to_congratulations"
+            app:destination="@id/congratulations" />
     </fragment>
     <fragment
         android:id="@+id/ratings"
@@ -42,9 +37,10 @@
         android:label="Ratings"
         tools:layout="@layout/fragment_ratings"/>
     <fragment
-        android:id="@+id/bookingsFragment"
-        android:name="com.example.bsnanny.views.fragments.bookings.BookingsFragment"
-        android:label="fragment_bookings"
-        tools:layout="@layout/fragment_bookings" />
+        android:id="@+id/congratulations"
+        android:name="com.example.bsnanny.views.fragments.congratulations.Congratulations"
+        android:label="Congratulations"
+        tools:layout="@layout/fragment_congratulations"/>
+
 
 </navigation>

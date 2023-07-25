@@ -1,7 +1,7 @@
 package com.example.bsnanny.models
 
 data class HireNannyModel(
-    val photo : Int,
+    val photo : String,
     val name : String,
     val desc : String
 )

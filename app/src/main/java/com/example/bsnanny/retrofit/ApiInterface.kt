@@ -6,6 +6,8 @@ import com.example.bsnanny.models.bookAppointment.BookAppointmentResponse
 import com.example.bsnanny.models.bookAppointment.BookRequest
 import com.example.bsnanny.models.bookings.BookingsResponse
 import com.example.bsnanny.models.bookings.parentBooking.ParentBookingResponse
+import com.example.bsnanny.models.bookings.parentBooking.cancelBooking.CancelBookingBody
+import com.example.bsnanny.models.bookings.parentBooking.cancelBooking.CancelBookingResponse
 import com.example.bsnanny.models.checkUser.CheckUserBody
 import com.example.bsnanny.models.checkUser.CheckUserResponse
 import com.example.bsnanny.models.feedbackModel.FeedbackBody
@@ -13,6 +15,9 @@ import com.example.bsnanny.models.feedbackModel.FeedbackListResponse
 import com.example.bsnanny.models.feedbackModel.FeedbackResponse
 import com.example.bsnanny.models.findNanny.FindNannyBody
 import com.example.bsnanny.models.findNanny.FindNannyResponse
+import com.example.bsnanny.models.findNanny.getNanny.GetNannyResponse
+import com.example.bsnanny.models.findNanny.inviteNanny.InviteNannyBody
+import com.example.bsnanny.models.findNanny.inviteNanny.InviteNannyResponse
 import com.example.bsnanny.models.pendingBookings.PendingBookingResponse
 import com.example.bsnanny.models.requests.parent.ParentRequestsResponse
 import com.example.bsnanny.models.requests.parent.accept.AcceptResponse
@@ -21,6 +26,8 @@ import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiInterface {
     @POST("user/find_number")
@@ -59,5 +66,14 @@ interface ApiInterface {
     suspend fun getBookingHistory() : Response<ParentBookingResponse>
 
 
+    @POST("parent/cancel_booking")
+    suspend fun cancelBookingParent(@Body cancelBookingBody: CancelBookingBody) : Response<CancelBookingResponse>
+
+
+    @GET("parent/getnany")
+    suspend fun getNannyDetails(@Query("id") userId : String) : Response<GetNannyResponse>
+
+    @POST("parent/invite_nany")
+    suspend fun inviteNanny(@Body inviteNannyBody: InviteNannyBody) : Response<InviteNannyResponse>
 
 }
