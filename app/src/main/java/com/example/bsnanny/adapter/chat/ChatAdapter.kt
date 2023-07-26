@@ -7,7 +7,7 @@ import com.example.bsnanny.databinding.ChatRecieverLayoutBinding
 import com.example.bsnanny.databinding.ChatSenderLayoutBinding
 import com.example.bsnanny.models.chat.ChatData
 
-class ChatAdapter(private var items: List<ChatData>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ChatAdapter(private val currentUserId: String,private var items: List<ChatData>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = items[position]
         if (holder is SenderViewHolder) {
@@ -19,19 +19,30 @@ class ChatAdapter(private var items: List<ChatData>) : RecyclerView.Adapter<Recy
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return if (viewType == VIEW_TYPE_LEFT){
-            val binding= ChatSenderLayoutBinding.inflate(inflater,parent,false)
-            SenderViewHolder(binding)
-        }else{
-            val binding=ChatRecieverLayoutBinding.inflate(inflater,parent,false)
-            ReceiverViewHolder(binding)
+        return when (viewType) {
+            VIEW_TYPE_LEFT -> {
+                val binding = ChatSenderLayoutBinding.inflate(inflater, parent, false)
+                SenderViewHolder(binding)
+            }
+            VIEW_TYPE_RIGHT -> {
+                val binding = ChatRecieverLayoutBinding.inflate(inflater, parent, false)
+                ReceiverViewHolder(binding)
+            }
+            else -> throw IllegalArgumentException("Invalid view type")
         }
     }
 
     override fun getItemCount(): Int {
         return items.size
     }
-
+    override fun getItemViewType(position: Int): Int {
+        val message = items[position]
+        return if (message.senderID.toString() == currentUserId) {
+            VIEW_TYPE_LEFT
+        } else {
+            VIEW_TYPE_RIGHT
+        }
+    }
 
     class SenderViewHolder(private val binding: ChatSenderLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
 
